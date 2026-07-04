@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    /* font-weight: 400; */
+    /* font-style: normal; */
+}
+
+
+.loginMain {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    border: 3px solid black;
+}
+
+.loginMain>.loginOuter {
+    width: 100%;
+    height: 100%;
+    /* background-color: aqua; */
+    /* background-color:  #EFF5FF; */
+
+}
+
+.loginMain>.loginOuter>.loginInner {
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(156, 225, 255, 0.253); */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+/* Login Left Side Part  */
+.loginMain>.loginOuter>.loginInner>.LoginLeft {
+    height: 100%;
+    width: 55%;
+
+    padding: 0px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 5%;
+
+
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>.LoginTittle {
+    /* font-weight: 100; */
+    width: 600px;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    text-transform: capitalize;
+    font-family: "Chango", sans-serif;
+
+    h1 {
+        margin-bottom: 15px;
+    }
+
+    P {
+
+        font-weight: 800;
+        font-family: "Life Savers", serif;
+    }
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form {
+
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 15px;
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput>input,
+.PasswordInput>input {
+    padding: 10px;
+    width: 100%;
+    /* background-color: red; */
+    height: 50px;
+
+    border: none;
+    font-size: 1.2rem;
+    border: none;
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form input:focus {
+    border: none;
+    outline: none;
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput,
+.PasswordInput {
+    width: 100%;
+    /* background-color: blueviolet; */
+    border: 2px solid #D1D5DB;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    height: 70px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput:active,
+.PasswordInput:active {
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form .LoginIcons {
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.677);
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form .PasswordEye {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: red; */
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails>p {
+    color: rgba(0, 0, 255, 0.641);
+    /* text-decoration: underline; */
+    cursor: pointer;
+
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails>p:hover {
+    color: rgb(0, 0, 255);
+    transition: all 500ms ease-in-out;
+    text-decoration: underline;
+
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails>.Remember {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    p {
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    input {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>button {
+    height: 65px;
+    background-color: #006eff;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>button:active {
+    background-color: #006eff90;
+    /* color: black; */
+}
+
+/*   font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal; */
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>.DemoAccount {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    border: 2px solid rgba(0, 0, 0, 0.366);
+    padding: 20px;
+    font-style: normal;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, .08);
+    
+    h2{
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        /* text-decoration: underline; */
+    }
+    p{
+        font-weight: 500;
+        margin: 5px;
+    }
+    .admin{
+        color: red;
+    }
+    .manager{
+        color: green;
+    }
+    .employee{
+        color: purple;
+    }
+}
+
+
+/* Login Right Side part */
+.loginMain>.loginOuter>.loginInner>.LoginRight {
+    height: 100%;
+    width: 45%;
+    background-color: #d4e6fd;
+    border-radius: 0% 0px 0px 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginRight>.MainLoginImg {
+    width: 800px;
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginRight>.rectangleImg {
+
+    rotate: 180deg;
+    z-index: -1;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+}
