@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import logDesign from '../../assets/login/loginDesign.png';
 import LoginImg from '../../assets/login/LoginImg.png'
 import './Login.css';
@@ -6,6 +6,7 @@ import { BsPersonFill } from "react-icons/bs";
 import { FaKey } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
+import Sidebar from '../SideBar/Sidebar';
 const Login = () => {
     const [visible, setVisible] = useState(false)
 
@@ -16,7 +17,7 @@ const Login = () => {
     return (
         <>
             <div className="loginMain">
-
+                
                 <div className="loginOuter">
 
                     <div className="loginInner">
