@@ -17,7 +17,7 @@
 .loginMain {
     width: 100%;
     height: 100vh;
-
+position: relative;
     /* border: 3px solid black; */
 }
 
@@ -252,6 +252,8 @@
     bottom: 0%;
     right: 0%;
 }
+
+
 
 
 @media (max-width:1291px) {
