@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import logDesign from '../../assets/login/loginDesign.png';
 import LoginImg from '../../assets/login/LoginImg.png'
 import './Login.css';
@@ -8,10 +8,16 @@ import { IoMdEyeOff } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
 const Login = () => {
     const [visible, setVisible] = useState(false)
+    const ref = useRef({username : '' , Password : ''});
 
     function PasswordVisible() {
         setVisible(prev => !prev);
 
+    }
+    function adduserDetails(e , field){
+        ref.current = {...ref.current , [field] : e.target.value};
+
+        // console.log(ref)
     }
     return (
         <>
@@ -32,12 +38,12 @@ const Login = () => {
 
                                 <div className="UserNameInput">
                                     <BsPersonFill className='LoginIcons' />
-                                    <input type="text" placeholder='UserName' />
+                                    <input type="text" placeholder='UserName' onChange={(e)=>adduserDetails(e , "username")}/>
                                 </div>
 
                                 <div className="PasswordInput">
                                     <FaKey className='LoginIcons' />
-                                    <input type={`${!visible ? 'password' : 'text'}`} placeholder='Password' />
+                                    <input type={`${!visible ? 'password' : 'text'}`} placeholder='Password'  onChange={(e)=>adduserDetails(e , "Password")} />
 
                                     {
                                         !visible ?
