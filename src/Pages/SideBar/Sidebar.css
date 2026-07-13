@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.SiderbarMain {
+    width: 400px;
+    height: 100vh;
+    background-color: red;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(180deg,
+            #071A48 0%,
+            #0A2255 30%,
+            #0B2C66 70%,
+            #123873 100%);
+
+    border-radius: 0px 30px 30px 0px;
+    overflow: hidden;
+}
+
+
+.SiderbarMain>img {
+    opacity: 50%;
+    width: 100%;
+    object-fit: cover;
+    height: 23%;
+    background:
+        linear-gradient(180deg,
+            rgba(7, 26, 72, 0),
+            rgba(7, 26, 72, .8));
+}
+
+.SiderbarMain>.SideBarOuter {
+    height: 77%;
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.SiderbarMain>.SideBarOuter>.SidebarTitle {
+    width: 100%;
+    text-align: center;
+
+    /* background-color: red; */
+    h1 {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 0px 20px;
+    }
+}
+
+.SiderbarMain>.SideBarOuter>.SidebarActions>ul {
+    list-style: none;
+
+    li {
+        border-radius: 10px;
+        width: 300px;
+        cursor: pointer;
+        gap: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        text-transform: capitalize;
+        font-weight: 600;
+        margin-bottom: 20px;
+        height: 85px;
+        /* background-color: blue; */
+        padding: 0px 30px;
+
+        transition: all 500ms ease;
+
+        .DashboarIcon {
+            font-size: 30px;
+            color: white;
+        }
+    }
+}
+
+.SiderbarMain>.SideBarOuter>.SidebarActions>ul>li:hover {
+    background: rgba(255, 255, 255, .08);
+
+    transform: translateX(6px);
+    /* transition: all 500ms ease; */
+}
+
+@media (max-width:900px) {
+    .SiderbarMain {
+        height: auto;
+        text-align: start;
+        background: transparent;
+        /* color: red; */
+        position: relative;
+        overflow: visible;
+        /* color: #071A4; */
+    }
+
+    .SiderbarMain>.MobileSidebarOuter>.MsideBarLOGO {
+        width: 100px;
+        height: 90px;
+        font-size: 0.8rem;
+        /* height: 00%; */
+        background: linear-gradient(180deg,
+                #071A48 0%,
+                #0A2255 30%,
+                #0B2C66 70%,
+                #123873 100%);
+
+        text-align: center;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px 30px;
+        margin: 10px 20px;
+
+        /* .MobileLogo {
+            font-size: 20px;
+        } */
+    }
+
+    /* .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions{
+        
+    } */
+
+    .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 20%;
+        gap: 20px;
+        width: 100%;
+        overflow: hidden;
+        height: auto;
+        padding: 20px 30px;
+
+        opacity: 0;
+        transition: all 1s ease;
+        /* background-color: red; */
+        background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.18),
+                rgba(255, 255, 255, 0.05));
+
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        border: 1px solid rgba(255, 255, 255, 0.18);
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 8px 32px rgba(31, 38, 135, 0.2),
+            inset 0 1px 1px rgba(255, 255, 255, 0.4);
+
+        li {
+            /* border-radius: 10px; */
+            /* width: 100%; */
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            padding: 30px 20px;
+            gap: 20px;
+            /* background-color: red; */
+            border-bottom: 1px solid black;
+            color: #071A48;
+
+            .DashboarIcon {
+                font-size: 30px;
+                color: #071A48;
+                transition: all 2s ease;
+            }
+        }
+    }
+
+    .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul>li:active {
+        background-color: #0c0c0c14;
+
+        .DashboarIcon {
+            transform: rotate(360deg);
+            transition: all 2s ease;
+        }
+    }
+}
+
+@media (max-width:567px) {
+    .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul {
+        left: 3%;
+    }
+}
+
+@media (max-width:456px) {
+    .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul {
+        width: 80%;
+        left: 1%;
+
+        li {
+            font-size: 0.8rem;
+
+            .DashboarIcon {
+                /* color: red; */
+                font-size: 20px;
+            }
+        }
+
+
+    }
+}
+
+@media (max-width:383px) {
+    .SiderbarMain {}
+
+    .SiderbarMain>.MobileSidebarOuter>.MsideBarLOGO {
+        width: 100px;
+        font-size: 0.5rem;
+        height: 90px;
+        padding: 0px;
+        margin: 2%;
+    }
+
+    .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul {
+        /* width: 100%; */
+        left: 1%;
+    }
+}

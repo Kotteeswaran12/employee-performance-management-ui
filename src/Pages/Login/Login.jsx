@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react'
 import logDesign from '../../assets/login/loginDesign.png';
 import LoginImg from '../../assets/login/LoginImg.png'
@@ -68,7 +69,7 @@ const Login = () => {
                                 <p className='admin'> 🔴 ADMIN :	admin || admin123</p>
                                 <p className='manager'>🟢 MANAGER :	manager ||	manager123</p>
                                 <p className='employee'>🟣 EMPLOYEE :	employee || employee123</p>
-                               
+
                             </div>
 
 
@@ -86,6 +87,8 @@ const Login = () => {
                     </div>
 
                 </div>
+
+               
 
             </div>
         </>

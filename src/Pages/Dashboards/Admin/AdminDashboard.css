@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.AdminDashboarOuter {
+    display: flex;
+    background-color: #F8FAFC;
+}
+
+.AdminDashboarOuter>.adminDashInner {
+    /* background-color: green; */
+    width: calc(100% - 400px);
+}
+
+.AdminDashboarOuter>.adminDashInner>.overAll {
+    padding: 20px 20px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 100%;
+
+}
+
+.AdminDashboarOuter>.adminDashInner>.overAll {
+    .completetask {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 300px;
+        height: 200px;
+        color: #2563EB;
+        background: #DBEAFE;
+        box-shadow: 10px 4px 12px rgba(0, 0, 0, .06);
+        border-radius: 10px;
+    }
+
+    .pendingLeaves {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 300px;
+        height: 200px;
+        color: #F97316;
+        background: #FFF7ED;
+        box-shadow: 10px 4px 12px rgba(0, 0, 0, .06);
+        border-radius: 10px;
+    }
+
+    .Totaldept {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 300px;
+        height: 200px;
+        color: #22C55E;
+        background: #DCFCE7;
+        box-shadow: 10px 4px 12px rgba(0, 0, 0, .06);
+        border-radius: 10px;
+    }
+
+    .TotalManager {
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 200px;
+        color: #8B5CF6;
+        background: #F3E8FF;
+        box-shadow: 10px 4px 12px rgba(0, 0, 0, .06);
+        border-radius: 10px;
+    }
+
+    .TotalEmp {
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 200px;
+        color: #2563EB;
+        background: #DBEAFE;
+        box-shadow: 10px 4px 12px rgba(0, 0, 0, .06);
+        border-radius: 10px;
+
+    }
+
+    .dashboarIcons {
+        font-size: 35px;
+    }
+
+    .results {
+        height: 100%;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.AdminDashboarOuter>.adminDashInner>.additionDetails {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    height: 400px;
+    /* background-color: red; */
+    padding: 10px 20px;
+
+    .EmpDept {
+        width: 500px;
+        height: 100%;
+        background-color: green;
+    }
+
+    .leaveRequest {
+        width: 900px;
+        height: 100%;
+        background-color: yellowgreen;
+    }
+}
+
+.AdminDashboarOuter>.adminDashInner> .Task{
+    height: calc(100% - 750px );
+    width: 100%;
+    background-color: #8B5CF6;
+}
