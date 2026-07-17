@@ -1,5 +1,5 @@
-import React from 'react'
-import Navbar from '../../../Components/NavBar/Navbar'
+
+import Navbar from '../Component/NavBar/Navbar'
 import Sidebar from '../../SideBar/Sidebar'
 import './AdminDashboard.css'
 import { FaUsers } from "react-icons/fa";
@@ -8,6 +8,9 @@ import { MdApartment } from "react-icons/md";
 import { MdOutlinePendingActions } from "react-icons/md";
 import { MdTaskAlt } from "react-icons/md";
 const AdminDashBorad = () => {
+
+
+
     return (
         <div className='AdminDashboarOuter'>
             <Sidebar></Sidebar>

@@ -17,7 +17,7 @@
 .loginMain {
     width: 100%;
     height: 100vh;
-position: relative;
+    position: relative;
     /* border: 3px solid black; */
 }
 
@@ -85,6 +85,12 @@ position: relative;
     flex-direction: column;
     gap: 40px;
     padding: 15px;
+
+
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form .error {
+    color: red;
 }
 
 .loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput>input,
@@ -117,6 +123,37 @@ position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInputerror,
+.PasswordInputerror {
+    width: 100%;
+    /* background-color: blueviolet; */
+    border: 2px solid #ff00008b;
+   
+    padding: 10px;
+    border-radius: 10px;
+    height: 70px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    input {
+        padding: 10px;
+        width: 100%;
+        /* background-color: red; */
+        height: 50px;
+
+        border: none;
+        font-size: 1.2rem;
+        border: none;
+    }
+
+    .LoginIcons {
+        font-size: 30px;
+        color: rgba(249, 3, 3, 0.677);
+    }
 }
 
 .loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput:active,
@@ -442,12 +479,12 @@ position: relative;
 
     .loginMain>.loginOuter>.loginInner>.LoginLeft>form .LoginIcons {
         font-size: 20px;
-       
+
     }
 
     .loginMain>.loginOuter>.loginInner>.LoginLeft>form .PasswordEye {
         font-size: 20px;
-        
+
     }
 
 
