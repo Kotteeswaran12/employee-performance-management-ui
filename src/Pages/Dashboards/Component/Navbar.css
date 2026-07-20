@@ -30,5 +30,12 @@
 
             /* border: 2px solid black; */
         }
+
+        .userDetails{
+            display: flex;
+            flex-direction: column;
+            justify-self: center;
+            align-items: start;
+        }
     }
 }

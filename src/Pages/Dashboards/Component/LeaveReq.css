@@ -1,0 +1,62 @@
+.LeavReqOuter {
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    padding: 30px 30px;
+}
+
+.LeavReqOuter>.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    h1{
+        font-size: 20px;
+    }
+    button {
+        width: 100px;
+        height: 30px;
+        font-weight: 600;
+        background: none;
+        border: 1px solid #2563EB;
+        color: #2563EB;
+        cursor: pointer;
+        /* background: #DBEAFE; */
+    }
+}
+
+.LeavReqOuter>.LeaveReqDatas>table {
+    width: 100%;
+    text-align: center;
+    /* border-radius: 10px; */
+
+    tr {
+        height: 50px;
+
+    }
+
+    .PENDING {
+        background-color: rgba(255, 166, 0, 0.416);
+        padding: 2px 6px;
+        font-size: 15px;
+        color: orange;
+    }
+
+    .REJECTED {
+        background-color: rgba(255, 0, 0, 0.416);
+        padding: 2px 6px;
+        font-size: 15px;
+        color: rgb(255, 0, 0);
+    }
+
+    .APROVED {
+        background-color: rgba(0, 255, 0, 0.416);
+        padding: 2px 6px;
+        font-size: 15px;
+        color: rgb(68, 255, 0);
+    }
+}
+
+.LeavReqOuter>.LeaveReqDatas>table>tr:nth-child(1) {
+    background-color: #2a2a2a2f;
+}

@@ -1,12 +1,20 @@
 
 import Sidebar from '../../SideBar/Sidebar'
+import Navbar from '../Component/Navbar'
 const EmployeeDashBoard = () => {
     return (
         <>
-            <Sidebar />
 
-            <div>
-                <h1>Employee dashBoard</h1>
+            <div className="empDashBoardOuter">
+                <Sidebar />
+                <div className="empDashBoardInner">
+                    <Navbar User={[
+                        {
+                            'name': localStorage.getItem("username"),
+                            'role': localStorage.getItem("role")
+                        }
+                    ]} />
+                </div>
             </div>
         </>
     )

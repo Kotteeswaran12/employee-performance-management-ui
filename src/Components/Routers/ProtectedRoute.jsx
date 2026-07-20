@@ -1,15 +1,15 @@
 
 import { jwtDecode } from 'jwt-decode';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 const ProtectedRoute = ({ children, allowedRole }) => {
-    const navigation = useNavigate();
+
 
 
     const AuthToken = localStorage.getItem("token");
     const role = localStorage.getItem("role");
 
     if (!AuthToken) {
-        return navigation("/", { replace: true })
+        return <Navigate to={"/"} replace/>
     }
 
     try {
@@ -17,17 +17,17 @@ const ProtectedRoute = ({ children, allowedRole }) => {
         console.log(decode);
         if (decode.exp * 1000 < Date.now()) {
             localStorage.clear()
-            return navigation("/", { replace: true })
+            return <Navigate to={"/"} replace />
         }
     } catch (e) {
         console.log(e)
         localStorage.clear();
-        return navigation("/", { replace: true })
+        return <Navigate to={"/"} replace/>
     }
 
     // Wrong Role
     if (!role && role !== allowedRole) {
-        return navigation("/", { replace: true })
+        return <Navigate to={"/"} replace/>
     }
 
 

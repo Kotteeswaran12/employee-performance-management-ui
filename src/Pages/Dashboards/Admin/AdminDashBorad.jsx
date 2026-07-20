@@ -1,13 +1,35 @@
 
-import Navbar from '../Component/NavBar/Navbar'
+import Navbar from '../Component/Navbar'
 import Sidebar from '../../SideBar/Sidebar'
 import './AdminDashboard.css'
-import { FaUsers } from "react-icons/fa";
-import { FaUserTie } from "react-icons/fa";
-import { MdApartment } from "react-icons/md";
-import { MdOutlinePendingActions } from "react-icons/md";
-import { MdTaskAlt } from "react-icons/md";
+import OverAll from '../Component/OverAll'
+import PieChart from '../Component/PieChart'
+import { useEffect, useState } from 'react'
+import { AdminDashBoard } from '../../../Api/AdminAccess'
+import LeaveRequest from '../Component/LeaveRequest'
 const AdminDashBorad = () => {
+
+    const [AdminDashBoradDetails, setAdminDashBoard] = useState({});
+
+    useEffect(() => {
+
+        const getDetails = async () => {
+
+            const AuthToken = localStorage.getItem('token');
+            try {
+
+                const response = await AdminDashBoard(AuthToken);
+                setAdminDashBoard(response.data);
+
+            } catch (e) {
+                console.log(e)
+            }
+
+        }
+
+        getDetails()
+
+    }, [])
 
 
 
@@ -17,69 +39,27 @@ const AdminDashBorad = () => {
             <div className="adminDashInner">
                 <Navbar User={[
                     {
-                        'name': "kotteeswaran",
-                        'role': "Admin"
+                        'name': localStorage.getItem("username"),
+                        'role': localStorage.getItem("role")
                     }
                 ]} />
 
 
-                <div className="overAll">
-                    <div className="TotalEmp">
-                        <FaUsers className='dashboarIcons' />
-                        <div className="results">
-                            <h4>Total Employees</h4>
-                            <h1>45</h1>
-                        </div>
-                    </div>
-
-
-
-                    <div className="TotalManager">
-                        <FaUserTie className='dashboarIcons' />
-                        <div className="results">
-                            <h4>Total Manager</h4>
-                            <h1>45</h1>
-                        </div>
-                    </div>
-
-
-                    <div className="Totaldept">
-                        <MdApartment className='dashboarIcons' />
-                        <div className="results">
-                            <h4>Total Department</h4>
-                            <h1>45</h1>
-                        </div>
-                    </div>
-
-
-                    <div className="pendingLeaves">
-                        <MdOutlinePendingActions className='dashboarIcons' />
-                        <div className="results">
-                            <h4>Total Pending Leaves</h4>
-                            <h1>45</h1>
-                        </div>
-                    </div>
-
-
-                    <div className="completetask">
-                        <MdTaskAlt className='dashboarIcons' />
-                        <div className="results">
-                            <h4>Total Complete Tasks</h4>
-                            <h1>45</h1>
-                        </div>
-                    </div>
-                </div>
+                <OverAll datas={AdminDashBoradDetails} />
 
                 <div className="additionDetails">
-                    <div className="EmpDept">
 
-                    </div>
+
+
+                    <PieChart data={[AdminDashBoradDetails]} />
+
+
                     <div className="leaveRequest">
-
+                        <LeaveRequest Title="Recent Leave Request" />
                     </div>
                 </div>
                 <div className="Task">
-
+                    <LeaveRequest Title="Recent Task Assigned" />
                 </div>
             </div>
         </div>
