@@ -90,25 +90,23 @@
 
 @media (max-width:900px) {
     .SiderbarMain {
-        height: auto;
+        height: fit-content;
         text-align: start;
         background: transparent;
         /* color: red; */
         position: relative;
         overflow: visible;
         /* color: #071A4; */
+        width: fit-content;
+        position: absolute;
     }
 
     .SiderbarMain>.MobileSidebarOuter>.MsideBarLOGO {
-        width: 100px;
-        height: 90px;
-        font-size: 0.8rem;
+        width: 80px;
+        height: 70px;
+        font-size: 1.2rem;
         /* height: 00%; */
-        background: linear-gradient(180deg,
-                #071A48 0%,
-                #0A2255 30%,
-                #0B2C66 70%,
-                #123873 100%);
+
 
         text-align: center;
         color: #fff;
@@ -136,7 +134,7 @@
         position: absolute;
         left: 20%;
         gap: 20px;
-        width: 100%;
+        width: 300px;
         overflow: hidden;
         height: auto;
         padding: 20px 30px;
@@ -198,7 +196,7 @@
 
 @media (max-width:456px) {
     .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul {
-        width: 80%;
+        width: 250px;
         left: 1%;
 
         li {

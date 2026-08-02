@@ -8,6 +8,7 @@ import { RiUserStarLine } from "react-icons/ri";
 import { TbCalendarTime } from "react-icons/tb";
 import { FiSettings } from "react-icons/fi";
 import { RiTeamLine } from "react-icons/ri";
+import { GiHamburgerMenu } from "react-icons/gi";
 const Sidebar = () => {
 
   const [active, setActive] = useState({ "btn": "dashboard" });
@@ -22,7 +23,7 @@ const Sidebar = () => {
   }
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
-    console.log(window.innerWidth)
+
     function handleResize() {
       setWindowWidth(window.innerWidth)
     }
@@ -47,10 +48,6 @@ const Sidebar = () => {
   }
 
   const SlidebarAnimation = {
-    // "width" : "00px" ,
-    // "height" : "auto" ,
-    // "color": "red",
-    // "backgroundColor": "red",
     "opacity": "1",
     "transition": "all 1s ease"
   }
@@ -83,7 +80,7 @@ const Sidebar = () => {
           <div className="MobileSidebarOuter">
 
             <div className="MsideBarLOGO" onClick={handelMobileSidebar}>
-              <h1>EMPS</h1>
+              <GiHamburgerMenu></GiHamburgerMenu>
               {/* <RiTeamLine className='MobileLogo' /> */}
             </div>
 

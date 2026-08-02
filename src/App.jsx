@@ -1,10 +1,9 @@
 
 import { Routes, Route } from 'react-router-dom'
 import Login from './Pages/Login/Login'
-import AdminDashBorad from './Pages/Dashboards/Admin/AdminDashBorad'
+import DashBorad from './Pages/Dashboards/DashBorad'
 import ProtectedRoute from './Components/Routers/ProtectedRoute'
-import ManagerDashBoard from './Pages/Dashboards/Manager/ManagerDashBoard'
-import EmployeeDashBoard from './Pages/Dashboards/Employee/EmployeeDashBoard'
+
 const App = () => {
 
 
@@ -17,19 +16,19 @@ const App = () => {
                 <Route path='/Admin-dashBoard'
                     element={
                         <ProtectedRoute allowedRole={"ADMIN"}>
-                            <AdminDashBorad />
+                            <DashBorad />
                         </ProtectedRoute>}
                 />
                 <Route path='/Manager-dashBoard'
                     element={
                         <ProtectedRoute allowedRole={"MANAGER"}>
-                            <ManagerDashBoard />
+                            <DashBorad />
                         </ProtectedRoute>} />
 
                 <Route path='/Employee-dashBoard'
                     element={
                         <ProtectedRoute allowedRole={"ADMIN"}>
-                            <EmployeeDashBoard />
+                            <DashBorad />
                         </ProtectedRoute>} />
 
             </Routes>

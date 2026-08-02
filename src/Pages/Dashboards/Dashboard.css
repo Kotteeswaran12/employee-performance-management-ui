@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.AdminDashboarOuter {
+
+    display: flex;
+    background-color: #F8FAFC;
+}
+
+.AdminDashboarOuter>.adminDashInner {
+    /* background-color: green; */
+    width: calc(100% - 400px);
+}
+
+.AdminDashboarOuter>.adminDashInner>.overAll {
+    padding: 20px 20px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 100%;
+
+}
+
+.AdminDashboarOuter>.adminDashInner>.overAll {
+    .Parts {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-evenly;
+        width: 300px;
+        height: 200px;
+        /* color: #2563EB; */
+
+        box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
+        border-radius: 10px;
+
+        .iconpendingLeave , iconpendingLeaves {
+            border-radius: 50%;
+            width: 80px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #F97316;
+            background: #ff7c0157;
+        }
+
+        .icontotalDepartments  , .iconpendingReviews{
+            border-radius: 50%;
+            width: 80px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #22C55E;
+            background: #DCFCE7;
+        }
+
+        .icontotalManagers  , .icontaskAssigned{
+            border-radius: 50%;
+            width: 80px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #8B5CF6;
+            background: #F3E8FF;
+        }
+
+        .icontotalEmployees ,  .iconteamSize{
+            border-radius: 50%;
+            width: 80px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #2563EB;
+            background: #DBEAFE;
+        }
+
+        .iconcompletedTask {
+            border-radius: 50%;
+            width: 80px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(255, 0, 0, 0.205);
+            color: rgba(255, 0, 0, 0.658);
+        }
+    }
+
+
+    .dashboarIcons {
+        font-size: 45px;
+
+    }
+
+    .results {
+        text-transform: capitalize;
+        height: 100%;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.AdminDashboarOuter>.adminDashInner>.additionDetails {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    /* background-color: red; */
+    padding: 10px 20px;
+
+
+
+    .leaveRequest {
+        width: 850px;
+        height: 100%;
+        /* background-color: yellowgreen; */
+        box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
+        border-radius: 10px;
+    }
+}
+
+.AdminDashboarOuter>.adminDashInner>.Task {
+    height: 240px;
+    width: 100%;
+    /* background-color: #8B5CF6; */
+    overflow: hidden;
+
+}
+
+
+@media (max-width :1491px) {
+    .AdminDashboarOuter>.adminDashInner>.overAll {
+        flex-wrap: wrap;
+    }
+
+    .AdminDashboarOuter>.adminDashInner>.additionDetails {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 30px;
+        height: auto;
+        /* background-color: red; */
+        padding: 10px 20px;
+
+
+
+        .leaveRequest {
+            width: 100%;
+            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
+            border-radius: 10px;
+        }
+    }
+}
+
+@media (max-width:1462px) {
+    .AdminDashboarOuter>.adminDashInner>.additionDetails>.leaveRequest {
+        width: 100%;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.151);
+    }
+}
+
+@media (max-width:1058px) {
+    .AdminDashboarOuter>.adminDashInner>.overAll {
+        flex-wrap: wrap;
+
+        .Parts {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-evenly;
+            width: 300px;
+            height: 150px;
+            /* color: #2563EB; */
+
+            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
+            border-radius: 10px;
+        }
+    }
+}
+
+@media (max-width:1046px) {
+    .AdminDashboarOuter>.adminDashInner>.overAll {
+        flex-wrap: wrap;
+
+        .Parts {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-evenly;
+            width: 250px;
+            height: 150px;
+            /* color: #2563EB; */
+
+            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
+            border-radius: 10px;
+        }
+    }
+}
+
+@media (max-width : 900px) {
+    .AdminDashboarOuter {
+        /* width: 100vw; */
+        width: 100vw;
+        /* background-color: red; */
+        position: relative;
+    }
+
+    .AdminDashboarOuter>.adminDashInner {
+        width: 100%;
+
+    }
+}
+
+@media (max-width:659px) {
+
+    .AdminDashboarOuter>.adminDashInner>.additionDetails {
+        padding: 10px 10px;
+    }
+
+    .AdminDashboarOuter>.adminDashInner>.overAll {
+
+        .Parts {
+            width: 250px;
+            height: 150px;
+            /* color: #2563EB; */
+
+            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
+            border-radius: 10px;
+
+            .iconcompletedTask,
+            .icontotalEmployees,
+            .icontotalManagers,
+            .icontotalDepartments,
+            .iconpendingLeaves {
+                width: 70px;
+                height: 60px;
+            }
+        }
+    }
+}
+
+@media (max-width:555px) {
+    .AdminDashboarOuter>.adminDashInner>.overAll {
+
+        .Parts {
+            width: 200px;
+            height: 100px;
+            /* color: #2563EB; */
+
+            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
+            border-radius: 10px;
+
+
+            .iconcompletedTask,
+            .icontotalEmployees,
+            .icontotalManagers,
+            .icontotalDepartments,
+            .iconpendingLeaves {
+                /* font-size: rem; */
+                size: 2rem;
+                width: 40px;
+                height: 40px;
+
+                .dashboarIcons {
+                    font-size: 1.1em;
+                }
+            }
+
+            .results {
+
+                h5 {
+                    font-size: 0.8rem;
+                }
+
+                h2 {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:459px) {
+
+    .AdminDashboarOuter>.adminDashInner>.overAll {
+
+        /* flex-wrap: nowrap; */
+        .Parts {
+            width: 150px;
+            height: 100px;
+
+            .results {
+
+                h5 {
+                    font-size: 0.6rem;
+                }
+
+                h2 {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width:359px) {
+
+
+    .AdminDashboarOuter>.adminDashInner>.overAll {
+
+        padding: 10px 30px;
+
+        .Parts {
+            width: 100%;
+            height: 100px;
+            /* padding: 10px 30px; */
+
+            .results {
+
+                h5 {
+                    font-size: 0.8rem;
+                    text-transform: capitalizenpm run dev;
+                }
+
+                h2 {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+    }
+}

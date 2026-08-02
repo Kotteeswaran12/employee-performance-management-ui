@@ -10,15 +10,24 @@ export const AdminDashBoard = (JWT)=>{
 
 
 export const getallLeaveRequest= (JWT) => {
-    return api.get("/leave" , {
+    return api.get("/leaves" , {
         headers :{
             Authorization : `Bearer ${JWT}`
         }
     })
 }
 
-export const  getAlltaskAssign = (JWT) => {
-    return api.get("/tasks" , {
+export const  getAlltaskAssign = (JWT , page , size) => {
+    return api.get(`/Tasks?page=${page}&size=${size}` , {
+        headers : {
+            Authorization : `Bearer ${JWT}`
+        }
+    })
+}
+
+export const getAllAdminDashboradDetails=(JWT)=>{
+
+    return api.get('/admin/dash-board' , {
         headers : {
             Authorization : `Bearer ${JWT}`
         }

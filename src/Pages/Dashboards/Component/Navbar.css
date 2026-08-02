@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.NavOuter{
+.NavOuter {
     width: 100%;
     display: flex;
     font-family: "Poppins", sans-serif;
     padding: 20px 40px;
 }
-.NavOuter > .logoName{
+
+.NavOuter>.logoName {
     /* background-color: gray; */
 
     width: 100%;
@@ -14,28 +15,90 @@
     text-align: center;
     display: flex;
     justify-content: space-between;
-    .userInfo{
+
+    .userInfo {
         width: 250px;
         text-align: center;
         /* background-color: green; */
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        
-        img{
+
+        img {
             width: 60px;
-            border-radius:50% ;
+            border-radius: 50%;
             height: 60px;
             background-color: gray;
 
             /* border: 2px solid black; */
         }
 
-        .userDetails{
+        .userDetails {
             display: flex;
             flex-direction: column;
             justify-self: center;
             align-items: start;
         }
     }
+}
+
+@media (max-width : 1060px) {
+    .NavOuter>.logoName {
+        font-size: 14px;
+
+        .userInfo {
+            width: 160px;
+
+            img {
+                width: 60px;
+                border-radius: 50%;
+                height: 60px;
+                background-color: gray;
+
+                /* border: 2px solid black; */
+            }
+
+            .userDetails {
+                display: flex;
+                flex-direction: column;
+                justify-self: center;
+                align-items: start;
+            }
+        }
+    }
+}
+
+@media (max-width:900px) {
+    .NavOuter {
+        background: linear-gradient(180deg,
+                #071A48 0%,
+                #0A2255 30%,
+                #0B2C66 70%,
+                #123873 100%);
+        padding: 10px 40px;
+        height: 100px;
+
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .NavOuter>.logoName {
+
+        justify-content: space-evenly;
+        align-items: none;
+        /* background-color: red; */
+        color: white;
+
+    }
+}
+
+@media (max-width:438px) {
+     .NavOuter>.logoName {
+        h1{
+            font-size: 0.8rem;
+        }
+     }
 }

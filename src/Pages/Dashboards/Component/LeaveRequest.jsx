@@ -1,71 +1,63 @@
 
 import './LeaveReq.css'
-const data = [
-    {
-        Title: ["Employee", "LeaveType", "From", "To", "Status"]
-    },
-    {
-        Employee: "kotteeswaran",
-        LeaveType: "Medical Leave",
-        From: "20/07/2026",
-        To: "25/07/2026",
-        Status: "PENDING"
-    },
-    {
-        Employee: "kotteeswaran",
-        LeaveType: "Medical Leave",
-        From: "20/07/2026",
-        To: "25/07/2026",
-        Status: "APROVED"
-    },
-    {
-        Employee: "kotteeswaran",
-        LeaveType: "Medical Leave",
-        From: "20/07/2026",
-        To: "25/07/2026",
-        Status: "REJECTED"
-    }, {
-        Employee: "kotteeswaran",
-        LeaveType: "Medical Leave",
-        From: "20/07/2026",
-        To: "25/07/2026",
-        Status: "PENDING"
-    },
-]
-const LeaveRequest = ({ Title, Z }) => {
+
+const LeaveRequest = ({ Heading, data, Title }) => {
+    console.log(data)
     return (
         <div className='LeavReqOuter'>
             <div className="top">
-                <h1>{Title}</h1>
+                <h1>{Heading}</h1>
                 <button>View All</button>
             </div>
 
             <div className="LeaveReqDatas">
 
                 <table >
-                    <tr >
-                        {
-                            data[0].Title.map((t, i) => {
-                                return (<th key={i}>{t}</th>)
-                            })
-                        }
-                    </tr>
+                    <thead>
+                        <tr >
+                            {
+                                Title.map((t, i) => {
+                                    return (<th key={i}>{t}</th>)
+                                })
+                            }
+                        </tr>
+                    </thead>
 
                     {
-                        data.filter((_, index) => index > 0)
-                            .map((d, index) => {
-                                return (
-                                    <tr key={index}>
-                                        <td>{d.Employee}</td>
-                                        <td>{d.LeaveType}</td>
-                                        <td>{d.From}</td>
-                                        <td>{d.To}</td>
-                                        <td>
-                                            <span className={d.Status}>{d.Status}</span>
-                                        </td>
-                                    </tr>
-                                )
-                            })
+                        data && data.length > 0 ? (
+                            <tbody>
+                                {
+                                    data
+                                        .map((d, index) => (
+                                            <tr key={index}>
+
+                                                {
+                                                    Title
+                                                        .map((column) => (
+
+                                                            <td key={column}
+                                                            >{
+                                                                    column == "status"  ? (
+                                                                        <span className={d[column]}>{d[column]}</span>
+                                                                    )
+                                                                        :
+                                                                        (
+                                                                            d[column]
+                                                                        )
+
+                                                                }</td>
+
+                                                        ))
+                                                }
+
+                                            </tr>
+
+                                        ))
+                                }
+                            </tbody>
+                        ) : (
+                            <h3>no Records Found !!</h3>
+                        )
                     }
                 </table>
             </div>

@@ -10,9 +10,11 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-    h1{
+
+    h1 {
         font-size: 20px;
     }
+
     button {
         width: 100px;
         height: 30px;
@@ -29,6 +31,7 @@
     width: 100%;
     text-align: center;
     /* border-radius: 10px; */
+    text-transform: capitalize;
 
     tr {
         height: 50px;
@@ -39,7 +42,7 @@
         background-color: rgba(255, 166, 0, 0.416);
         padding: 2px 6px;
         font-size: 15px;
-        color: orange;
+        color: rgb(187, 123, 2);
     }
 
     .REJECTED {
@@ -49,14 +52,151 @@
         color: rgb(255, 0, 0);
     }
 
-    .APROVED {
+    .APROVED,
+    .COMPLITED {
         background-color: rgba(0, 255, 0, 0.416);
         padding: 2px 6px;
         font-size: 15px;
-        color: rgb(68, 255, 0);
+        color: rgb(21, 80, 0);
     }
 }
 
-.LeavReqOuter>.LeaveReqDatas>table>tr:nth-child(1) {
+.LeavReqOuter>.LeaveReqDatas>table>thead >tr {
+    text-transform: capitalize;
     background-color: #2a2a2a2f;
+}
+
+
+@media (max-width :1462px) {}
+
+@media (max-width:662px) {
+
+
+    .LeavReqOuter {
+
+        height: fit-content;
+        padding: 30px 0px;
+    }
+
+    .LeavReqOuter>.LeaveReqDatas>table {
+        width: 100%;
+        text-align: center;
+
+        /* border-radius: 10px; */
+        /* color: red; */
+        th {
+            font-size: 0.8rem;
+        }
+
+        tr {
+            height: 50px;
+            font-size: 13px;
+
+        }
+
+        .REJECTED,
+        .APROVED,
+        .COMPLITED,
+        .PENDING {
+
+            font-size: 13px;
+
+        }
+
+
+    }
+}
+
+@media (max-width:474px) {
+    .LeavReqOuter {
+        padding: 30px 0px;
+    }
+
+    .LeavReqOuter>.LeaveReqDatas>table {
+        width: 100%;
+        text-align: center;
+
+        /* border-radius: 10px; */
+        /* color: red; */
+        th {
+            font-size: 0.6rem;
+        }
+
+        tr {
+            height: 40px;
+            font-size: 10px;
+            text-transform: capitalize;
+
+        }
+
+        .REJECTED,
+        .APROVED,
+        .COMPLITED,
+        .PENDING {
+
+            font-size: 10px;
+
+        }
+
+
+    }
+}
+
+
+@media (max-width:367px) {
+    .LeavReqOuter {
+        padding: 30px 0px;
+    }
+
+    .LeavReqOuter>.top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 15px;
+        }
+
+        button {
+            font-size: 10px;
+            width: 60px;
+            height: auto;
+            font-weight: 600;
+            background: none;
+            border: 1px solid #2563EB;
+            color: #2563EB;
+            cursor: pointer;
+            /* background: #DBEAFE; */
+        }
+    }
+
+    .LeavReqOuter>.LeaveReqDatas>table {
+        width: 100%;
+        text-align: center;
+
+        /* border-radius: 10px; */
+        /* color: red; */
+        th {
+            font-size: 0.5rem;
+        }
+
+        tr {
+            height: 40px;
+            font-size: 8px;
+            text-transform: capitalize;
+
+        }
+
+        .REJECTED,
+        .APROVED,
+        .COMPLITED,
+        .PENDING {
+
+            font-size: 8px;
+
+        }
+
+
+    }
 }
