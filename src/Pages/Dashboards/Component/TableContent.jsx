@@ -1,13 +1,23 @@
 
 import './LeaveReq.css'
+import { useNavigate } from 'react-router-dom'
 
-const LeaveRequest = ({ Heading, data, Title }) => {
-    console.log(data)
+const TableContent = ({ Heading, data, Title, Type }) => {
+
+    
+
+    const navigate = useNavigate();
+
     return (
         <div className='LeavReqOuter'>
             <div className="top">
                 <h1>{Heading}</h1>
-                <button>View All</button>
+                <button onClick={() => navigate("/all", {
+                    state: {
+                        Type: Type ,
+                        Tittle : Title
+                    }
+                })}>View All</button>
             </div>
 
             <div className="LeaveReqDatas">
@@ -37,7 +47,7 @@ const LeaveRequest = ({ Heading, data, Title }) => {
 
                                                             <td key={column}
                                                             >{
-                                                                    column == "status"  ? (
+                                                                    column == "status" ? (
                                                                         <span className={d[column]}>{d[column]}</span>
                                                                     )
                                                                         :
@@ -66,4 +76,4 @@ const LeaveRequest = ({ Heading, data, Title }) => {
     )
 }
 
-export default LeaveRequest
+export default TableContent

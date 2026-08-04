@@ -6,29 +6,55 @@ import OverAll from './Component/OverAll'
 import PieChart from './Component/PieChart'
 import { useEffect, useState } from 'react'
 import { AdminDashBoard } from '../../Api/AdminAccess'
-import LeaveRequest from './Component/LeaveRequest'
+import TableContent from './Component/TableContent'
 import { getallLeaveRequest } from '../../Api/AdminAccess'
 import { getAlltaskAssign } from '../../Api/AdminAccess'
-import { ManagerDashBorad } from '../../Api/ManagerAccess'
+import { countAllTheTaskAssignment, ManagerDashBorad } from '../../Api/ManagerAccess'
 import { GetAllTaskAssigned } from '../../Api/ManagerAccess'
 import { GetAllEmployees } from '../../Api/ManagerAccess'
-import EmployeeDashBoard from './Employee/EmployeeDashBoard'
+import { EmployeeDashBoard } from '../../Api/EmployeeAccess'
+import { countAlltheEmpByDept } from '../../Api/AdminAccess'
+import { GetAlltheTaskDetails } from '../../Api/EmployeeAccess'
+import { GetAllAttendanceDetaisl } from '../../Api/EmployeeAccess'
+
 
 
 const Titles = {
 
     ADMIN: {
-        T1: ["Employee", "LeaveType", "From", "To", "status"],
-        T2: ["Task", "AssignTo", "DueDate", "status"]
+        T1: {
+            Type: "Leave",
+            Tittle: ["Employee", "LeaveType", "From", "To", "status"]
+        },
+        T2: {
+            Type: "Task",
+            Tittle: ["Task", "AssignTo", "DueDate", "status"]
+        }
+
+
     },
 
     MANAGER: {
-        T1: ["task", "assignedTo", "dueDate", "status"],
-        T2: ["empcode", "firstname", "lastname", "designation"]
+        T1: {
+            Type: "Task",
+            Tittle: ["task", "assignedTo", "dueDate", "status"]
+        },
+        T2: {
+            Type: "Employee",
+            Tittle: ["empcode", "firstname", "lastname", "designation"]
+        },
+
     },
     EMPLOYEE: {
-        T1: ["task", "assignedTo", "dueDate", "status"],
-        T2: ["empcode", "firstname", "lastname", "designation"]
+        T1: {
+            Type: "Task",
+            Tittle: ["task", "dueDate", "status"]
+        },
+        T2: {
+            Type: "Attendance",
+            Tittle: ["attendanceDate", "checkIn", "checkOut", "WorkingHours"]
+        },
+       
     }
 }
 
@@ -37,11 +63,18 @@ const Titles = {
 const DashBorad = () => {
     const Role = localStorage.getItem("role");
 
-    const [leaveRequestdata, SetLeaveReqdata] = useState([]);
+    const [tableContent01, SetTableContent01] = useState([]);
 
     const [DashBoradDetails, setDashBoardDatas] = useState([]);
 
-    const [TaskAssignData, setTaskAssignData] = useState([]);
+    const [tableContent02, SetTableContent02] = useState([]);
+
+    const [PiChartdata, setPiChartData] = useState([]);
+
+
+
+
+
 
 
     useEffect(() => {
@@ -55,6 +88,8 @@ const DashBorad = () => {
                     const response = await AdminDashBoard(AuthToken);
                     const LeaveReq = await getallLeaveRequest(AuthToken);
                     const taskData = await getAlltaskAssign(AuthToken, 0, 3);
+                    const countalltheEmp = await countAlltheEmpByDept(AuthToken)
+
 
                     const TaskAssignData = taskData.data.content.map((T) => ({
                         Task: T.task,
@@ -64,7 +99,7 @@ const DashBorad = () => {
 
                     }))
 
-                    console.log(taskData)
+
                     const LeaveData = LeaveReq.data.content.map((d) => ({
                         Employee: d.employeName,
                         LeaveType: d.reason,
@@ -73,29 +108,33 @@ const DashBorad = () => {
                         status: d.status
 
                     }))
-
-                    setTaskAssignData(TaskAssignData);
-                    SetLeaveReqdata(LeaveData);
+                    setPiChartData(countalltheEmp.data)
+                    SetTableContent02(TaskAssignData);
+                    SetTableContent01(LeaveData);
                     setDashBoardDatas(response.data);
                 }
 
                 else if (Role == "MANAGER") {
                     const response = await ManagerDashBorad(AuthToken);
-
                     const Employees = await GetAllEmployees(AuthToken, 0, 2);
                     const taskData = await GetAllTaskAssigned(AuthToken, 0, 3);
-                    SetLeaveReqdata(taskData.data.content);
-                    setTaskAssignData(Employees.data);
+                    const countAllTheTaskAssignments = await countAllTheTaskAssignment(AuthToken);
+
+                    setPiChartData(countAllTheTaskAssignments.data)
+                    SetTableContent01(taskData.data.content);
+                    SetTableContent02(Employees.data.content);
                     setDashBoardDatas(response.data);
 
                     console.log(Employees.data)
                 }
                 else {
                     const EmployeeDashBoradData = await EmployeeDashBoard(AuthToken);
+                    const TaskDetails = await GetAlltheTaskDetails(AuthToken, 0, 3);
+                    const AttendaceDetails = await GetAllAttendanceDetaisl(AuthToken, 0, 3);
 
+                    SetTableContent02(AttendaceDetails.data.content)
+                    SetTableContent01(TaskDetails.data.content);
                     setDashBoardDatas(EmployeeDashBoradData.data);
-                    console.log(EmployeeDashBoradData)
-                    console.log("Sorry")
                 }
 
             } catch (e) {
@@ -107,6 +146,8 @@ const DashBorad = () => {
         getDetails()
 
     }, [Role])
+
+
 
     return (
         <div className='AdminDashboarOuter'>
@@ -125,17 +166,17 @@ const DashBorad = () => {
                 <div className="additionDetails">
 
 
-                    <PieChart data={[DashBoradDetails]} />
+                    <PieChart datas={[PiChartdata]} />
 
 
 
-                    {/* <div className="leaveRequest">
-                        <LeaveRequest Heading={Role == "ADMIN" ? "Recent Leave Request" : Role == "MANAGER" ? 'Team Leave Request' : ""} data={leaveRequestdata} Title={Titles[Role].T1} />
-                    </div> */}
+                    <div className="leaveRequest">
+                        <TableContent Heading={Role == "ADMIN" ? "Recent Leave Request" : Role == "MANAGER" ? 'Team Leave Request' : "My Task"} data={tableContent01} Title={Titles[Role].T1.Tittle} Type={Titles[Role].T1.Type} />
+                    </div>
                 </div>
-                {/* <div className="Task">
-                    <LeaveRequest Heading={Role == "ADMIN" ? "Recent Task Assigned" : Role == "MANAGER" ? "All Employees" : ""} data={TaskAssignData} Title={Titles[Role].T2} />
-                </div> */}
+                <div className="Task">
+                    <TableContent Heading={Role == "ADMIN" ? "Recent Task Assigned" : Role == "MANAGER" ? "My Team Members" : "Attendace Details"} data={tableContent02} Title={Titles[Role].T2.Tittle} Type={Titles[Role].T2.Type} />
+                </div>
             </div>
         </div>
     )

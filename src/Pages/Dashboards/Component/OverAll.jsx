@@ -8,7 +8,7 @@ import { MdTaskAlt } from "react-icons/md";
 
 const OverAll = ({ datas }) => {
     
-    console.log(datas)
+    // console.log(datas)
 
     return (
         <><div className="overAll">

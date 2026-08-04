@@ -33,3 +33,11 @@ export const getAllAdminDashboradDetails=(JWT)=>{
         }
     })
 }
+
+export const countAlltheEmpByDept = (JWT) => {
+    return api.get("/CountEmployeeByDept", {
+        headers : {
+            Authorization : `Bearer ${JWT}`
+        }
+    })
+}

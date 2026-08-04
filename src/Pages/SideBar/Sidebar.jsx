@@ -84,6 +84,7 @@ const Sidebar = () => {
               {/* <RiTeamLine className='MobileLogo' /> */}
             </div>
 
+            <h1>EMP System</h1>
             {
               mobileSidebar ? (<>
                 <div className="MobileSidebarActions" >

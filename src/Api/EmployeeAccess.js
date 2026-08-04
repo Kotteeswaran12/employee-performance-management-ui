@@ -7,3 +7,19 @@ export const EmployeeDashBoard = (JWT) => {
         }
     })
 }
+
+export const GetAlltheTaskDetails = (JWT , p , s) => {
+    return api.get(`/taskAssignment/employee?page=${p}&size=${s}` , {
+        headers : {
+            Authorization : `Bearer ${JWT}`
+        }
+    })
+}
+
+export const GetAllAttendanceDetaisl = (JWT , p , s) => {
+    return api.get(`/attendance/?page=${p}&size=${s}` , {
+        headers : {
+            Authorization : `Bearer ${JWT}`
+        }
+    })
+}

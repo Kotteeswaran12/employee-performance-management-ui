@@ -36,7 +36,7 @@
         box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
         border-radius: 10px;
 
-        .iconpendingLeave , iconpendingLeaves {
+        .iconpendingLeave , iconpendingLeaves  , .icontaskScore{
             border-radius: 50%;
             width: 80px;
             height: 70px;
@@ -48,7 +48,8 @@
             background: #ff7c0157;
         }
 
-        .icontotalDepartments  , .iconpendingReviews{
+        .icontotalDepartments  , .iconpendingReviews ,
+        .iconattendaceScore{
             border-radius: 50%;
             width: 80px;
             height: 70px;
@@ -60,7 +61,7 @@
             background: #DCFCE7;
         }
 
-        .icontotalManagers  , .icontaskAssigned{
+        .icontotalManagers  , .icontaskAssigned , .iconfeedbackScore{
             border-radius: 50%;
             width: 80px;
             height: 70px;
@@ -72,7 +73,7 @@
             background: #F3E8FF;
         }
 
-        .icontotalEmployees ,  .iconteamSize{
+        .icontotalEmployees ,  .iconteamSize , .iconoverAllScore{
             border-radius: 50%;
             width: 80px;
             height: 70px;
@@ -84,7 +85,7 @@
             background: #DBEAFE;
         }
 
-        .iconcompletedTask {
+        .iconcompletedTask , .iconpendingTask {
             border-radius: 50%;
             width: 80px;
             height: 70px;

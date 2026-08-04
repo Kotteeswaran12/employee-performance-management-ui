@@ -1,5 +1,6 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import "./pieChart.css";
+import { useEffect, useState } from "react";
 const COLORS = [
   "#3B82F6",
   "#22C55E",
@@ -7,15 +8,31 @@ const COLORS = [
   "#8B5CF6",
   "#38BDF8",
 ];
-const data = [
-  { name: "Development", value: 45, color: "#3B82F6" },
-  { name: "HR", value: 20, color: "#22C55E" },
-  { name: "Finance", value: 15, color: "#FBBF24" },
-  { name: "Sales", value: 25, color: "#8B5CF6" },
-  { name: "Marketing", value: 15, color: "#38BDF8" },
-];
 
-export default function EmployeeChart() {
+
+
+export default function EmployeeChart({ datas }) {
+
+  // console.log(datas);
+  const finalData = datas.map((datam) =>
+    datam.map((d) => ({
+      name: d[0],
+      value: d[1]
+    
+      
+    }))
+  );
+
+  const totalEMP = finalData
+  .flat()
+  .reduce((sum, item) => sum + item.value, 0);
+
+
+
+
+
+  // console.log(finalData)
+
   return (
     <div className="pi-Outer">
       <h1>Employees by Department </h1>
@@ -27,7 +44,7 @@ export default function EmployeeChart() {
             <PieChart>
 
               <Pie
-                data={data}
+                data={finalData[0]}
                 dataKey="value"
                 innerRadius={60}
                 outerRadius={100}
@@ -36,7 +53,7 @@ export default function EmployeeChart() {
                 stroke="white"
                 strokeWidth={2}
               >
-                {data.map((entry, index) => (
+                {finalData[0].map((entry, index) => (
                   <Cell
                     key={index}
                     fill={COLORS[index]}
@@ -48,7 +65,7 @@ export default function EmployeeChart() {
           </ResponsiveContainer>
 
           <div className="center-text">
-            <h1>120</h1>
+            <h1>{totalEMP}</h1>
             <span>Total</span>
           </div>
 
@@ -56,11 +73,11 @@ export default function EmployeeChart() {
 
         <div className="legend">
 
-          {data.map((item) => (
+          {finalData[0].map((item , i) => (
             <div className="legend-item" key={item.name}>
               <span
                 className="dot"
-                style={{ background: item.color }}
+                style={{ background: COLORS[i] }}
               ></span>
 
               <span>{item.name}</span>

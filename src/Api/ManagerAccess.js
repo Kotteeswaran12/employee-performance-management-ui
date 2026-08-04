@@ -23,3 +23,11 @@ export const GetAllEmployees = (JWT, P, S) => {
         }
     })
 }
+
+export const countAllTheTaskAssignment = (JWT) => {
+    return api.get("/CountAllTaskByStatus" , {
+        headers : {
+            Authorization : `Bearer ${JWT}`
+        }
+    })
+}

@@ -54,6 +54,8 @@
     }
 }
 
+/*  */
+
 .SiderbarMain>.SideBarOuter>.SidebarActions>ul {
     list-style: none;
 
@@ -90,49 +92,40 @@
 
 @media (max-width:900px) {
     .SiderbarMain {
-        height: fit-content;
+        height: 100px;
         text-align: start;
         background: transparent;
         /* color: red; */
         position: relative;
         overflow: visible;
         /* color: #071A4; */
-        width: fit-content;
-        position: absolute;
-    }
-
-    .SiderbarMain>.MobileSidebarOuter>.MsideBarLOGO {
-        width: 80px;
-        height: 70px;
-        font-size: 1.2rem;
-        /* height: 00%; */
-
-
-        text-align: center;
-        color: #fff;
-        border-radius: 50%;
+        border-radius: 0%;
         display: flex;
         align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 20px 30px;
-        margin: 10px 20px;
+        justify-content: start;
+        padding: 0px 20px;
+        width: 100vw;
+        position: absolute;
+        background-color:#071A48;
+        /* text-align: center; */
 
-        /* .MobileLogo {
-            font-size: 20px;
-        } */
+
+      
     }
+
+    
 
     /* .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions{
         
     } */
+   
 
     .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul {
         list-style: none;
         display: flex;
         flex-direction: column;
         position: absolute;
-        left: 20%;
+        left: 5%;
         gap: 20px;
         width: 300px;
         overflow: hidden;
@@ -215,13 +208,7 @@
 @media (max-width:383px) {
     .SiderbarMain {}
 
-    .SiderbarMain>.MobileSidebarOuter>.MsideBarLOGO {
-        width: 100px;
-        font-size: 0.5rem;
-        height: 90px;
-        padding: 0px;
-        margin: 2%;
-    }
+   
 
     .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul {
         /* width: 100%; */
