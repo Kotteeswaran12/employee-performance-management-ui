@@ -5,14 +5,14 @@ import { GetAllEmployees } from '../Api/ManagerAccess';
 import { GetAllTaskAssigned } from '../Api/ManagerAccess';
 import { GetAlltheTaskDetails } from '../Api/EmployeeAccess';
 import { GetAllAttendanceDetaisl } from '../Api/EmployeeAccess';
-import { data, useLocation } from 'react-router-dom';
-import Sidebar from './SideBar/Sidebar';
+import {  useLocation } from 'react-router-dom';
+
 import './DataTableOuter.css'
 
 import { TiTick } from "react-icons/ti";
 import { MdCancel } from "react-icons/md";
 
-export const mapperToAdmintLeave = (datas) => {
+ const mapperToAdmintLeave = (datas) => {
 
     return datas.map((d) => ({
         Employee: d.employeName,
@@ -24,7 +24,7 @@ export const mapperToAdmintLeave = (datas) => {
 
 }
 
-export const mapperToAdmintask = (datas) => {
+ const mapperToAdmintask = (datas) => {
 
     console.log(datas)
 
@@ -40,7 +40,7 @@ export const mapperToAdmintask = (datas) => {
 
 }
 
-export const ManagerGetAllTask = (datas) => {
+ const ManagerGetAllTask = (datas) => {
     return datas.map((d) => ({
         task: d.task,
         assignedTo: d.assignedTo,
@@ -173,7 +173,6 @@ const Datatable = () => {
     return (
 
         <div className="DataTableOuter">
-            <Sidebar></Sidebar>
 
             <div className='LeavReqOuter'>
                 <div className="top">

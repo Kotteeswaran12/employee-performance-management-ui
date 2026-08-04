@@ -92,7 +92,7 @@
 
 @media (max-width:900px) {
     .SiderbarMain {
-        height: 100px;
+        height: fit-content;
         text-align: start;
         background: transparent;
         /* color: red; */
@@ -103,28 +103,43 @@
         display: flex;
         align-items: center;
         justify-content: start;
-        padding: 0px 20px;
+        /* padding: 0px 20px; */
         width: 100vw;
         position: absolute;
-        background-color:#071A48;
+        background-color: #071A48;
         /* text-align: center; */
 
+        /* background-color: red; */
 
-      
+
+
     }
 
-    
+
 
     /* .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions{
         
     } */
-   
+    .SiderbarMain>.MobileSidebarOuter {
+        /* background-color: #071A48; */
+        padding: 20px;
+        background: linear-gradient(180deg,
+                #071A48 0%,
+                #0A2255 30%,
+                #0B2C66 70%,
+                #123873 100%);
+        width: 100%;
+        z-index: 1;
+
+    }
+
 
     .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul {
         list-style: none;
         display: flex;
         flex-direction: column;
         position: absolute;
+
         left: 5%;
         gap: 20px;
         width: 300px;
@@ -208,7 +223,7 @@
 @media (max-width:383px) {
     .SiderbarMain {}
 
-   
+
 
     .SiderbarMain>.MobileSidebarOuter>.MobileSidebarActions>ul {
         /* width: 100%; */

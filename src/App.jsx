@@ -4,33 +4,40 @@ import Login from './Pages/Login/Login'
 import DashBorad from './Pages/Dashboards/DashBorad'
 import ProtectedRoute from './Components/Routers/ProtectedRoute'
 import Datatable from './Pages/Datatable'
+import AddDepartment from './Pages/Admin/AddDepartment'
+import Sidebar from './Pages/SideBar/Sidebar'
 
+import { useLocation } from 'react-router-dom'
 const App = () => {
 
+    const {pathname} = useLocation();
 
+    
 
     return (
-        <>
+        <div style={{ display: 'flex', position: 'relative' , overflow :'hidden' }} >
+
+            {
+                pathname != '/' && (
+                    <Sidebar></Sidebar>
+                )
+            }
 
             <Routes>
                 <Route path='/' element={<Login />} />
-                <Route path='/Admin-dashBoard'
+
+                <Route path='/dashBoard'
                     element={
-                        <ProtectedRoute allowedRole={"ADMIN"}>
+                        <ProtectedRoute allowedRole={["ADMIN", "MANAGER", "EMPLOYEE"]}>
                             <DashBorad />
                         </ProtectedRoute>}
                 />
-                <Route path='/Manager-dashBoard'
-                    element={
-                        <ProtectedRoute allowedRole={"MANAGER"}>
-                            <DashBorad />
-                        </ProtectedRoute>} />
 
-                <Route path='/Employee-dashBoard'
-                    element={
-                        <ProtectedRoute allowedRole={"ADMIN"}>
-                            <DashBorad />
-                        </ProtectedRoute>} />
+                <Route path='/addDepartment' element={
+                    <ProtectedRoute allowedRole={"ADMIN"}>
+                        <AddDepartment></AddDepartment>
+                    </ProtectedRoute>
+                }></Route>
 
                 <Route path='/all' element={
                     <Datatable />
@@ -40,7 +47,7 @@ const App = () => {
 
             </Routes>
 
-        </>
+        </div>
     )
 }
 

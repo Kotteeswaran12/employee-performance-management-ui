@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-.AdminDashboarOuter {
+/* {
 
     display: flex;
     background-color: #F8FAFC;
-}
+} */
 
-.AdminDashboarOuter>.adminDashInner {
+.adminDashInner {
     /* background-color: green; */
     width: calc(100% - 400px);
 }
 
-.AdminDashboarOuter>.adminDashInner>.overAll {
+.adminDashInner>.overAll {
     padding: 20px 20px;
     display: flex;
     /* flex-wrap: wrap; */
@@ -22,8 +22,7 @@
     width: 100%;
 
 }
-
-.AdminDashboarOuter>.adminDashInner>.overAll {
+.adminDashInner>.overAll {
     .Parts {
         display: flex;
 
@@ -115,7 +114,7 @@
     }
 }
 
-.AdminDashboarOuter>.adminDashInner>.additionDetails {
+.adminDashInner>.additionDetails {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -134,7 +133,7 @@
     }
 }
 
-.AdminDashboarOuter>.adminDashInner>.Task {
+.adminDashInner>.Task {
     height: 240px;
     width: 100%;
     /* background-color: #8B5CF6; */
@@ -144,11 +143,11 @@
 
 
 @media (max-width :1491px) {
-    .AdminDashboarOuter>.adminDashInner>.overAll {
+    .adminDashInner>.overAll {
         flex-wrap: wrap;
     }
 
-    .AdminDashboarOuter>.adminDashInner>.additionDetails {
+    .adminDashInner>.additionDetails {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
@@ -170,14 +169,14 @@
 }
 
 @media (max-width:1462px) {
-    .AdminDashboarOuter>.adminDashInner>.additionDetails>.leaveRequest {
+    .adminDashInner>.additionDetails>.leaveRequest {
         width: 100%;
         box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.151);
     }
 }
 
 @media (max-width:1058px) {
-    .AdminDashboarOuter>.adminDashInner>.overAll {
+    .adminDashInner>.overAll {
         flex-wrap: wrap;
 
         .Parts {
@@ -196,7 +195,7 @@
 }
 
 @media (max-width:1046px) {
-    .AdminDashboarOuter>.adminDashInner>.overAll {
+    .adminDashInner>.overAll {
         flex-wrap: wrap;
 
         .Parts {
@@ -215,26 +214,22 @@
 }
 
 @media (max-width : 900px) {
-    .AdminDashboarOuter {
-        /* width: 100vw; */
-        width: 100vw;
-        /* background-color: red; */
-        position: relative;
-    }
+    
 
-    .AdminDashboarOuter>.adminDashInner {
-        width: 100%;
+    .adminDashInner {
+        width: 100vw;
+        position: relative;
 
     }
 }
 
 @media (max-width:659px) {
 
-    .AdminDashboarOuter>.adminDashInner>.additionDetails {
+    .adminDashInner>.additionDetails {
         padding: 10px 10px;
     }
 
-    .AdminDashboarOuter>.adminDashInner>.overAll {
+    .adminDashInner>.overAll {
 
         .Parts {
             width: 250px;
@@ -257,7 +252,7 @@
 }
 
 @media (max-width:555px) {
-    .AdminDashboarOuter>.adminDashInner>.overAll {
+    .adminDashInner>.overAll {
 
         .Parts {
             width: 200px;
@@ -299,7 +294,7 @@
 
 @media (max-width:459px) {
 
-    .AdminDashboarOuter>.adminDashInner>.overAll {
+    .adminDashInner>.overAll {
 
         /* flex-wrap: nowrap; */
         .Parts {
@@ -324,7 +319,7 @@
 @media (max-width:359px) {
 
 
-    .AdminDashboarOuter>.adminDashInner>.overAll {
+    .adminDashInner>.overAll {
 
         padding: 10px 30px;
 

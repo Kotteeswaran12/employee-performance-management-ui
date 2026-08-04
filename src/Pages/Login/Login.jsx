@@ -43,11 +43,11 @@ const Login = () => {
 
 
             if (response.data.Role === "ADMIN") {
-                navigate("/Admin-dashBoard", { replace: true });
+                navigate("/dashBoard", { replace: true });
             } else if (response.data.Role === "MANAGER") {
-                navigate("/Manager-dashBoard", { replace: true });
+                navigate("/dashBoard", { replace: true });
             } else {
-                navigate("/Employee-dashBoard", { replace: true });
+                navigate("/dashBoard", { replace: true });
             }
 
 

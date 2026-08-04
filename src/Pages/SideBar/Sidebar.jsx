@@ -9,7 +9,10 @@ import { TbCalendarTime } from "react-icons/tb";
 import { FiSettings } from "react-icons/fi";
 import { RiTeamLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useNavigate } from 'react-router-dom';
 const Sidebar = () => {
+
+  const navigate = useNavigate();
 
   const [active, setActive] = useState({ "btn": "dashboard" });
   const { btn } = active;
@@ -52,6 +55,8 @@ const Sidebar = () => {
     "transition": "all 1s ease"
   }
 
+  
+
   return (
     <div className='SiderbarMain'>
 
@@ -64,9 +69,9 @@ const Sidebar = () => {
 
             <div className="SidebarActions">
               <ul>
-                <li style={btn == "dashboard" ? ButtonOnActive : {}} onClick={() => handelActive("dashboard")} > <LuLayoutDashboard className='DashboarIcon' /> Dashboard</li>
+                <li style={btn == "dashboard" ? ButtonOnActive : {}} onClick={() => { navigate("/dashboard"), handelActive("dashboard")}} > <LuLayoutDashboard className='DashboarIcon' /> Dashboard</li>
                 <li style={btn == "employee" ? ButtonOnActive : {}} onClick={() => handelActive("employee")} > < HiOutlineUsers className='DashboarIcon' />  Employee</li>
-                <li style={btn == "department" ? ButtonOnActive : {}} onClick={() => handelActive("department")} > <MdOutlineApartment className='DashboarIcon' /> Department</li>
+                <li style={btn == "department" ? ButtonOnActive : {}} onClick={() =>{ navigate("/addDepartment") ,handelActive("department")}} > <MdOutlineApartment className='DashboarIcon' /> Department</li>
                 <li style={btn == "manager" ? ButtonOnActive : {}} onClick={() => handelActive("manager")} > <RiUserStarLine className='DashboarIcon' /> Manager</li>
                 <li style={btn == "leaveRequest" ? ButtonOnActive : {}} onClick={() => handelActive("leaveRequest")} > <TbCalendarTime className='DashboarIcon' /> Leave Request</li>
                 <li style={btn == "settings" ? ButtonOnActive : {}} onClick={() => handelActive("settings")} > <FiSettings className='DashboarIcon' /> Settings</li>
@@ -89,13 +94,19 @@ const Sidebar = () => {
               mobileSidebar ? (<>
                 <div className="MobileSidebarActions" >
                   <ul style={mobileSidebar ? SlidebarAnimation : {}}>
-                    <li  >
+                    <li onClick={()=> {
+                      navigate("/dashBoard")
+                      handelMobileSidebar()
+                    }} >
                       <LuLayoutDashboard className='DashboarIcon' />
                       Dashboard</li>
                     <li>
                       < HiOutlineUsers className='DashboarIcon' />
                       Employee</li>
-                    <li  >
+                    <li  onClick={()=> {
+                      navigate("/addDepartment") ,
+                      handelMobileSidebar()
+                    }}>
                       <MdOutlineApartment className='DashboarIcon' />
                       Department</li>
                     <li >                 <RiUserStarLine className='DashboarIcon' />

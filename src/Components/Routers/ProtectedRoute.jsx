@@ -15,8 +15,10 @@ const ProtectedRoute = ({ children, allowedRole }) => {
     try {
         const decode = jwtDecode(AuthToken);
 
+        // eslint-disable-next-line react-hooks/purity
         if (decode.exp * 1000 < Date.now()) {
-            localStorage.clear()
+            localStorage.clear();
+            // eslint-disable-next-line react-hooks/error-boundaries
             return <Navigate to={"/"} replace />
         }
     } catch (e) {
@@ -26,7 +28,7 @@ const ProtectedRoute = ({ children, allowedRole }) => {
     }
 
     // Wrong Role
-    if (!role && role !== allowedRole) {
+    if (!role || !allowedRole.includes(role)) {
         return <Navigate to={"/"} replace />
     }
 

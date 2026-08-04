@@ -1,6 +1,6 @@
 
 import Navbar from './Component/Navbar'
-import Sidebar from '../SideBar/Sidebar'
+
 import './Dashboard.css'
 import OverAll from './Component/OverAll'
 import PieChart from './Component/PieChart'
@@ -150,8 +150,8 @@ const DashBorad = () => {
 
 
     return (
-        <div className='AdminDashboarOuter'>
-            <Sidebar></Sidebar>
+     
+
             <div className="adminDashInner">
                 <Navbar User={[
                     {
@@ -178,7 +178,7 @@ const DashBorad = () => {
                     <TableContent Heading={Role == "ADMIN" ? "Recent Task Assigned" : Role == "MANAGER" ? "My Team Members" : "Attendace Details"} data={tableContent02} Title={Titles[Role].T2.Tittle} Type={Titles[Role].T2.Type} />
                 </div>
             </div>
-        </div>
+  
     )
 }
 
