@@ -1,202 +1,978 @@
+```css
+/* =========================================================
+   LEAVE REQUEST TABLE
+   Fully responsive - Desktop / Laptop / Tablet / Mobile
+========================================================= */
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
 .LeavReqOuter {
     width: 100%;
-    height: 100%;
-    /* background-color: red; */
-    padding: 30px 30px;
+    max-width: 100%;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #e9e9e9;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+
+    transition: box-shadow 0.25s ease;
 }
 
-.LeavReqOuter>.top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-
-    h1 {
-        font-size: 20px;
-    }
-
-    button {
-        width: 100px;
-        height: 30px;
-        font-weight: 600;
-        background: none;
-        border: 1px solid #2563EB;
-        color: #2563EB;
-        cursor: pointer;
-        /* background: #DBEAFE; */
-    }
+.LeavReqOuter:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 }
 
-.LeavReqOuter>.LeaveReqDatas>table {
+
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+.LeavReqOuter > .top {
     width: 100%;
+
+    min-height: 50px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+/* For your original JSX */
+.LeavReqOuter > .top h1 {
+    margin: 0;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #222;
+
+    text-transform: capitalize;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* For the newer JSX */
+.headingSection {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+}
+
+.headingSection h1 {
+    margin: 0;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    color: #222;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   RECORD COUNT
+========================================================= */
+
+.recordCount {
+    padding: 4px 9px;
+
+    border-radius: 20px;
+
+    background: #f2f2f2;
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   VIEW ALL BUTTON
+========================================================= */
+
+.LeavReqOuter > .top button,
+.viewAllBtn {
+
+    min-width: 100px;
+
+    height: 34px;
+
+    padding: 0 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #2563EB;
+
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: #2563EB;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.LeavReqOuter > .top button:hover,
+.viewAllBtn:hover {
+
+    background: #2563EB;
+
+    color: #ffffff;
+
+    border-color: #2563EB;
+
+    transform: translateY(-1px);
+}
+
+
+.viewAllBtn svg {
+    font-size: 15px;
+
+    transition: transform 0.25s ease;
+}
+
+
+.viewAllBtn:hover svg {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   TABLE CONTAINER
+========================================================= */
+
+.LeaveReqDatas {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    box-sizing: border-box;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.LeaveReqDatas table {
+
+    width: 100%;
+
+    min-width: 500px;
+
+    border-collapse: collapse;
+
+    border-spacing: 0;
+
     text-align: center;
-    /* border-radius: 10px; */
+
     text-transform: capitalize;
 
-    tr {
-        height: 50px;
+    table-layout: auto;
+}
 
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.LeaveReqDatas table thead {
+
+    background: #f5f6f8;
+}
+
+
+.LeaveReqDatas table thead tr {
+
+    height: 45px;
+
+    background: #f5f6f8;
+}
+
+
+.LeaveReqDatas table th {
+
+    padding: 12px 16px;
+
+    color: #666;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.LeaveReqDatas table tbody tr {
+
+    height: 50px;
+
+    font-size: 13px;
+
+    transition: background 0.2s ease;
+}
+
+
+.LeaveReqDatas table tbody tr:hover {
+
+    background: #fafafa;
+}
+
+
+.LeaveReqDatas table td {
+
+    padding: 12px 16px;
+
+    color: #444;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    white-space: nowrap;
+}
+
+
+.LeaveReqDatas table tbody tr:last-child td {
+
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+   Supports both your old uppercase classes and
+   the newer lowercase classes.
+========================================================= */
+
+.statusBadge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+/* STATUS DOT */
+
+.statusDot {
+
+    width: 6px;
+
+    height: 6px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+
+/* =========================================================
+   PENDING
+========================================================= */
+
+.PENDING,
+.statusBadge.pending {
+
+    background-color: #fff6df;
+
+    color: #a46b00;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   REJECTED
+========================================================= */
+
+.REJECTED,
+.statusBadge.rejected {
+
+    background-color: #fff0f0;
+
+    color: #d73737;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   APPROVED
+   Supports your existing "APROVED" spelling
+========================================================= */
+
+.APROVED,
+.APPROVED,
+.statusBadge.aproved,
+.statusBadge.approved,
+.statusBadge.accepted {
+
+    background-color: #eaf8ef;
+
+    color: #21864b;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   COMPLETED
+   Supports your existing "COMPLITED" spelling
+========================================================= */
+
+.COMPLITED,
+.COMPLETED,
+.statusBadge.complited,
+.statusBadge.completed {
+
+    background-color: #eaf8ef;
+
+    color: #21864b;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   CANCELLED
+========================================================= */
+
+.statusBadge.cancelled,
+.CANCELLED {
+
+    background-color: #fff0f0;
+
+    color: #d73737;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   IN PROGRESS
+========================================================= */
+
+.statusBadge.in-progress,
+.IN-PROGRESS {
+
+    background-color: #edf4ff;
+
+    color: #2868c7;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   EMPTY RECORDS
+========================================================= */
+
+.emptyRecords {
+
+    min-height: 180px;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.emptyIcon {
+
+    width: 50px;
+
+    height: 50px;
+
+    margin-bottom: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f5f5f5;
+
+    font-size: 22px;
+}
+
+
+.emptyRecords h3 {
+
+    margin: 0;
+
+    color: #444;
+
+    font-size: 14px;
+}
+
+
+.emptyRecords p {
+
+    margin: 6px 0 0;
+
+    color: #999;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   1400px+
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .LeavReqOuter {
+
+        padding: 22px;
     }
 
-    .PENDING {
-        background-color: rgba(255, 166, 0, 0.416);
-        padding: 2px 6px;
-        font-size: 15px;
-        color: rgb(187, 123, 2);
+    .LeaveReqDatas table th {
+
+        padding: 14px 20px;
+
+        font-size: 12px;
     }
 
-    .REJECTED {
-        background-color: rgba(255, 0, 0, 0.416);
-        padding: 2px 6px;
-        font-size: 15px;
-        color: rgb(255, 0, 0);
+    .LeaveReqDatas table td {
+
+        padding: 14px 20px;
+
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   LAPTOP
+   1024px - 1399px
+========================================================= */
+
+@media (max-width: 1399px) {
+
+    .LeavReqOuter {
+
+        padding: 20px;
     }
 
+    .LeaveReqDatas table th {
+
+        padding: 12px 14px;
+    }
+
+    .LeaveReqDatas table td {
+
+        padding: 12px 14px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   768px - 1023px
+========================================================= */
+
+@media (max-width: 1023px) {
+
+    .LeavReqOuter {
+
+        padding: 18px;
+    }
+
+    .LeavReqOuter > .top {
+
+        min-height: 45px;
+
+        margin-bottom: 15px;
+    }
+
+    .LeavReqOuter > .top h1,
+    .headingSection h1 {
+
+        font-size: 17px;
+    }
+
+    .recordCount {
+
+        font-size: 10px;
+
+        padding: 4px 8px;
+    }
+
+    .LeavReqOuter > .top button,
+    .viewAllBtn {
+
+        min-width: 85px;
+
+        height: 32px;
+
+        padding: 0 10px;
+
+        font-size: 11px;
+    }
+
+    .LeaveReqDatas table {
+
+        min-width: 500px;
+    }
+
+    .LeaveReqDatas table th {
+
+        padding: 11px 12px;
+
+        font-size: 10px;
+    }
+
+    .LeaveReqDatas table td {
+
+        padding: 11px 12px;
+
+        font-size: 12px;
+    }
+
+    .PENDING,
+    .REJECTED,
     .APROVED,
-    .COMPLITED {
-        background-color: rgba(0, 255, 0, 0.416);
-        padding: 2px 6px;
-        font-size: 15px;
-        color: rgb(21, 80, 0);
+    .APPROVED,
+    .COMPLITED,
+    .COMPLETED {
+
+        font-size: 10px;
+
+        padding: 5px 8px;
     }
 }
 
-.LeavReqOuter>.LeaveReqDatas>table>thead >tr {
-    text-transform: capitalize;
-    background-color: #2a2a2a2f;
-}
 
+/* =========================================================
+   MOBILE
+   480px - 767px
+========================================================= */
 
-@media (max-width :1462px) {}
-
-@media (max-width:662px) {
-
+@media (max-width: 767px) {
 
     .LeavReqOuter {
 
-        height: fit-content;
-        padding: 30px 0px;
+        padding: 15px;
+
+        border-radius: 10px;
     }
 
-    .LeavReqOuter>.LeaveReqDatas>table {
-        width: 100%;
-        text-align: center;
+    .LeavReqOuter > .top {
 
-        /* border-radius: 10px; */
-        /* color: red; */
-        th {
-            font-size: 0.8rem;
-        }
+        min-height: 40px;
 
-        tr {
-            height: 50px;
-            font-size: 13px;
+        margin-bottom: 12px;
 
-        }
+        gap: 10px;
+    }
 
-        .REJECTED,
-        .APROVED,
-        .COMPLITED,
-        .PENDING {
+    .LeavReqOuter > .top h1,
+    .headingSection h1 {
 
-            font-size: 13px;
+        font-size: 16px;
 
-        }
+        max-width: 180px;
+    }
 
+    .headingSection {
 
+        gap: 7px;
+    }
+
+    .recordCount {
+
+        font-size: 9px;
+
+        padding: 3px 7px;
+    }
+
+    .LeavReqOuter > .top button,
+    .viewAllBtn {
+
+        min-width: 75px;
+
+        height: 31px;
+
+        padding: 0 9px;
+
+        font-size: 10px;
+    }
+
+    /*
+       IMPORTANT:
+       Don't shrink the table too much.
+       Let the user scroll horizontally.
+    */
+
+    .LeaveReqDatas {
+
+        overflow-x: auto;
+    }
+
+    .LeaveReqDatas table {
+
+        min-width: 500px;
+    }
+
+    .LeaveReqDatas table thead tr {
+
+        height: 42px;
+    }
+
+    .LeaveReqDatas table tbody tr {
+
+        height: 45px;
+    }
+
+    .LeaveReqDatas table th {
+
+        padding: 10px 11px;
+
+        font-size: 9px;
+    }
+
+    .LeaveReqDatas table td {
+
+        padding: 10px 11px;
+
+        font-size: 11px;
+    }
+
+    .statusBadge,
+    .PENDING,
+    .REJECTED,
+    .APROVED,
+    .APPROVED,
+    .COMPLITED,
+    .COMPLETED {
+
+        padding: 4px 7px;
+
+        font-size: 9px;
+    }
+
+    .emptyRecords {
+
+        min-height: 150px;
+
+        padding: 20px;
+    }
+
+    .emptyIcon {
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 19px;
     }
 }
 
-@media (max-width:474px) {
+
+/* =========================================================
+   SMALL MOBILE
+   320px - 479px
+========================================================= */
+
+@media (max-width: 479px) {
+
     .LeavReqOuter {
-        padding: 30px 0px;
+
+        padding: 12px;
+
+        border-radius: 9px;
     }
 
-    .LeavReqOuter>.LeaveReqDatas>table {
-        width: 100%;
-        text-align: center;
+    .LeavReqOuter > .top {
 
-        /* border-radius: 10px; */
-        /* color: red; */
-        th {
-            font-size: 0.6rem;
-        }
+        padding: 0;
 
-        tr {
-            height: 40px;
-            font-size: 10px;
-            text-transform: capitalize;
+        margin-bottom: 10px;
 
-        }
+        gap: 8px;
+    }
 
-        .REJECTED,
-        .APROVED,
-        .COMPLITED,
-        .PENDING {
+    .LeavReqOuter > .top h1,
+    .headingSection h1 {
 
-            font-size: 10px;
+        font-size: 14px;
 
-        }
+        max-width: 130px;
+    }
 
+    /*
+       Hide count because it consumes valuable
+       horizontal space on small phones.
+    */
 
+    .recordCount {
+
+        display: none;
+    }
+
+    .LeavReqOuter > .top button,
+    .viewAllBtn {
+
+        min-width: 65px;
+
+        height: 29px;
+
+        padding: 0 8px;
+
+        font-size: 10px;
+    }
+
+    .LeaveReqDatas table {
+
+        min-width: 480px;
+    }
+
+    .LeaveReqDatas table thead tr {
+
+        height: 38px;
+    }
+
+    .LeaveReqDatas table tbody tr {
+
+        height: 42px;
+    }
+
+    .LeaveReqDatas table th {
+
+        padding: 8px 9px;
+
+        font-size: 8px;
+    }
+
+    .LeaveReqDatas table td {
+
+        padding: 8px 9px;
+
+        font-size: 10px;
+    }
+
+    .statusBadge,
+    .PENDING,
+    .REJECTED,
+    .APROVED,
+    .APPROVED,
+    .COMPLITED,
+    .COMPLETED {
+
+        padding: 4px 6px;
+
+        font-size: 8px;
     }
 }
 
 
-@media (max-width:367px) {
+/* =========================================================
+   VERY SMALL PHONES
+   320px and below
+========================================================= */
+
+@media (max-width: 360px) {
+
     .LeavReqOuter {
-        padding: 30px 0px;
+
+        padding: 10px;
     }
 
-    .LeavReqOuter>.top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
+    .LeavReqOuter > .top h1,
+    .headingSection h1 {
 
-        h1 {
-            font-size: 15px;
-        }
+        font-size: 13px;
 
-        button {
-            font-size: 10px;
-            width: 60px;
-            height: auto;
-            font-weight: 600;
-            background: none;
-            border: 1px solid #2563EB;
-            color: #2563EB;
-            cursor: pointer;
-            /* background: #DBEAFE; */
-        }
+        max-width: 110px;
     }
 
-    .LeavReqOuter>.LeaveReqDatas>table {
-        width: 100%;
-        text-align: center;
+    .LeavReqOuter > .top button,
+    .viewAllBtn {
 
-        /* border-radius: 10px; */
-        /* color: red; */
-        th {
-            font-size: 0.5rem;
-        }
+        min-width: 60px;
 
-        tr {
-            height: 40px;
-            font-size: 8px;
-            text-transform: capitalize;
+        height: 28px;
 
-        }
+        padding: 0 6px;
 
-        .REJECTED,
-        .APROVED,
-        .COMPLITED,
-        .PENDING {
+        font-size: 9px;
+    }
 
-            font-size: 8px;
+    .LeaveReqDatas table {
 
-        }
+        min-width: 460px;
+    }
 
+    .LeaveReqDatas table th {
 
+        padding: 7px 8px;
+
+        font-size: 8px;
+    }
+
+    .LeaveReqDatas table td {
+
+        padding: 7px 8px;
+
+        font-size: 9px;
     }
 }

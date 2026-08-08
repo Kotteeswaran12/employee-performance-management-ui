@@ -128,7 +128,7 @@
         width: 850px;
         height: 100%;
         /* background-color: yellowgreen; */
-        box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
+        /* box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151); */
         border-radius: 10px;
     }
 }

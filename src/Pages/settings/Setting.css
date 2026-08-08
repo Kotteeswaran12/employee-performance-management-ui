@@ -1,0 +1,2695 @@
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.SettingOuter {
+
+    width: calc(100% - 400px);
+
+    max-width: 100%;
+
+    min-height: 100%;
+
+    padding: 25px 30px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.settingsPageHeader {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+
+.settingsPageHeader h1 {
+
+    margin: 0;
+
+    color: #222;
+
+    font-size: clamp(21px, 2vw, 26px);
+
+    font-weight: 700;
+}
+
+
+.settingsPageHeader p {
+
+    margin: 5px 0 0;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+.settingsRefresh {
+
+    height: 38px;
+
+    padding: 0 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #444;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.settingsRefresh:hover {
+
+    border-color: #2563eb;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   PROFILE CARD
+========================================================= */
+
+.profileCard {
+
+    width: 100%;
+
+    min-height: 145px;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border: 1px solid #e6e6e6;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   PROFILE MAIN
+========================================================= */
+
+.profileMain {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.profileAvatar {
+
+    width: 72px;
+
+    height: 72px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    border: 4px solid #f7faff;
+}
+
+
+/* =========================================================
+   IDENTITY
+========================================================= */
+
+.profileIdentity {
+
+    min-width: 0;
+}
+
+
+.profileIdentity h2 {
+
+    margin: 0;
+
+    color: #222;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.profileIdentity p {
+
+    margin: 5px 0 10px;
+
+    color: #888;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   PROFILE TAGS
+========================================================= */
+
+.profileTags {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+.roleBadge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.activeBadge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #eaf8ef;
+
+    color: #21864b;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.activeBadge span,
+.accountActiveBadge span {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+
+/* =========================================================
+   PROFILE ACTION
+========================================================= */
+
+.profileAction button {
+
+    height: 36px;
+
+    padding: 0 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #555;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.profileAction button:hover {
+
+    background: #f7f7f7;
+
+    border-color: #bbb;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.settingsSection {
+
+    width: 100%;
+
+    margin-top: 25px;
+}
+
+
+.sectionHeader {
+
+    margin-bottom: 13px;
+}
+
+
+.sectionHeader h2 {
+
+    margin: 0;
+
+    color: #333;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.sectionHeader p {
+
+    margin: 4px 0 0;
+
+    color: #999;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   INFORMATION GRID
+========================================================= */
+
+.infoGrid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   INFO CARD
+========================================================= */
+
+.infoCard {
+
+    min-width: 0;
+
+    min-height: 75px;
+
+    padding: 14px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.infoCard:hover {
+
+    border-color: #d5d5d5;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   INFO ICON
+========================================================= */
+
+.infoIcon {
+
+    width: 38px;
+
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #f5f7fa;
+
+    color: #555;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   INFO CONTENT
+========================================================= */
+
+.infoContent {
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.infoContent span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #999;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.3px;
+}
+
+
+.infoContent strong {
+
+    display: block;
+
+    color: #333;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   COPY BUTTON
+========================================================= */
+
+.copyButton {
+
+    width: 29px;
+
+    height: 29px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #999;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.copyButton:hover {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   ROLE MINI BADGE
+========================================================= */
+
+.roleMiniBadge {
+
+    padding: 5px 8px;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    background: #f3f4f6;
+
+    color: #555;
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+.securityCard {
+
+    width: 100%;
+
+    min-height: 95px;
+
+    padding: 17px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.securityIcon {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #fff7e8;
+
+    color: #b77800;
+
+    font-size: 18px;
+}
+
+
+.securityContent {
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.securityContent h3 {
+
+    margin: 0;
+
+    color: #333;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.securityContent p {
+
+    margin: 4px 0;
+
+    color: #999;
+
+    font-size: 10px;
+}
+
+
+.passwordMask {
+
+    color: #555;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+}
+
+
+.changePasswordButton {
+
+    height: 35px;
+
+    padding: 0 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #ddd;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #444;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.changePasswordButton:hover {
+
+    background: #eff6ff;
+
+    border-color: #2563eb;
+
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   ACCOUNT STATUS
+========================================================= */
+
+.accountStatusCard {
+
+    width: 100%;
+
+    min-height: 80px;
+
+    padding: 14px 17px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border: 1px solid #dcefe2;
+
+    border-radius: 10px;
+
+    background: #fbfffc;
+}
+
+
+.statusInfo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+}
+
+
+.statusIcon {
+
+    width: 37px;
+
+    height: 37px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eaf8ef;
+
+    color: #21864b;
+
+    font-size: 17px;
+}
+
+
+.statusInfo h3 {
+
+    margin: 0;
+
+    color: #333;
+
+    font-size: 12px;
+}
+
+
+.statusInfo p {
+
+    margin: 4px 0 0;
+
+    color: #999;
+
+    font-size: 10px;
+}
+
+
+.accountActiveBadge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px 10px;
+
+    flex-shrink: 0;
+
+    border-radius: 20px;
+
+    background: #eaf8ef;
+
+    color: #21864b;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.settingsError {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    margin: 70px auto;
+
+    padding: 35px 25px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    border: 1px solid #ffdcdc;
+
+    border-radius: 12px;
+
+    background: #fffafa;
+}
+
+
+.settingsErrorIcon {
+
+    width: 52px;
+
+    height: 52px;
+
+    margin: 0 auto 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff0f0;
+
+    color: #d73737;
+
+    font-size: 23px;
+}
+
+
+.settingsError h2 {
+
+    margin: 0;
+
+    color: #333;
+
+    font-size: 17px;
+}
+
+
+.settingsError p {
+
+    margin: 7px auto 18px;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+
+.settingsError button {
+
+    height: 35px;
+
+    padding: 0 13px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   SKELETON
+========================================================= */
+
+.settingsSkeleton {
+
+    width: 100%;
+}
+
+
+.skeletonProfile {
+
+    height: 145px;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    border: 1px solid #eee;
+
+    border-radius: 12px;
+
+    background: #fafafa;
+}
+
+
+.skeletonAvatar {
+
+    width: 72px;
+
+    height: 72px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #eaeaea;
+
+    animation:
+        skeletonPulse 1.2s infinite;
+}
+
+
+.skeletonLines {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.skeletonLines span {
+
+    display: block;
+
+    height: 12px;
+
+    border-radius: 6px;
+
+    background: #eaeaea;
+
+    animation:
+        skeletonPulse 1.2s infinite;
+}
+
+
+.skeletonLines span:first-child {
+
+    width: 180px;
+
+    height: 18px;
+}
+
+
+.skeletonLines span:last-child {
+
+    width: 240px;
+}
+
+
+.skeletonCards {
+
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+
+.skeletonCards div {
+
+    height: 75px;
+
+    border-radius: 10px;
+
+    background: #f0f0f0;
+
+    animation:
+        skeletonPulse 1.2s infinite;
+}
+
+
+@keyframes skeletonPulse {
+
+    0%,
+    100% {
+
+        opacity: 0.5;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1023px) {
+
+    .SettingOuter {
+
+        padding: 20px;
+    }
+
+
+    .profileCard {
+
+        padding: 20px;
+    }
+
+
+    .infoGrid {
+
+        gap: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .SettingOuter {
+
+        padding: 15px;
+    }
+
+
+    .settingsPageHeader {
+
+        align-items: flex-start;
+
+        margin-bottom: 17px;
+    }
+
+
+    .settingsPageHeader h1 {
+
+        font-size: 19px;
+    }
+
+
+    .settingsPageHeader p {
+
+        font-size: 10px;
+
+        max-width: 220px;
+    }
+
+
+    .settingsRefresh {
+
+        width: 38px;
+
+        padding: 0;
+
+        font-size: 0;
+    }
+
+
+    .settingsRefresh svg {
+
+        font-size: 16px;
+    }
+
+
+    .profileCard {
+
+        padding: 17px;
+
+        min-height: 120px;
+    }
+
+
+    .profileAvatar {
+
+        width: 58px;
+
+        height: 58px;
+
+        font-size: 22px;
+    }
+
+
+    .profileIdentity h2 {
+
+        font-size: 17px;
+    }
+
+
+    .profileIdentity p {
+
+        max-width: 180px;
+
+        font-size: 10px;
+    }
+
+
+    .profileAction button {
+
+        width: 35px;
+
+        padding: 0;
+
+        font-size: 0;
+    }
+
+
+    .profileAction button svg {
+
+        font-size: 15px;
+    }
+
+
+    .settingsSection {
+
+        margin-top: 20px;
+    }
+
+
+    .sectionHeader h2 {
+
+        font-size: 14px;
+    }
+
+
+    .sectionHeader p {
+
+        font-size: 10px;
+    }
+
+
+    .infoGrid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .securityCard {
+
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+
+        padding: 14px;
+    }
+
+
+    .securityContent {
+
+        padding-top: 2px;
+    }
+
+
+    .changePasswordButton {
+
+        width: 100%;
+
+        margin-left: 55px;
+
+        margin-top: 2px;
+    }
+
+
+    .accountStatusCard {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 479px) {
+
+    .SettingOuter {
+
+        padding: 12px;
+    }
+
+
+    .settingsPageHeader h1 {
+
+        font-size: 17px;
+    }
+
+
+    .settingsPageHeader p {
+
+        display: none;
+    }
+
+
+    .profileCard {
+
+        padding: 14px;
+
+        gap: 10px;
+    }
+
+
+    .profileMain {
+
+        gap: 11px;
+    }
+
+
+    .profileAvatar {
+
+        width: 48px;
+
+        height: 48px;
+
+        border-width: 3px;
+
+        font-size: 18px;
+    }
+
+
+    .profileIdentity h2 {
+
+        font-size: 15px;
+    }
+
+
+    .profileIdentity p {
+
+        max-width: 145px;
+
+        margin-bottom: 7px;
+
+        font-size: 9px;
+    }
+
+
+    .roleBadge,
+    .activeBadge {
+
+        padding: 4px 7px;
+
+        font-size: 8px;
+    }
+
+
+    .profileAction {
+
+        display: none;
+    }
+
+
+    .infoCard {
+
+        min-height: 68px;
+
+        padding: 11px;
+    }
+
+
+    .infoIcon {
+
+        width: 33px;
+
+        height: 33px;
+
+        font-size: 15px;
+    }
+
+
+    .infoContent span {
+
+        font-size: 8px;
+    }
+
+
+    .infoContent strong {
+
+        font-size: 11px;
+    }
+
+
+    .securityIcon {
+
+        width: 36px;
+
+        height: 36px;
+    }
+
+
+    .securityContent h3 {
+
+        font-size: 12px;
+    }
+
+
+    .securityContent p {
+
+        font-size: 9px;
+    }
+
+
+    .changePasswordButton {
+
+        margin-left: 49px;
+
+        font-size: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   UPDATE PROFILE
+========================================================= */
+
+.updateProfileCard {
+
+    width: 100%;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.updateInputGroup {
+
+    min-width: 0;
+}
+
+
+.updateInputGroup label,
+.passwordInputGroup label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #555;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   COMMON INPUT
+========================================================= */
+
+.settingsInput {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 11px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.settingsInput:focus-within {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+
+.settingsInput>svg {
+
+    flex-shrink: 0;
+
+    color: #999;
+
+    font-size: 16px;
+}
+
+
+.settingsInput input {
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #333;
+
+    font-size: 12px;
+}
+
+
+.settingsInput input::placeholder {
+
+    color: #aaa;
+}
+
+
+/* =========================================================
+   UPDATE ACTIONS
+========================================================= */
+
+.updateActions {
+
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding-top: 3px;
+}
+
+
+.cancelUpdateButton,
+.saveUpdateButton {
+
+    height: 36px;
+
+    padding: 0 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.cancelUpdateButton {
+
+    border: 1px solid #ddd;
+
+    background: #ffffff;
+
+    color: #666;
+}
+
+
+.cancelUpdateButton:hover {
+
+    background: #f5f5f5;
+
+    color: #333;
+}
+
+
+.saveUpdateButton {
+
+    border: 1px solid #2563eb;
+
+    background: #2563eb;
+
+    color: #ffffff;
+}
+
+
+.saveUpdateButton:hover {
+
+    background: #1d4ed8;
+}
+
+
+.saveUpdateButton:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   FORM MESSAGES
+========================================================= */
+
+.formSuccess,
+.formError {
+
+    grid-column: 1 / -1;
+
+    padding: 9px 11px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+}
+
+
+.formSuccess {
+
+    border: 1px solid #ccebd7;
+
+    background: #f0fbf4;
+
+    color: #21864b;
+}
+
+
+.formError {
+
+    border: 1px solid #ffd2d2;
+
+    background: #fff5f5;
+
+    color: #d73737;
+}
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.passwordCard {
+
+    width: 100%;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.passwordInputGroup {
+
+    min-width: 0;
+}
+
+
+.passwordEye {
+
+    width: 30px;
+
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #888;
+
+    cursor: pointer;
+}
+
+
+.passwordEye:hover {
+
+    background: #f3f4f6;
+
+    color: #333;
+}
+
+
+.passwordRequirements {
+
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    color: #999;
+
+    font-size: 10px;
+}
+
+
+.passwordActions {
+
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    padding-top: 2px;
+}
+
+
+.changePasswordButton {
+
+    height: 36px;
+
+    padding: 0 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid #2563eb;
+
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.changePasswordButton:hover {
+
+    background: #1d4ed8;
+}
+
+
+.changePasswordButton:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   SPIN
+========================================================= */
+
+.buttonSpin {
+
+    animation:
+        buttonSpinAnimation 0.8s linear infinite;
+}
+
+
+@keyframes buttonSpinAnimation {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   LOGOUT SECTION
+========================================================= */
+
+.logoutSection {
+
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 18px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border: 1px solid #ffdada;
+
+    border-radius: 10px;
+
+    background: #fffafa;
+}
+
+
+.logoutSection h2 {
+
+    margin: 0;
+
+    color: #333;
+
+    font-size: 14px;
+}
+
+
+.logoutSection p {
+
+    margin: 4px 0 0;
+
+    color: #999;
+
+    font-size: 10px;
+}
+
+
+.logoutButton {
+
+    height: 36px;
+
+    padding: 0 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #ef4444;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #dc2626;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.logoutButton:hover {
+
+    background: #dc2626;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   LOGOUT OVERLAY
+========================================================= */
+
+.logoutOverlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(3px);
+}
+
+
+/* =========================================================
+   LOGOUT MODAL
+========================================================= */
+
+.logoutModal {
+
+    width: 100%;
+
+    max-width: 390px;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.18);
+
+    animation:
+        logoutModalAnimation 0.2s ease;
+}
+
+
+@keyframes logoutModalAnimation {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.96) translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1) translateY(0);
+
+    }
+
+}
+
+
+.logoutModalIcon {
+
+    width: 52px;
+
+    height: 52px;
+
+    margin: 0 auto 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff0f0;
+
+    color: #dc2626;
+
+    font-size: 22px;
+}
+
+
+.logoutModal h2 {
+
+    margin: 0;
+
+    color: #222;
+
+    font-size: 18px;
+}
+
+
+.logoutModal p {
+
+    margin: 7px 0 20px;
+
+    color: #888;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+.logoutModalActions {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+}
+
+
+.logoutCancel,
+.logoutConfirm {
+
+    height: 36px;
+
+    min-width: 90px;
+
+    padding: 0 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.logoutCancel {
+
+    border: 1px solid #ddd;
+
+    background: #ffffff;
+
+    color: #555;
+}
+
+
+.logoutCancel:hover {
+
+    background: #f5f5f5;
+}
+
+
+.logoutConfirm {
+
+    border: 1px solid #dc2626;
+
+    background: #dc2626;
+
+    color: #ffffff;
+}
+
+
+.logoutConfirm:hover {
+
+    background: #b91c1c;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1023px) {
+
+    .updateProfileCard,
+    .passwordCard {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .updateProfileCard,
+    .passwordCard {
+
+        grid-template-columns: 1fr;
+
+        padding: 15px;
+
+        gap: 13px;
+
+    }
+
+
+    .updateActions,
+    .passwordActions {
+
+        grid-column: 1;
+
+        justify-content: stretch;
+    }
+
+
+    .cancelUpdateButton,
+    .saveUpdateButton,
+    .changePasswordButton {
+
+        flex: 1;
+    }
+
+
+    .passwordRequirements {
+
+        grid-column: 1;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+
+    .logoutSection {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 15px;
+    }
+
+
+    .logoutButton {
+
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 479px) {
+
+    .updateProfileCard,
+    .passwordCard {
+
+        padding: 12px;
+    }
+
+
+    .settingsInput {
+
+        height: 40px;
+    }
+
+
+    .settingsInput input {
+
+        font-size: 11px;
+    }
+
+
+    .logoutModal {
+
+        padding: 20px;
+    }
+
+
+    .logoutModalActions {
+
+        width: 100%;
+    }
+
+
+    .logoutCancel,
+    .logoutConfirm {
+
+        flex: 1;
+    }
+
+}
+
+
+/* =========================================================
+   EDIT PROFILE OVERLAY
+========================================================= */
+
+.editProfileOverlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9998;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(4px);
+
+}
+
+
+/* =========================================================
+   EDIT PROFILE MODAL
+========================================================= */
+
+.editProfileModal {
+
+    width: 100%;
+
+    max-width: 720px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    padding: 24px;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.2);
+
+    animation:
+        editProfileAnimation 0.2s ease;
+}
+
+
+@keyframes editProfileAnimation {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(10px) scale(0.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.editProfileHeader {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-bottom: 18px;
+
+    margin-bottom: 18px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.editProfileHeader h2 {
+
+    margin: 0;
+
+    color: #222;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+.editProfileHeader p {
+
+    margin: 5px 0 0;
+
+    color: #999;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.editProfileClose {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #f5f5f5;
+
+    color: #666;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.editProfileClose:hover {
+
+    background: #ffecec;
+
+    color: #dc2626;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.editProfileForm {
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   PROFILE GRID
+========================================================= */
+
+.editFormGrid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+}
+
+
+.editFormGrid .updateInputGroup:last-child {
+
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   PASSWORD SECTION
+========================================================= */
+
+.editPasswordSection {
+
+    margin-top: 23px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+.editPasswordTitle {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+
+    color: #555;
+}
+
+
+.editPasswordTitle>svg {
+
+    margin-top: 2px;
+
+    color: #b77800;
+
+    font-size: 17px;
+
+    flex-shrink: 0;
+}
+
+
+.editPasswordTitle h3 {
+
+    margin: 0;
+
+    color: #333;
+
+    font-size: 13px;
+}
+
+
+.editPasswordTitle p {
+
+    margin: 4px 0 0;
+
+    color: #999;
+
+    font-size: 10px;
+}
+
+
+.editPasswordGrid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.editProfileActions {
+
+    margin-top: 22px;
+
+    padding-top: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+.editCancelButton,
+.editSaveButton {
+
+    height: 38px;
+
+    padding: 0 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.editCancelButton {
+
+    border: 1px solid #ddd;
+
+    background: #ffffff;
+
+    color: #555;
+}
+
+
+.editCancelButton:hover {
+
+    background: #f5f5f5;
+}
+
+
+.editSaveButton {
+
+    border: 1px solid #2563eb;
+
+    background: #2563eb;
+
+    color: #ffffff;
+}
+
+
+.editSaveButton:hover {
+
+    background: #1d4ed8;
+}
+
+
+.editSaveButton:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .editProfileOverlay {
+
+        padding: 12px;
+
+        align-items: center;
+    }
+
+
+    .editProfileModal {
+
+        max-height: 94vh;
+
+        padding: 18px;
+
+        border-radius: 11px;
+    }
+
+
+    .editProfileHeader h2 {
+
+        font-size: 17px;
+    }
+
+
+    .editFormGrid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .editFormGrid .updateInputGroup:last-child {
+
+        grid-column: auto;
+    }
+
+
+    .editPasswordGrid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .editProfileActions {
+
+        position: sticky;
+
+        bottom: 0;
+
+        padding-top: 12px;
+
+        background: #ffffff;
+    }
+
+
+    .editCancelButton,
+    .editSaveButton {
+
+        flex: 1;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 479px) {
+
+    .editProfileOverlay {
+
+        padding: 8px;
+    }
+
+
+    .editProfileModal {
+
+        padding: 15px;
+
+        max-height: 96vh;
+    }
+
+
+    .editProfileHeader {
+
+        margin-bottom: 14px;
+
+        padding-bottom: 14px;
+    }
+
+
+    .editProfileHeader p {
+
+        font-size: 9px;
+    }
+
+
+    .editPasswordSection {
+
+        margin-top: 18px;
+
+        padding-top: 16px;
+    }
+
+
+    .editProfileActions {
+
+        margin-top: 17px;
+    }
+
+}

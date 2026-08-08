@@ -1,81 +1,29 @@
-/*  */
-
-.DataTableOuter {
-    width: calc(100% - 400px);
-    padding: 40px;
-}
-
-.DataTableOuter>.LeavReqOuter {
-    padding: 10px;
-    width: 100%;
-    /* background-color: red; */
-    border: none;
-    /* box-shadow: 2px 1px 15px  black; */
-}
-
-@media (max-width:900px) {
-    .DataTableOuter {
-        width: 100vw;
-        padding: 0%;
-        margin-top: 10%;
-    }
-
-    .DataTableOuter>.LeavReqOuter {
-        margin-top: 14%;
-        width: 100%;
-        /* overflow: hidden; */
-    }
-}
 
 
 /* =========================================================
-   MAIN OUTER
+   MAIN CONTAINER
 ========================================================= */
 
-.DataTableOuter {
-    width: 100%;
+.allLeavReqOuter {
+
+  width: calc(100% - 400px);
     max-width: 100%;
-    box-sizing: border-box;
-}
-
-
-/* =========================================================
-   MAIN CARD
-========================================================= */
-
-.DataTableOuter .LeavReqOuter {
-
-    width: 100%;
-    max-width: 100%;
-
-    box-sizing: border-box;
 
     padding: 25px 30px;
 
+    box-sizing: border-box;
+
     background: #ffffff;
-
-    border-radius: 12px;
-
-    border: 1px solid #e8e8e8;
-
-    box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.04);
-
-    overflow: hidden;
 }
 
 
 /* =========================================================
-   TOP
+   HEADER
 ========================================================= */
 
-.DataTableOuter .top {
+.leavePageHeader {
 
     width: 100%;
-
-    min-height: 45px;
-
-    margin-bottom: 18px;
 
     display: flex;
 
@@ -83,39 +31,27 @@
 
     justify-content: space-between;
 
-    gap: 15px;
+    gap: 20px;
 
-    box-sizing: border-box;
+    margin-bottom: 22px;
 }
 
 
-/* =========================================================
-   HEADING
-========================================================= */
-
-.dataTableHeading {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
+.leaveTitle {
 
     min-width: 0;
 }
 
 
-.dataTableHeading h1 {
+.leaveTitle h1 {
 
     margin: 0;
 
     color: #222;
 
-    font-size: 21px;
+    font-size: clamp(20px, 2vw, 25px);
 
     font-weight: 700;
-
-    text-transform: capitalize;
 
     white-space: nowrap;
 
@@ -125,95 +61,79 @@
 }
 
 
-.dataTableHeading>span {
+.leaveTitle span {
 
-    padding: 4px 9px;
+    display: block;
 
-    border-radius: 20px;
+    margin-top: 4px;
 
-    background: #f2f2f2;
+    color: #888;
 
-    color: #777;
-
-    font-size: 10px;
-
-    font-weight: 600;
-
-    white-space: nowrap;
+    font-size: 12px;
 }
 
 
 /* =========================================================
-   REFRESH
+   COUNT
 ========================================================= */
 
-.dataRefresh {
-
-    height: 34px;
-
-    padding: 0 13px;
+.leaveCount {
 
     display: flex;
 
     align-items: center;
 
-    justify-content: center;
+    gap: 8px;
 
-    gap: 7px;
+    padding: 8px 13px;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 8px;
+
+    background: #fafafa;
+
+    white-space: nowrap;
 
     flex-shrink: 0;
+}
 
-    border: 1px solid #ddd;
 
-    border-radius: 7px;
+.leaveCount strong {
 
-    background: #ffffff;
+    color: #2563eb;
 
-    color: #444;
+    font-size: 15px;
+}
+
+
+.leaveCount span {
+
+    color: #777;
 
     font-size: 11px;
 
     font-weight: 600;
-
-    cursor: pointer;
-
-    transition: all 0.2s ease;
 }
 
 
-.dataRefresh:hover {
+/* =========================================================
+   TOOLS
+========================================================= */
 
-    background: #f7f7f7;
+.leaveTools {
 
-    border-color: #bbb;
-}
+    width: 100%;
 
+    display: flex;
 
-.dataRefresh:disabled {
+    align-items: center;
 
-    opacity: 0.5;
+    justify-content: space-between;
 
-    cursor: not-allowed;
-}
+    gap: 12px;
 
-
-.dataRefreshSpin {
-
-    animation:
-        dataRefreshAnimation 0.8s linear infinite;
-}
-
-
-@keyframes dataRefreshAnimation {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+    margin-bottom: 15px;
 }
 
 
@@ -221,19 +141,7 @@
    SEARCH
 ========================================================= */
 
-.dataTableTools {
-
-    width: 100%;
-
-    margin-bottom: 15px;
-
-    display: flex;
-
-    align-items: center;
-}
-
-
-.dataTableSearch {
+.leaveSearch {
 
     width: 320px;
 
@@ -241,7 +149,7 @@
 
     height: 40px;
 
-    padding: 0 11px;
+    padding: 0 12px;
 
     display: flex;
 
@@ -263,7 +171,7 @@
 }
 
 
-.dataTableSearch:focus-within {
+.leaveSearch:focus-within {
 
     border-color: #2563eb;
 
@@ -272,7 +180,7 @@
 }
 
 
-.dataTableSearch>svg {
+.leaveSearch>svg {
 
     flex-shrink: 0;
 
@@ -282,7 +190,7 @@
 }
 
 
-.dataTableSearch input {
+.leaveSearch input {
 
     width: 100%;
 
@@ -300,25 +208,29 @@
 }
 
 
-.dataTableSearch input::placeholder {
+.leaveSearch input::placeholder {
 
     color: #aaa;
 }
 
 
-.clearDataSearch {
+/* =========================================================
+   CLEAR SEARCH
+========================================================= */
+
+.clearLeaveSearch {
 
     width: 24px;
 
     height: 24px;
-
-    flex-shrink: 0;
 
     display: flex;
 
     align-items: center;
 
     justify-content: center;
+
+    flex-shrink: 0;
 
     border: none;
 
@@ -332,7 +244,7 @@
 }
 
 
-.clearDataSearch:hover {
+.clearLeaveSearch:hover {
 
     background: #f1f1f1;
 
@@ -341,10 +253,84 @@
 
 
 /* =========================================================
+   REFRESH
+========================================================= */
+
+.leaveRefresh {
+
+    height: 40px;
+
+    padding: 0 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #444;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    flex-shrink: 0;
+}
+
+
+.leaveRefresh:hover {
+
+    background: #f7f7f7;
+
+    border-color: #bbb;
+}
+
+
+.leaveRefresh:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+.leaveRefreshSpin {
+
+    animation:
+        leaveRefreshAnimation 0.8s linear infinite;
+}
+
+
+@keyframes leaveRefreshAnimation {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
    ERROR
 ========================================================= */
 
-.dataTableError {
+.leaveError {
 
     width: 100%;
 
@@ -374,7 +360,7 @@
 }
 
 
-.dataTableError span {
+.leaveError span {
 
     flex: 1;
 
@@ -382,7 +368,7 @@
 }
 
 
-.dataTableError button {
+.leaveError button {
 
     border: none;
 
@@ -401,10 +387,10 @@
 
 
 /* =========================================================
-   TABLE CONTAINER
+   TABLE
 ========================================================= */
 
-.DataTableOuter .LeaveReqDatas {
+.allLeavReqOuter .LeaveReqDatas {
 
     width: 100%;
 
@@ -424,15 +410,11 @@
 }
 
 
-/* =========================================================
-   TABLE
-========================================================= */
-
-.DataTableOuter .LeaveReqDatas table {
+.allLeavReqOuter .LeaveReqDatas table {
 
     width: 100%;
 
-    min-width: 650px;
+    min-width: 750px;
 
     border-collapse: collapse;
 
@@ -446,13 +428,13 @@
    TABLE HEADER
 ========================================================= */
 
-.DataTableOuter .LeaveReqDatas thead {
+.allLeavReqOuter .LeaveReqDatas thead {
 
     background: #f7f8fa;
 }
 
 
-.DataTableOuter .LeaveReqDatas th {
+.allLeavReqOuter .LeaveReqDatas th {
 
     padding: 14px 17px;
 
@@ -476,7 +458,7 @@
 }
 
 
-.dataTableHeaderCell {
+.leaveHeaderCell {
 
     display: flex;
 
@@ -488,7 +470,7 @@
 }
 
 
-.dataTableHeaderCell>span {
+.leaveHeaderCell>span {
 
     display: flex;
 
@@ -500,7 +482,7 @@
 }
 
 
-.DataTableOuter .LeaveReqDatas th:hover .dataTableHeaderCell>span {
+.allLeavReqOuter .LeaveReqDatas th:hover .leaveHeaderCell>span {
 
     color: #2563eb;
 }
@@ -510,7 +492,7 @@
    TABLE BODY
 ========================================================= */
 
-.DataTableOuter .LeaveReqDatas td {
+.allLeavReqOuter .LeaveReqDatas td {
 
     padding: 14px 17px;
 
@@ -524,19 +506,19 @@
 }
 
 
-.dataTableRow {
+.leaveRow {
 
     transition: background 0.2s ease;
 }
 
 
-.dataTableRow:hover {
+.leaveRow:hover {
 
     background: #fafafa;
 }
 
 
-.DataTableOuter .LeaveReqDatas tbody tr:last-child td {
+.allLeavReqOuter .LeaveReqDatas tbody tr:last-child td {
 
     border-bottom: none;
 }
@@ -546,7 +528,7 @@
    STATUS
 ========================================================= */
 
-.dataStatus {
+.leaveStatus {
 
     display: inline-flex;
 
@@ -566,7 +548,7 @@
 }
 
 
-.statusDot {
+.leaveStatusDot {
 
     width: 6px;
 
@@ -578,12 +560,12 @@
 }
 
 
-/* APPROVED / COMPLETED */
+/* APPROVED */
 
-.dataStatus.approved,
-.dataStatus.accepted,
-.dataStatus.completed,
-.dataStatus.complited {
+.leaveStatus.approved,
+.leaveStatus.accepted,
+.leaveStatus.complited,
+.leaveStatus.completed {
 
     background: #eaf8ef;
 
@@ -593,7 +575,7 @@
 
 /* PENDING */
 
-.dataStatus.pending {
+.leaveStatus.pending {
 
     background: #fff6df;
 
@@ -603,8 +585,8 @@
 
 /* REJECTED */
 
-.dataStatus.rejected,
-.dataStatus.cancelled {
+.leaveStatus.rejected,
+.leaveStatus.cancelled {
 
     background: #fff0f0;
 
@@ -612,84 +594,11 @@
 }
 
 
-/* IN PROGRESS */
-
-.dataStatus.in-progress {
-
-    background: #edf4ff;
-
-    color: #2868c7;
-}
-
-
-/* =========================================================
-   ACTION BUTTONS
-========================================================= */
-
-.dataApprove,
-.dataCancel {
-
-    width: 32px;
-
-    height: 32px;
-
-    margin-right: 6px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 7px;
-
-    cursor: pointer;
-
-    transition: all 0.2s ease;
-}
-
-
-.dataApprove {
-
-    border: 1px solid #ccebd7;
-
-    background: #f0fbf4;
-
-    color: #21864b;
-}
-
-
-.dataApprove:hover {
-
-    background: #21864b;
-
-    color: #ffffff;
-}
-
-
-.dataCancel {
-
-    border: 1px solid #ffd2d2;
-
-    background: #fff5f5;
-
-    color: #d73737;
-}
-
-
-.dataCancel:hover {
-
-    background: #d73737;
-
-    color: #ffffff;
-}
-
-
 /* =========================================================
    LOADING
 ========================================================= */
 
-.dataTableLoading {
+.leaveLoading {
 
     height: 200px;
 
@@ -701,7 +610,7 @@
 }
 
 
-.dataTableLoader {
+.leaveLoader {
 
     width: 28px;
 
@@ -716,11 +625,11 @@
     border-radius: 50%;
 
     animation:
-        dataLoaderAnimation 0.8s linear infinite;
+        leaveLoaderAnimation 0.8s linear infinite;
 }
 
 
-@keyframes dataLoaderAnimation {
+@keyframes leaveLoaderAnimation {
 
     to {
         transform: rotate(360deg);
@@ -733,7 +642,7 @@
    EMPTY
 ========================================================= */
 
-.dataTableEmpty {
+.leaveEmpty {
 
     height: 200px;
 
@@ -743,7 +652,7 @@
 }
 
 
-.emptyDataIcon {
+.leaveEmptyIcon {
 
     width: 50px;
 
@@ -765,7 +674,7 @@
 }
 
 
-.dataTableEmpty h3 {
+.leaveEmpty h3 {
 
     margin: 0;
 
@@ -775,7 +684,7 @@
 }
 
 
-.dataTableEmpty p {
+.leaveEmpty p {
 
     margin: 6px 0 0;
 
@@ -789,7 +698,7 @@
    PAGINATION
 ========================================================= */
 
-.dataPagination {
+.leavePagination {
 
     width: 100%;
 
@@ -805,7 +714,7 @@
 }
 
 
-.dataPagination>span {
+.leavePagination>span {
 
     color: #888;
 
@@ -813,13 +722,13 @@
 }
 
 
-.dataPagination strong {
+.leavePagination strong {
 
     color: #333;
 }
 
 
-.dataPagination>div {
+.leavePagination>div {
 
     display: flex;
 
@@ -829,7 +738,7 @@
 }
 
 
-.dataPagination button {
+.leavePagination button {
 
     min-width: 75px;
 
@@ -855,7 +764,7 @@
 }
 
 
-.dataPagination button:hover:not(:disabled) {
+.leavePagination button:hover:not(:disabled) {
 
     background: #eff6ff;
 
@@ -865,7 +774,7 @@
 }
 
 
-.dataPagination button:disabled {
+.leavePagination button:disabled {
 
     opacity: 0.45;
 
@@ -879,27 +788,19 @@
 
 @media (max-width: 1023px) {
 
-    .DataTableOuter .LeavReqOuter {
+    .allLeavReqOuter {
 
         padding: 20px;
     }
 
-
-    .dataTableHeading h1 {
-
-        font-size: 19px;
-    }
-
-
-    .DataTableOuter .LeaveReqDatas th {
+    .allLeavReqOuter .LeaveReqDatas th {
 
         padding: 12px 13px;
 
         font-size: 10px;
     }
 
-
-    .DataTableOuter .LeaveReqDatas td {
+    .allLeavReqOuter .LeaveReqDatas td {
 
         padding: 12px 13px;
 
@@ -907,7 +808,12 @@
     }
 
 }
-
+@media (max-width:900px) {
+    .allLeavReqOuter{
+        width: 100%;
+        margin-top: 15%;
+    }
+}
 
 /* =========================================================
    MOBILE
@@ -915,39 +821,63 @@
 
 @media (max-width: 767px) {
 
-    .DataTableOuter .LeavReqOuter {
+    .allLeavReqOuter {
 
         padding: 15px;
     }
 
 
-    .DataTableOuter .top {
+    .leavePageHeader {
 
         gap: 10px;
-
-        margin-bottom: 13px;
     }
 
 
-    .dataTableHeading h1 {
+    .leaveTitle h1 {
 
-        font-size: 17px;
-
-        max-width: 180px;
+        font-size: 18px;
     }
 
 
-    .dataTableHeading>span {
+    .leaveTitle span {
+
+        font-size: 10px;
+    }
+
+
+    .leaveCount {
+
+        padding: 6px 9px;
+    }
+
+
+    .leaveCount span {
 
         display: none;
     }
 
 
-    .dataRefresh {
+    .leaveTools {
 
-        width: 36px;
+        gap: 7px;
+    }
 
-        height: 34px;
+
+    .leaveSearch {
+
+        flex: 1;
+
+        width: auto;
+
+        height: 38px;
+    }
+
+
+    .leaveRefresh {
+
+        width: 38px;
+
+        height: 38px;
 
         padding: 0;
 
@@ -955,33 +885,24 @@
     }
 
 
-    .dataRefresh svg {
+    .leaveRefresh svg {
 
         font-size: 16px;
     }
 
 
-    .dataTableSearch {
-
-        width: 100%;
-
-        height: 38px;
-    }
-
-
     /*
-       Keep the table readable.
-       Scroll horizontally instead of
-       shrinking columns.
+       Don't squeeze the table on mobile.
+       Let it scroll horizontally.
     */
 
-    .DataTableOuter .LeaveReqDatas table {
+    .allLeavReqOuter .LeaveReqDatas table {
 
-        min-width: 650px;
+        min-width: 750px;
     }
 
 
-    .DataTableOuter .LeaveReqDatas th {
+    .allLeavReqOuter .LeaveReqDatas th {
 
         padding: 10px 11px;
 
@@ -989,7 +910,7 @@
     }
 
 
-    .DataTableOuter .LeaveReqDatas td {
+    .allLeavReqOuter .LeaveReqDatas td {
 
         padding: 10px 11px;
 
@@ -997,7 +918,7 @@
     }
 
 
-    .dataStatus {
+    .leaveStatus {
 
         padding: 4px 7px;
 
@@ -1005,7 +926,7 @@
     }
 
 
-    .dataPagination {
+    .leavePagination {
 
         flex-direction: column;
 
@@ -1015,7 +936,11 @@
     }
 
 }
-
+@media (max-width:490px) {
+    .allLeavReqOuter{
+        margin-top: 25%;
+    }
+}
 
 /* =========================================================
    SMALL MOBILE
@@ -1023,33 +948,59 @@
 
 @media (max-width: 479px) {
 
-    .DataTableOuter .LeavReqOuter {
+    .allLeavReqOuter {
 
         padding: 12px;
     }
 
 
-    .dataTableHeading h1 {
+    .leaveTitle h1 {
 
-        font-size: 15px;
+        font-size: 16px;
 
-        max-width: 150px;
+        max-width: 170px;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
     }
 
 
-    .dataTableSearch {
+    .leaveTitle span {
+
+        display: none;
+    }
+
+
+    .leaveCount {
+
+        display: none;
+    }
+
+
+    .leaveSearch {
 
         height: 36px;
     }
 
 
-    .DataTableOuter .LeaveReqDatas table {
+    .leaveRefresh {
 
-        min-width: 600px;
+        width: 36px;
+
+        height: 36px;
     }
 
 
-    .DataTableOuter .LeaveReqDatas th {
+    .allLeavReqOuter .LeaveReqDatas table {
+
+        min-width: 700px;
+    }
+
+
+    .allLeavReqOuter .LeaveReqDatas th {
 
         padding: 8px 9px;
 
@@ -1057,7 +1008,7 @@
     }
 
 
-    .DataTableOuter .LeaveReqDatas td {
+    .allLeavReqOuter .LeaveReqDatas td {
 
         padding: 8px 9px;
 
@@ -1065,7 +1016,7 @@
     }
 
 
-    .dataPagination button {
+    .leavePagination button {
 
         min-width: 65px;
 
@@ -1074,4 +1025,9 @@
         font-size: 10px;
     }
 
+}
+@media (max-width:320px) {
+    .allLeavReqOuter{
+        margin-top: 30%;
+    }
 }

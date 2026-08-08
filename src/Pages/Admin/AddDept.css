@@ -1,201 +1,644 @@
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
 .addDeptOuter {
     width: calc(100% - 400px);
-    /* background-color: red; */
     padding: 20px 30px;
+    position: relative;
+}
+
+
+/* =========================================
+   PAGE TITLE
+========================================= */
+
+.addDeptOuter h1 {
+    margin-bottom: 22px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   ADD DEPARTMENT
+========================================= */
+
+.addDeptInner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.addDeptInner input {
+    width: 320px;
+    height: 42px;
+
+    padding: 0 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: all 0.25s ease;
+}
+
+.addDeptInner input:focus {
+    border-color: #555;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.addDeptInner button {
+    height: 42px;
+
+    padding: 0 22px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #111;
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.addDeptInner button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.addDeptInner button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   TOOLS
+========================================= */
+
+.deptTools {
+    margin-top: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+/* =========================================
+   COUNT
+========================================= */
+
+.deptCount {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.deptCount span {
+    font-size: 14px;
+    color: #777;
+}
+
+.deptCount strong {
+    min-width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #111;
+    color: white;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.deptSearch {
+    width: 280px;
+
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 0 12px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: white;
+
+    transition: 0.25s;
+}
+
+.deptSearch:focus-within {
+    border-color: #555;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.deptSearch svg {
+    font-size: 17px;
+    color: #777;
+}
+
+.deptSearch input {
+    flex: 1;
+
+    border: none;
+    outline: none;
+
+    font-size: 13px;
+}
+
+.deptSearch input::placeholder {
+    color: #aaa;
+}
+
+
+/* =========================================
+   REFRESH
+========================================= */
+
+.refreshBtn {
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 0 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: white;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: 0.25s;
+}
+
+.refreshBtn:hover {
+    background: #f5f5f5;
+}
+
+.refreshBtn svg {
+    font-size: 17px;
+}
+
+.refreshAnimation {
+    animation: rotateRefresh 0.8s linear infinite;
+}
+
+@keyframes rotateRefresh {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 
 }
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.deptMessage {
+    margin-top: 15px;
+
+    padding: 11px 15px;
+
+    width: fit-content;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    animation: messageAppear 0.25s ease;
+}
+
+.deptMessage.success {
+    background: #e9f8ef;
+    color: #17733b;
+    border: 1px solid #c7ecd4;
+}
+
+.deptMessage.error {
+    background: #fff0f0;
+    color: #c62828;
+    border: 1px solid #ffd0d0;
+}
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   TABLE OUTER
+========================================= */
+
+.LeavReqOuter {
+    margin-top: 20px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid #e8e8e8;
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.LeaveReqDatas {
+    width: 100%;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.LeaveReqDatas table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+/* HEADER */
+
+.LeaveReqDatas thead {
+    background: #f7f7f7;
+}
+
+.LeaveReqDatas th {
+    padding: 15px 18px;
+
+    text-align: left;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    color: #666;
+
+    border-bottom: 1px solid #e8e8e8;
+}
+
+
+/* BODY */
+
+.LeaveReqDatas td {
+    padding: 15px 18px;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.LeaveReqDatas tbody tr {
+    transition: background 0.2s ease;
+}
+
+.LeaveReqDatas tbody tr:hover {
+    background: #fafafa;
+}
+
+.LeaveReqDatas tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   DEPARTMENT NAME
+========================================= */
+
+.deptName {
+    font-weight: 600;
+    color: #222;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.update,
+.delete {
+    width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    margin-right: 7px;
+}
+
+.update {
+    border: 1px solid #ddd;
+
+    background: white;
+
+    color: #555;
+}
+
+.update:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.delete {
+    border: 1px solid #ffd4d4;
+
+    background: #fff5f5;
+
+    color: #e53935;
+}
+
+.delete:hover {
+    background: #ffe5e5;
+    transform: translateY(-2px);
+}
+
+.update:disabled,
+.delete:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.tableLoading {
+    height: 180px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+.loader {
+    width: 25px;
+    height: 25px;
+
+    margin: 0 auto 10px;
+
+    border: 3px solid #eee;
+    border-top: 3px solid #111;
+
+    border-radius: 50%;
+
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   EMPTY TABLE
+========================================= */
+
+.emptyTable {
+    height: 180px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+.emptyTable span {
+    display: block;
+
+    font-size: 35px;
+
+    margin-bottom: 8px;
+}
+
+.emptyTable p {
+    margin: 0;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.emptyTable small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #aaa;
+}
+
+
+/* =========================================
+   OVERLAY
+========================================= */
 
 .overLay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 
-    background: rgba(0, 0, 0, 0.6);
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(4px);
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
-    z-index: 9999;
+    z-index: 1000;
+
+    animation: overlayAppear 0.2s ease;
 }
+
+@keyframes overlayAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================
+   UPDATE MODAL
+========================================= */
 
 .DeptUpdateOuter {
-    width: 90vw;
-    height: 500px;
-    position: absolute;
-    margin: 0px 30px;
-    left: 4%;
-    background-color: red;
+    position: relative;
 
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    top: 25%;
+    width: 450px;
+
     padding: 30px;
-    background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.767),
-            rgba(255, 255, 255, 0.884));
+
+    border-radius: 14px;
+
+    background: white;
+
     box-shadow:
-        0 8px 32px rgba(31, 38, 135, 0.2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.616);
+        0 20px 60px rgba(0, 0, 0, 0.2);
+
+    animation: modalAppear 0.25s ease;
 }
 
-.addDeptOuter>.addDeptInner,
-.DeptUpdateOuter>.addDeptInner {
-    width: 100%;
-    /* background-color: red; */
-    height: 70px;
-    padding: 0px 30px;
-    margin-top: 20px;
+@keyframes modalAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+.DeptUpdateOuter h1 {
+    margin: 0 0 25px;
+
+    font-size: 21px;
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.closeModal {
+    position: absolute;
+
+    right: 18px;
+    top: 18px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f4f4f4;
+
     display: flex;
-    justify-content: space-between;
 
-    input {
-        height: 100%;
-        width: 70%;
-        font-size: 20px;
-        padding: 0px 10px;
-        outline: none;
-        border: 1.5px solid rgba(0, 0, 0, 0.63);
-    }
+    align-items: center;
+    justify-content: center;
 
-    button {
-        width: 210px;
-        background-color: transparent;
-        box-shadow: none;
-        border: 1px solid #2563EB;
-        color: #2563EB;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 20px;
-        cursor: pointer;
-    }
+    cursor: pointer;
+
+    transition: 0.2s;
 }
 
-.addDeptOuter>.LeavReqOuter>.LeaveReqDatas>table>tbody {
-
-    button {
-        cursor: pointer;
-        font-size: 25px;
-        background-color: transparent;
-        border: 0px;
-        width: fit-content;
-    }
-
-    .update {
-        color: rgb(105, 173, 2);
-        margin-right: 20px;
-    }
-
-    .delete {
-        color: rgba(255, 0, 0, 0.658);
-    }
+.closeModal:hover {
+    background: #e9e9e9;
+    transform: rotate(90deg);
 }
 
-@media (max-width : 900px) {
-    .addDeptOuter {
-        width: 100%;
-        margin-top: 15%;
-    }
 
-    .addDeptOuter>.addDeptInner {
-        height: 60px;
+/* =========================================
+   OLD DATA
+========================================= */
 
-        input {
-            height: 100%;
-            width: 60%;
-            font-size: 15px;
-        }
+.oldData {
+    padding: 14px 16px;
 
-        button {
-            width: 150px;
-            height: 60px;
-        }
-    }
+    margin-bottom: 20px;
+
+    border-radius: 8px;
+
+    background: #f7f7f7;
+
+    border: 1px solid #eee;
 }
 
-@media (max-width:608px) {
-    .addDeptOuter>.addDeptInner {
-        padding: 0px;
-    }
+.oldData span {
+    display: block;
 
-    .addDeptOuter>.LeavReqOuter>.LeaveReqDatas>table>tbody {
+    margin-bottom: 5px;
 
-        button {
-            cursor: pointer;
-            font-size: 20px;
-            background-color: transparent;
-            border: 0px;
-            width: fit-content;
-        }
+    font-size: 11px;
 
-        .update {
-            color: rgb(105, 173, 2);
-            margin-right: 20px;
-        }
+    color: #999;
 
-        .delete {
-            color: rgba(255, 0, 0, 0.658);
-        }
-    }
+    text-transform: uppercase;
 }
 
-@media (max-width:500px) {
-    .addDeptOuter {
-        width: 100%;
-        /* background-color: red; */
-        padding: 20px 10px;
-        margin-top: 25%;
+.oldData h4 {
+    margin: 0;
 
-        h1 {
-            font-size: 20px;
-        }
-    }
+    font-size: 15px;
 
-
-    .addDeptOuter>.addDeptInner {
-        width: 100%;
-        height: 50px;
-
-        input {
-            height: 100%;
-            width: 70%;
-        }
-
-        button {
-            width: 100px;
-            height: 100%;
-
-            font-size: 14px;
-        }
-    }
-
-}
-
-@media (max-width:366px) {
-    .addDeptOuter {
-        margin-top: 30%;
-    }
-
-    .addDeptOuter>.addDeptInner {
-        width: 100%;
-        height: 50px;
-
-        input {
-            height: 100%;
-            width: 65%;
-            font-size: 12px;
-        }
-
-        button {
-            width: 90px;
-            height: 90%;
-
-            font-size: 12px;
-        }
-    }
+    color: #222;
 }

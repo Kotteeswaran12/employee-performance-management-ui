@@ -60,10 +60,51 @@ export const addDepartment = (Jwt, data) => {
     })
 }
 
-export const DeleteDept = (Jwt , id) =>{
-    return api.delete(`/department/${id}`,{
-        headers:{
+export const DeleteDept = (Jwt, id) => {
+    return api.delete(`/department/${id}`, {
+        headers: {
             Authorization: `Bearer ${Jwt}`
+        }
+    })
+}
+
+export const getDeptbyId = (jwt, id) => {
+    return api.get(`/department/${id}`, {
+        headers: {
+            Authorization: `Bearer ${jwt}`
+        }
+    })
+}
+
+export const updateDeptname = (jwt, name, id) => {
+    return api.put(`/updateDept/${name}?id=${id}`, null, {
+        headers: {
+            Authorization: `Bearer ${jwt}`
+        }
+    })
+}
+
+export const addManager = (Jwt, mangerDetails, DeptId) => {
+    return api.post(`employee/manager/${DeptId}`, mangerDetails, {
+        headers: {
+            Authorization: `Bearer ${Jwt}`
+        }
+    }
+    )
+}
+
+export const getAllEmployees = (jwt, p, s) => {
+    return api.get(`employees/getall?page=${p}&size=${s}`, {
+        headers: {
+            Authorization: `Bearer ${jwt}`
+        }
+    })
+}
+
+export const getUserInfo = (jwt, name) => {
+    return api.get(`/user/get-userByName?username=${name}`, {
+        headers: {
+            Authorization: `Bearer ${jwt}`
         }
     })
 }
