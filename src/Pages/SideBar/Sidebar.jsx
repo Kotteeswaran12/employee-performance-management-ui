@@ -319,7 +319,7 @@ const Sidebar = () => {
             }
           >
 
-            {menuItems.map((item) => {
+            {Data[Role].map((item) => {
 
               const isActive =
                 location.pathname === item.path;

@@ -56,10 +56,18 @@ export const Assigntask = (Jwt, Duedate, empCode, taskId) => {
     })
 }
 
-export const updateLeaveStatus = (Jwt , status) => {
-    return api.post(`/leave?id=1&leaveStatus=${status}` , null , {
+export const updateLeaveStatus = (Jwt , id , status) => {
+    return api.post(`/leave?id=${id}&leaveStatus=${status}` , null , {
         headers : {
             Authorization : `Bearer ${Jwt}`
+        }
+    })
+}
+
+export const getAllEmpLeave = (jwt , p=0 , s=10 ) =>{
+    return api.get(`/getEmpLeaves?page=${p}&size=${s}` , {
+        headers : {
+            Authorization : `Bearer ${jwt}`
         }
     })
 }

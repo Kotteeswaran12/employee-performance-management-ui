@@ -15,6 +15,7 @@ import Settings from './Pages/settings/Settings'
 import './App.css';
 import AddEmployee from './Pages/Manager/AddEmployee'
 import Task from './Pages/Manager/Task'
+import ManagerLeave from './Pages/Manager/ManagerLeave'
 const App = () => {
 
     const { pathname } = useLocation();
@@ -63,6 +64,7 @@ const App = () => {
                 {/* Manager Routes */}
                 <Route path='/addEmployee' element={<AddEmployee />} />
                 <Route path='/task' element={<Task />} />
+                <Route path='/leave' element={<ManagerLeave />} />
 
             </Routes>
 
