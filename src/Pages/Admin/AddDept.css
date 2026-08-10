@@ -5,8 +5,9 @@
 .addDeptOuter {
     width: calc(100% - 400px);
     padding: 20px 30px;
-    position: relative;
+   
 }
+
 
 
 /* =========================================
@@ -641,4 +642,20 @@
     font-size: 15px;
 
     color: #222;
+}
+
+@media (max-width:900px) {
+    .addDeptOuter{
+        width: 100%;
+        /* background-color: red ; */
+    }
+}
+
+@media (max-width:555px) {
+    .addDeptOuter{
+        padding: 20px;
+    }
+    .deptTools{
+        flex-wrap: wrap;
+    }
 }

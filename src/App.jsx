@@ -12,6 +12,9 @@ import AddManager from './Pages/Admin/AddManager'
 import AllEmployees from './Pages/Admin/AllEmployees'
 import LeaveReq from './Pages/Admin/LeaveReq'
 import Settings from './Pages/settings/Settings'
+import './App.css';
+import AddEmployee from './Pages/Manager/AddEmployee'
+import Task from './Pages/Manager/Task'
 const App = () => {
 
     const { pathname } = useLocation();
@@ -19,7 +22,7 @@ const App = () => {
 
 
     return (
-        <div style={{ display: 'flex', position: 'relative', overflow: 'hidden' }} >
+        <div className='AppOuter'>
 
             {
                 pathname != '/' && (
@@ -53,8 +56,13 @@ const App = () => {
                 } />
 
                 <Route path='/allEmp' element={<AllEmployees />} />
-                <Route path='allLeaveReq' element={<LeaveReq />} />
-                <Route path='UserInfo' element={<Settings />} />
+                <Route path='/allLeaveReq' element={<LeaveReq />} />
+                <Route path='/UserInfo' element={<Settings />} />
+
+
+                {/* Manager Routes */}
+                <Route path='/addEmployee' element={<AddEmployee />} />
+                <Route path='/task' element={<Task />} />
 
             </Routes>
 

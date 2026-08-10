@@ -110,7 +110,7 @@ export default function AddManager() {
     }, []);
 
     return (
-        <div className="employeeContainer">
+        <div className="AddManagerOuter">
 
             <div className="employeeCard">
 

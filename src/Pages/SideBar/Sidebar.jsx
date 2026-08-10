@@ -1,143 +1,369 @@
-import { useEffect, useState } from 'react'
+import { useState } from "react";
 import "./Sidebar.css";
+
 import { HiOutlineUsers } from "react-icons/hi2";
 import { LuLayoutDashboard } from "react-icons/lu";
-import SidebarImg1 from "../../assets/sidebarImgs/SidebarImg1.png";
 import { MdOutlineApartment } from "react-icons/md";
-import { RiUserStarLine } from "react-icons/ri";
+import { RiUserStarLine, RiTeamLine } from "react-icons/ri";
 import { TbCalendarTime } from "react-icons/tb";
 import { FiSettings } from "react-icons/fi";
-import { RiTeamLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useNavigate } from 'react-router-dom';
+import { MdFeedback } from "react-icons/md";
+
+import { useLocation, useNavigate } from "react-router-dom";
+
+import SidebarImg1 from "../../assets/sidebarImgs/SidebarImg1.png";
+import { MdOutlineTaskAlt } from "react-icons/md";
+import { IoPersonAddOutline } from "react-icons/io5";
+import { MdOutlineRateReview } from "react-icons/md";
+import { FaRegCalendarCheck } from "react-icons/fa";
+
 const Sidebar = () => {
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const Role = localStorage.getItem('role');
 
-  const [active, setActive] = useState({ "btn": "dashboard" });
-  const { btn } = active;
-  const ButtonOnActive = {
-    "transition": "all 500ms ease",
-    "background": "linear-gradient(90deg,#1D5BFF,#2F80FF)",
-    "color": "#FFFFFF",
-    "borderRadius": "10px",
-    "boxShadow": "0 8px 20px rgba(29,91,255,.35)",
+  const [mobileSidebar, setMobileSidebar] = useState(false);
 
-  }
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
 
-    function handleResize() {
-      setWindowWidth(window.innerWidth)
+  /* =====================================================
+     MENU ITEMS
+  ===================================================== */
+  const Data = {
+    ADMIN: [
+      {
+        name: "Dashboard",
+        path: "/dashBoard",
+        icon: <LuLayoutDashboard />
+      },
+      {
+        name: "Employee",
+        path: "/allEmp",
+        icon: <HiOutlineUsers />
+      },
+      {
+        name: "Department",
+        path: "/addDepartment",
+        icon: <MdOutlineApartment />
+      },
+      {
+        name: "Manager",
+        path: "/addManager",
+        icon: <RiUserStarLine />
+      },
+      {
+        name: "Leave Request",
+        path: "/allLeaveReq",
+        icon: <TbCalendarTime />
+      },
+      {
+        name: "Settings",
+        path: "/UserInfo",
+        icon: <FiSettings />
+      }
+    ],
+    MANAGER: [{
+      name: "Dashboard",
+      path: "/dashBoard",
+      icon: <LuLayoutDashboard />
+    },
+    {
+      name: "Add Employee",
+      path: "/addEmployee",
+      icon: <IoPersonAddOutline />
+    },
+    {
+      name: "Task",
+      path: "/task",
+      icon: <MdOutlineTaskAlt />
+    },
+    {
+      name: "Review",
+      path: "/review",
+      icon: <MdOutlineRateReview />
+    },
+    {
+      name: "Leave",
+      path: "/leave",
+      icon: <TbCalendarTime />
+    },
+    {
+      name: "Department",
+      path: "/department",
+      icon: <MdOutlineApartment />
+    },
+    {
+      name: "Settings",
+      path: "/UserInfo",
+      icon: <FiSettings />
+    }],
+    EMPLOYEE: [{
+      name: "Dashboard",
+      path: "/dashBoard",
+      icon: <LuLayoutDashboard />
+    },
+    {
+      name: "Attendance",
+      path: "/attendance",
+      icon: <FaRegCalendarCheck />
+    },
+    {
+      name: "Task",
+      path: "/task",
+      icon: <MdOutlineTaskAlt />
+    },
+    {
+      name: "Leave",
+      path: "/leave",
+      icon: <TbCalendarTime />
+    },
+    {
+      name: "Department",
+      path: "/department",
+      icon: <MdOutlineApartment />
+    },
+    {
+      name: "Feedback",
+      path: "/feedback",
+      icon: <MdFeedback />
+    },
+    {
+      name: "Settings",
+      path: "/UserInfo",
+      icon: <FiSettings />
     }
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [windowWidth])
-
-  const [mobileSidebar, setMobileSidebar] = useState(false)
-  function handelActive(btnName) {
-    setActive(prev => ({
-      ...prev,
-      btn: btnName
-    }));
+    ]
   }
 
-  function handelMobileSidebar() {
+  const menuItems = [
+    {
+      name: "Dashboard",
+      path: "/dashBoard",
+      icon: <LuLayoutDashboard />
+    },
+    {
+      name: "Employee",
+      path: "/allEmp",
+      icon: <HiOutlineUsers />
+    },
+    {
+      name: "Department",
+      path: "/addDepartment",
+      icon: <MdOutlineApartment />
+    },
+    {
+      name: "Manager",
+      path: "/addManager",
+      icon: <RiUserStarLine />
+    },
+    {
+      name: "Leave Request",
+      path: "/allLeaveReq",
+      icon: <TbCalendarTime />
+    },
+    {
+      name: "Settings",
+      path: "/UserInfo",
+      icon: <FiSettings />
+    }
+  ];
 
+
+  /* =====================================================
+     NAVIGATION
+  ===================================================== */
+
+  const handleNavigation = (path) => {
+
+    navigate(path);
+
+    // Close mobile menu after navigation
+    setMobileSidebar(false);
+  };
+
+
+  /* =====================================================
+     MOBILE MENU
+  ===================================================== */
+
+  const handelMobileSidebar = () => {
     setMobileSidebar(prev => !prev);
-  }
-
-  const SlidebarAnimation = {
-    "opacity": "1",
-    "transition": "all 1s ease"
-  }
-
+  };
 
 
   return (
-    <div className='SiderbarMain'>
 
-      {
-        windowWidth > 900 ? (<>
-          <div className="SideBarOuter">
-            <div className="SidebarTitle">
-              <h1> <RiTeamLine className='DashboarIcon' /> EMP System</h1>
-            </div>
+    <div className="SiderbarMain">
 
-            <div className="SidebarActions">
-              <ul>
-                <li style={btn == "dashboard" ? ButtonOnActive : {}}
-                  onClick={() => { navigate("/dashboard"), handelActive("dashboard") }} >
-                  <LuLayoutDashboard className='DashboarIcon' /> Dashboard
+
+      {/* =================================================
+                DESKTOP SIDEBAR
+            ================================================= */}
+
+      <div className="SideBarOuter">
+
+
+        {/* ---------------- TITLE ---------------- */}
+
+        <div className="SidebarTitle">
+
+          <h1>
+
+            <RiTeamLine className="DashboarIcon" />
+
+            EMP System
+
+          </h1>
+
+        </div>
+
+
+        {/* ---------------- MENU ---------------- */}
+
+        <div className="SidebarActions">
+
+          <ul>
+
+            {Data[Role].map((item) => {
+
+              const isActive =
+                location.pathname === item.path;
+
+              return (
+
+                <li
+                  key={item.name}
+                  className={
+                    isActive
+                      ? "activeMenu"
+                      : ""
+                  }
+                  onClick={() =>
+                    handleNavigation(item.path)
+                  }
+                >
+
+                  <span className="DashboarIcon">
+
+                    {item.icon}
+
+                  </span>
+
+                  <span>
+
+                    {item.name}
+
+                  </span>
+
                 </li>
-                <li style={btn == "employee" ? ButtonOnActive : {}}
-                  onClick={() => { navigate("/allEmp"), handelActive("employee") }} >
-                  < HiOutlineUsers className='DashboarIcon' />  Employee
-                </li>
-                <li style={btn == "department" ? ButtonOnActive : {}} onClick={() => { navigate("/addDepartment"), handelActive("department") }} > <MdOutlineApartment className='DashboarIcon' /> Department</li>
-                <li style={btn == "manager" ? ButtonOnActive : {}} onClick={() => { navigate('/addManager'), handelActive("manager") }} >
-                  <RiUserStarLine className='DashboarIcon' /> Manager
-                </li>
-                <li style={btn == "leaveRequest" ? ButtonOnActive : {}} onClick={() => { navigate('/allLeaveReq'), handelActive("leaveRequest") }} >
-                  <TbCalendarTime className='DashboarIcon' /> Leave Request</li>
-                <li style={btn == "settings" ? ButtonOnActive : {}} onClick={() => { navigate('/UserInfo'), handelActive("settings") }} >
-                  <FiSettings className='DashboarIcon' /> Settings</li>
-              </ul>
-            </div>
 
-          </div>
-          <img src={SidebarImg1} alt="" width={"200px"} />
-        </>) : <>
+              );
 
-          <div className="MobileSidebarOuter">
+            })}
 
-            <div className="MsideBarLOGO" onClick={handelMobileSidebar}>
-              <GiHamburgerMenu></GiHamburgerMenu>
-              {/* <RiTeamLine className='MobileLogo' /> */}
-            </div>
+          </ul>
 
-            <h1>EMP System</h1>
-            {
-              mobileSidebar ? (<>
-                <div className="MobileSidebarActions" >
-                  <ul style={mobileSidebar ? SlidebarAnimation : {}}>
-                    <li onClick={() => {
-                      navigate("/dashBoard")
-                      handelMobileSidebar()
-                    }} >
-                      <LuLayoutDashboard className='DashboarIcon' />
-                      Dashboard</li>
-                    <li>
-                      < HiOutlineUsers className='DashboarIcon' />
-                      Employee</li>
-                    <li onClick={() => {
-                      navigate("/addDepartment"),
-                        handelMobileSidebar()
-                    }}>
-                      <MdOutlineApartment className='DashboarIcon' />
-                      Department</li>
-                    <li >                 <RiUserStarLine className='DashboarIcon' />
-                      Manager</li>
-                    <li >
-                      <TbCalendarTime className='DashboarIcon' />
-                      Leave Request</li>
-                    <li >
-                      <FiSettings className='DashboarIcon' />
-                      Settings</li>
-                  </ul>
-                </div>
-              </>) : <></>
+        </div>
+
+      </div>
+
+
+      {/* =================================================
+                SIDEBAR IMAGE
+            ================================================= */}
+
+      <img
+        src={SidebarImg1}
+        alt="Employee Management"
+      />
+
+
+      {/* =================================================
+                MOBILE NAVBAR
+            ================================================= */}
+
+      <div className="MobileSidebarOuter">
+
+
+        {/* ---------------- HAMBURGER ---------------- */}
+
+        <div
+          className="MsideBarLOGO"
+          onClick={handelMobileSidebar}
+        >
+
+          <GiHamburgerMenu />
+
+        </div>
+
+
+        {/* ---------------- MOBILE TITLE ---------------- */}
+
+        <h1>
+          EMP System
+        </h1>
+
+
+        {/* =================================================
+                    MOBILE MENU
+                ================================================= */}
+
+        <div className="MobileSidebarActions">
+
+          <ul
+            className={
+              mobileSidebar
+                ? "mobileMenuOpen"
+                : ""
             }
+          >
 
-          </div>
+            {menuItems.map((item) => {
 
-        </>
-      }
+              const isActive =
+                location.pathname === item.path;
+
+              return (
+
+                <li
+                  key={item.name}
+                  className={
+                    isActive
+                      ? "activeMenu"
+                      : ""
+                  }
+                  onClick={() =>
+                    handleNavigation(item.path)
+                  }
+                >
+
+                  <span className="DashboarIcon">
+
+                    {item.icon}
+
+                  </span>
+
+                  <span>
+
+                    {item.name}
+
+                  </span>
+
+                </li>
+
+              );
+
+            })}
+
+          </ul>
+
+        </div>
+
+      </div>
+
     </div>
-  )
-}
+  );
+};
 
 export default Sidebar;

@@ -1,490 +1,1406 @@
+/* =========================================================
+   GOOGLE FONTS
+========================================================= */
+
 @import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700;800&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 * {
-    padding: 0;
     margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    padding: 0;
 
+    box-sizing: border-box;
+
+    font-family: "Poppins", sans-serif;
 }
 
+
+
+
+/* =========================================================
+   MAIN
+========================================================= */
 
 .loginMain {
+
     width: 100%;
-    height: 100vh;
+
+    min-height: 100vh;
+
     position: relative;
-    /* border: 3px solid black; */
+
+    background: #ffffff;
+
+    overflow-x: hidden;
 }
 
-.loginMain>.loginOuter {
-    width: 100%;
-    height: 100%;
-    /* background-color: aqua; */
-    /* background-color:  #EFF5FF; */
 
+/* =========================================================
+   OUTER
+========================================================= */
+
+.loginOuter {
+
+    width: 100%;
+
+    min-height: 100vh;
 }
 
-.loginMain>.loginOuter>.loginInner {
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.loginInner {
+
     width: 100%;
-    height: 100%;
-    /* background-color: rgba(156, 225, 255, 0.253); */
+
+    min-height: 100vh;
+
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+
+    align-items: stretch;
+
+    justify-content: space-between;
 }
 
 
+/* =========================================================
+   LEFT SIDE
+========================================================= */
 
+.LoginLeft {
 
+    min-height: 100vh;
 
-
-
-/* Login Left Side Part  */
-.loginMain>.loginOuter>.loginInner>.LoginLeft {
-    height: 100%;
     width: 55%;
 
-    padding: 0px 50px;
+    padding:
+        40px clamp(30px, 5vw, 80px);
+
     display: flex;
+
     flex-direction: column;
-    align-items: start;
+
+    align-items: flex-start;
+
     justify-content: center;
-    gap: 5%;
 
+    gap: 30px;
 
+    background: #ffffff;
+
+    z-index: 2;
 }
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>.LoginTittle {
-    /* font-weight: 100; */
-    width: 600px;
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.LoginTittle {
+
+    width: min(600px, 100%);
+
     font-size: 1.2rem;
+
     line-height: 1.3;
+
     text-transform: capitalize;
+
+    font-family: "Chango", sans-serif;
+}
+
+
+.LoginTittle h1 {
+
+    margin-bottom: 15px;
+
     font-family: "Chango", sans-serif;
 
-    h1 {
-        margin-bottom: 15px;
-    }
+    font-size: clamp(25px,
+            2.5vw,
+            40px);
 
-    P {
+    line-height: 1.2;
 
-        font-weight: 800;
-        font-family: "Life Savers", serif;
-    }
+    color: #111827;
 }
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form {
 
-    width: 70%;
+.LoginTittle p {
+
+    font-weight: 800;
+
+    font-family: "Life Savers", serif;
+
+    font-size: clamp(13px,
+            1.1vw,
+            17px);
+
+    color: #374151;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.LoginTittle .loginError {
+
+    margin-top: 8px;
+
+    color: #dc2626;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.LoginLeft form {
+
+    width: min(70%, 600px);
+
     display: flex;
+
     flex-direction: column;
-    gap: 40px;
-    padding: 15px;
 
+    gap: 25px;
 
+    padding: 0;
 }
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form .error {
-    color: red;
-}
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput>input,
-.PasswordInput>input {
-    padding: 10px;
+/* =========================================================
+   INPUT CONTAINER
+========================================================= */
+
+.UserNameInput,
+.PasswordInput {
+
     width: 100%;
-    /* background-color: red; */
+
+    height: 68px;
+
+    border:
+        2px solid #D1D5DB;
+
+    background-color: #ffffff;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    gap: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .2s ease;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+.UserNameInput:focus-within,
+.PasswordInput:focus-within {
+
+    border-color: #006eff;
+
+    box-shadow:
+        0 0 0 4px rgba(0, 110, 255, .10);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ERROR INPUT
+========================================================= */
+
+.UserNameInput.error,
+.PasswordInput.error {
+
+    border-color:
+        rgba(255, 0, 0, .55);
+
+    background:
+        rgba(255, 0, 0, .015);
+}
+
+
+/* =========================================================
+   INPUT ICON
+========================================================= */
+
+.LoginIcons {
+
+    flex-shrink: 0;
+
+    font-size: 27px;
+
+    color:
+        rgba(0, 0, 0, .677);
+
+    transition:
+        color .25s ease;
+}
+
+
+.UserNameInput:focus-within .LoginIcons,
+.PasswordInput:focus-within .LoginIcons {
+
+    color: #006eff;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.UserNameInput input,
+.PasswordInput input {
+
+    padding: 10px;
+
+    width: 100%;
+
     height: 50px;
 
     border: none;
-    font-size: 1.2rem;
-    border: none;
-}
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form input:focus {
-    border: none;
     outline: none;
+
+    font-size: 1rem;
+
+    color: #111827;
+
+    background: transparent;
 }
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput,
-.PasswordInput {
-    width: 100%;
-    /* background-color: blueviolet; */
-    border: 2px solid #D1D5DB;
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    height: 70px;
-    gap: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+.UserNameInput input::placeholder,
+.PasswordInput input::placeholder {
+
+    color: #9CA3AF;
+
+    font-size: .95rem;
 }
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInputerror,
-.PasswordInputerror {
-    width: 100%;
-    /* background-color: blueviolet; */
-    border: 2px solid #ff00008b;
 
-    padding: 10px;
-    border-radius: 10px;
-    height: 70px;
-    gap: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* =========================================================
+   PASSWORD EYE BUTTON
+========================================================= */
 
-    input {
-        padding: 10px;
-        width: 100%;
-        /* background-color: red; */
-        height: 50px;
+.PasswordEyeButton {
 
-        border: none;
-        font-size: 1.2rem;
-        border: none;
-    }
+    width: 40px;
 
-    .LoginIcons {
-        font-size: 30px;
-        color: rgba(249, 3, 3, 0.677);
-    }
-}
+    height: 40px;
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput:active,
-.PasswordInput:active {
-    border: 2px solid rgb(0, 0, 0);
-}
+    flex-shrink: 0;
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form .LoginIcons {
-    font-size: 30px;
-    color: rgba(0, 0, 0, 0.677);
-}
-
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form .PasswordEye {
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* background-color: red; */
-}
-
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails>p {
-    color: rgba(0, 0, 255, 0.641);
-    /* text-decoration: underline; */
-    cursor: pointer;
-
-}
-
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails>p:hover {
-    color: rgb(0, 0, 255);
-    transition: all 500ms ease-in-out;
-    text-decoration: underline;
-
-}
-
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails>.Remember {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-
-    p {
-        cursor: pointer;
-        font-weight: 500;
-    }
-
-    input {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>button {
-    height: 65px;
-    background-color: #006eff;
-    text-align: center;
-    border-radius: 10px;
     border: none;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
+
+    background: transparent;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    border-radius: 8px;
+
+    transition:
+        background .2s ease;
+}
+
+
+.PasswordEyeButton:hover {
+
+    background:
+        rgba(0, 0, 0, .05);
+}
+
+
+.PasswordEye {
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    color: #374151;
+}
+
+
+/* =========================================================
+   ADDITIONAL DETAILS
+========================================================= */
+
+.AditionalDetails {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+/* =========================================================
+   REMEMBER ME
+========================================================= */
+
+.Remember {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    color: #374151;
+
+    font-size: .9rem;
+
+    user-select: none;
+}
+
+
+.Remember input {
+
+    width: 18px;
+
+    height: 18px;
+
+    accent-color: #006eff;
+
     cursor: pointer;
 }
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>form>button:active {
-    background-color: #006eff90;
-    /* color: black; */
-}
 
-/*   font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal; */
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
 
-.loginMain>.loginOuter>.loginInner>.LoginLeft>.DemoAccount {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    border: 2px solid rgba(0, 0, 0, 0.366);
-    padding: 20px;
-    font-style: normal;
-    box-shadow: 0px 15px 40px rgba(0, 0, 0, .08);
+.ForgotPassword {
 
-    h2 {
-        text-transform: uppercase;
-        margin-bottom: 10px;
-        /* text-decoration: underline; */
-    }
+    border: none;
 
-    p {
-        font-weight: 500;
-        margin: 5px;
-    }
+    background: transparent;
 
-    .admin {
-        color: red;
-    }
+    color:
+        rgba(0, 0, 255, .641);
 
-    .manager {
-        color: green;
-    }
+    cursor: pointer;
 
-    .employee {
-        color: purple;
-    }
+    font-size: .9rem;
+
+    padding: 3px;
+
+    transition:
+        all .25s ease;
 }
 
 
-/* Login Right Side part */
-.loginMain>.loginOuter>.loginInner>.LoginRight {
-    height: 100%;
-    width: 45%;
-    background-color: #d4e6fd;
-    border-radius: 0% 0px 0px 0px;
-    position: relative;
+.ForgotPassword:hover {
+
+    color: blue;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+.LoginSubmitButton {
+
+    width: 100%;
+
+    height: 62px;
+
+    background:
+        linear-gradient(90deg,
+            #006eff,
+            #1683ff);
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    border: none;
+
+    color: white;
+
+    font-size: 1.05rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
+    gap: 12px;
+
+    box-shadow:
+        0 8px 20px rgba(0, 110, 255, .18);
+
+    transition:
+        transform .2s ease,
+        box-shadow .25s ease,
+        opacity .25s ease;
 }
 
-.loginMain>.loginOuter>.loginInner>.LoginRight>.MainLoginImg {
-    width: 800px;
+
+.LoginSubmitButton:hover:not(:disabled) {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(0, 110, 255, .25);
 }
 
-.loginMain>.loginOuter>.loginInner>.LoginRight>.rectangleImg {
+
+.LoginSubmitButton:active:not(:disabled) {
+
+    transform: translateY(0);
+
+    box-shadow:
+        0 5px 12px rgba(0, 110, 255, .15);
+}
+
+
+.LoginSubmitButton:disabled {
+
+    cursor: not-allowed;
+
+    opacity: .7;
+}
+
+
+/* =========================================================
+   BUTTON ICON
+========================================================= */
+
+.LoginArrow {
+
+    font-size: 14px;
+
+    transition:
+        transform .25s ease;
+}
+
+
+.LoginSubmitButton:hover .LoginArrow {
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   LOADING SPINNER
+========================================================= */
+
+.LoginSpinner {
+
+    font-size: 18px;
+
+    animation:
+        loginSpin .8s linear infinite;
+}
+
+
+@keyframes loginSpin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   DEMO ACCOUNTS
+========================================================= */
+
+.DemoAccount {
+
+    font-family: "Raleway", sans-serif;
+
+    font-optical-sizing: auto;
+
+    font-weight: 800;
+
+    border:
+        2px solid rgba(0, 0, 0, .366);
+
+    padding: 18px 20px;
+
+    font-style: normal;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, .08);
+
+    border-radius: 8px;
+
+    width: min(70%, 600px);
+
+    background: #ffffff;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.DemoAccount:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, .11);
+}
+
+
+.DemoAccount h2 {
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+
+    font-size: 18px;
+}
+
+
+.DemoAccount p {
+
+    font-weight: 500;
+
+    margin: 5px 0;
+
+    font-size: 13px;
+}
+
+
+.DemoAccount p span {
+
+    font-weight: 600;
+}
+
+
+.DemoAccount .admin {
+
+    color: red;
+}
+
+
+.DemoAccount .manager {
+
+    color: green;
+}
+
+
+.DemoAccount .employee {
+
+    color: purple;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.LoginRight {
+
+    min-height: 100vh;
+
+    width: 45%;
+
+    background-color: #d4e6fd;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN LOGIN IMAGE
+========================================================= */
+
+.MainLoginImg {
+
+    width:
+        min(800px, 90%);
+
+    max-width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+
+    z-index: 2;
+
+    animation:
+        loginImageFloat 5s ease-in-out infinite;
+}
+
+
+@keyframes loginImageFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+/* =========================================================
+   DECORATIVE IMAGE
+========================================================= */
+
+.rectangleImg {
 
     rotate: 180deg;
-    z-index: -1;
+
+    z-index: 1;
+
     position: absolute;
-    bottom: 0%;
-    right: 0%;
+
+    bottom: 0;
+
+    right: 0;
+
+    width: 100%;
+
+    max-width: 800px;
+
+    opacity: .9;
+
+    pointer-events: none;
 }
 
 
+/* =========================================================
+   1291px
+========================================================= */
 
+@media (max-width: 1291px) {
 
-@media (max-width:1291px) {
-    .loginMain>.loginOuter>.loginInner>.LoginRight>.MainLoginImg {
-        width: 600px;
+    .LoginLeft {
+
+        padding:
+            35px 45px;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form {
-        /* background-color: red; */
+
+    .LoginLeft form {
+
         width: 100%;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>.LoginTittle {
+
+    .DemoAccount {
+
         width: 100%;
-        text-wrap: wrap;
     }
+
+
+    .MainLoginImg {
+
+        width:
+            min(600px, 95%);
+    }
+
 }
 
-@media (max-width:1061px) {
-    .loginMain>.loginOuter>.loginInner>.LoginRight>.MainLoginImg {
-        width: 500px;
+
+/* =========================================================
+   1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .LoginLeft {
+
+        width: 55%;
+
+        padding:
+            30px 35px;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>.LoginTittle {
-        h1 {
-            font-size: 30px;
-        }
 
-        p {
-            /* color: red; */
-            font-size: 15px;
-        }
+    .LoginRight {
+
+        width: 45%;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form>button {
-        height: 50px;
+
+    .LoginTittle h1 {
+
+        font-size: 29px;
     }
+
+
+    .LoginTittle p {
+
+        font-size: 14px;
+    }
+
+
+    .MainLoginImg {
+
+        width:
+            min(500px, 95%);
+    }
+
 }
 
-@media (max-width:891px) {
+
+/* =========================================================
+   891px
+   TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 891px) {
+
     .loginMain {
-        height: fit-content;
-        padding-top: 5%;
+
+        min-height: 100vh;
+
+        padding: 0;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginRight>.MainLoginImg {
-        width: 800px;
-    }
 
-    .loginMain>.loginOuter>.loginInner {
+    .loginInner {
+
+        min-height: 100vh;
+
         flex-direction: column;
 
+        justify-content: flex-start;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft {
-        gap: 10px;
-        height: fit-content;
+
+    /* -------------------------------
+       LEFT
+    ------------------------------- */
+
+    .LoginLeft {
+
         width: 100%;
-        margin-bottom: 20px;
+
+        min-height: auto;
+
+        padding:
+            45px 30px 35px;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 25px;
+
+        order: 1;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginRight {
+
+    .LoginTittle {
+
+        width: min(600px, 100%);
+
+        text-align: center;
+    }
+
+
+    .LoginTittle h1 {
+
+        font-size:
+            clamp(25px, 5vw, 34px);
+    }
+
+
+    .LoginTittle p {
+
+        font-size: 14px;
+    }
+
+
+    .LoginTittle .loginError {
+
+        text-align: center;
+    }
+
+
+    .LoginLeft form {
+
+        width:
+            min(600px, 100%);
+
+        gap: 20px;
+    }
+
+
+    .DemoAccount {
+
+        width:
+            min(600px, 100%);
+    }
+
+
+    /* -------------------------------
+       RIGHT
+    ------------------------------- */
+
+    .LoginRight {
+
+        width: 100%;
+
+        min-height:
+            380px;
+
+        height: 380px;
+
+        order: 2;
+    }
+
+
+    .MainLoginImg {
+
+        width:
+            min(700px, 90%);
+
+        max-height: 350px;
+    }
+
+
+    .rectangleImg {
+
+        width: 100%;
+
+        max-width: none;
+    }
+
+}
+
+
+/* =========================================================
+   625px
+========================================================= */
+
+@media (max-width: 625px) {
+
+    .LoginLeft {
+
+        padding:
+            35px 20px 30px;
+    }
+
+
+    .LoginRight {
+
+        min-height: 320px;
+
+        height: 320px;
+    }
+
+
+    .MainLoginImg {
+
+        width:
+            min(500px, 95%);
+
+        max-height: 300px;
+    }
+
+
+    .LoginTittle h1 {
+
+        font-size: 27px;
+    }
+
+
+    .LoginTittle p {
+
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   539px
+========================================================= */
+
+@media (max-width: 539px) {
+
+    .LoginLeft {
+
+        padding:
+            30px 18px;
+    }
+
+
+    .LoginLeft form {
+
         width: 100%;
     }
 
+
+    .UserNameInput,
+    .PasswordInput {
+
+        height: 62px;
+
+        padding:
+            8px 12px;
+    }
+
+
+    .UserNameInput input,
+    .PasswordInput input {
+
+        height: 45px;
+
+        font-size: .95rem;
+    }
+
+
+    .LoginIcons {
+
+        font-size: 24px;
+    }
+
+
+    .PasswordEye {
+
+        font-size: 22px;
+    }
+
+
+    .LoginSubmitButton {
+
+        height: 58px;
+    }
+
+
+    .DemoAccount {
+
+        padding:
+            15px;
+    }
+
+
+    .DemoAccount h2 {
+
+        font-size: 16px;
+    }
+
+
+    .DemoAccount p {
+
+        font-size: 12px;
+    }
+
+
+    .LoginRight {
+
+        min-height: 290px;
+
+        height: 290px;
+    }
+
+
+    .MainLoginImg {
+
+        width:
+            min(450px, 100%);
+    }
+
 }
 
-@media (max-width:625px) {
-    .loginMain>.loginOuter>.loginInner>.LoginRight>.MainLoginImg {
-        width: 500px;
+
+/* =========================================================
+   466px
+========================================================= */
+
+@media (max-width: 466px) {
+
+    .LoginLeft {
+
+        padding:
+            25px 15px;
     }
+
+
+    .LoginTittle h1 {
+
+        font-size: 23px;
+
+        line-height: 1.25;
+    }
+
+
+    .LoginTittle p {
+
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+
+    .LoginLeft form {
+
+        gap: 18px;
+    }
+
+
+    .AditionalDetails {
+
+        font-size: 12px;
+    }
+
+
+    .Remember {
+
+        font-size: 12px;
+    }
+
+
+    .Remember input {
+
+        width: 16px;
+
+        height: 16px;
+    }
+
+
+    .ForgotPassword {
+
+        font-size: 12px;
+    }
+
+
+    .LoginSubmitButton {
+
+        height: 54px;
+
+        font-size: .95rem;
+    }
+
+
+    .DemoAccount {
+
+        margin-top: 5px;
+
+        padding: 12px;
+    }
+
+
+    .DemoAccount h2 {
+
+        font-size: 15px;
+
+        margin-bottom: 7px;
+    }
+
+
+    .DemoAccount p {
+
+        font-size: 11px;
+
+        margin: 4px 0;
+    }
+
+
+    .LoginRight {
+
+        min-height: 260px;
+
+        height: 260px;
+    }
+
+
+    .MainLoginImg {
+
+        width:
+            min(400px, 100%);
+    }
+
 }
 
-@media (max-width:539px) {
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form {
-        padding: 0%;
-    }
+/* =========================================================
+   380px
+========================================================= */
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft {
-        padding: 0% 20px;
-    }
-}
+@media (max-width: 380px) {
 
-@media (max-width:466px) {
-    .loginMain>.loginOuter>.loginInner>.LoginRight>.MainLoginImg {
-        width: 400px;
+    .LoginLeft {
+
+        padding:
+            20px 12px;
     }
 
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>.DemoAccount {
+    .LoginTittle h1 {
+
+        font-size: 21px;
+    }
+
+
+    .LoginTittle p {
+
+        font-size: 11px;
+    }
+
+
+    .UserNameInput,
+    .PasswordInput {
+
+        height: 55px;
+
+        padding:
+            6px 10px;
+    }
+
+
+    .UserNameInput input,
+    .PasswordInput input {
+
+        height: 42px;
+
+        font-size: .85rem;
+    }
+
+
+    .LoginIcons {
+
+        font-size: 21px;
+    }
+
+
+    .PasswordEye {
+
+        font-size: 20px;
+    }
+
+
+    .AditionalDetails {
+
+        gap: 5px;
+    }
+
+
+    .LoginSubmitButton {
+
+        height: 50px;
+
+        font-size: .9rem;
+    }
+
+
+    .DemoAccount {
 
         padding: 10px;
-        margin: 20px 0px;
-
-        h2 {
-
-            margin-bottom: 6px;
-            /* text-decoration: underline; */
-        }
-
-        p {
-
-            margin: 3.5px;
-        }
-
-
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>.LoginTittle {
-        h1 {
-            font-size: 23px;
-        }
 
-        p {
-            /* color: red; */
-            font-size: 15px;
-        }
+    .DemoAccount h2 {
+
+        font-size: 13px;
     }
+
+
+    .DemoAccount p {
+
+        font-size: 9px;
+    }
+
+
+    .LoginRight {
+
+        min-height: 220px;
+
+        height: 220px;
+    }
+
+
+    .MainLoginImg {
+
+        width: 300px;
+    }
+
 }
 
 
+/* =========================================================
+   320px
+========================================================= */
 
+@media (max-width: 320px) {
 
+    .LoginLeft {
 
-
-@media (max-width:320px) {
-    .loginMain>.loginOuter>.loginInner>.LoginRight>.MainLoginImg {
-        width: 200px;
+        padding:
+            18px 10px;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>.DemoAccount {
 
-        width: 100%;
-        padding: 10px;
-        margin: 20px 0px;
-        font-size: 0.6rem;
+    .LoginTittle h1 {
 
-        h2 {
-
-            margin-bottom: 6px;
-            /* text-decoration: underline; */
-        }
-
-        p {
-
-            margin: 3.5px;
-        }
-
-
+        font-size: 19px;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form {
-        gap: 30px;
-        margin-top: 20px;
+
+    .LoginTittle p {
+
+        font-size: 10px;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput,
+
+    .UserNameInput,
     .PasswordInput {
 
         height: 50px;
-        gap: 10px;
-
-    }
-
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form>.UserNameInput>input,
-    .PasswordInput>input {
-        height: 40px;
-        /* background-color: red; */
-    }
-
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails p {
-        font-size: 0.8rem;
-    }
-
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form>.AditionalDetails>.Remember>input {
-        height: 15px;
-
-    }
-
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form>button {
-        height: 30px;
-        font-size: 0.7rem;
     }
 
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form .LoginIcons {
-        font-size: 20px;
+    .UserNameInput input,
+    .PasswordInput input {
 
+        height: 38px;
+
+        font-size: .8rem;
     }
 
-    .loginMain>.loginOuter>.loginInner>.LoginLeft>form .PasswordEye {
-        font-size: 20px;
 
+    .LoginIcons {
+
+        font-size: 19px;
     }
 
+
+    .PasswordEye {
+
+        font-size: 18px;
+    }
+
+
+    .AditionalDetails {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+
+
+    .LoginSubmitButton {
+
+        height: 45px;
+
+        font-size: .8rem;
+    }
+
+
+    .DemoAccount {
+
+        width: 100%;
+
+        padding: 8px;
+    }
+
+
+    .DemoAccount h2 {
+
+        font-size: 12px;
+    }
+
+
+    .DemoAccount p {
+
+        font-size: 8px;
+    }
+
+
+    .LoginRight {
+
+        min-height: 190px;
+
+        height: 190px;
+    }
+
+
+    .MainLoginImg {
+
+        width: 230px;
+    }
 
 }

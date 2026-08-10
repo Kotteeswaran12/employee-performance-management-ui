@@ -1,0 +1,7 @@
+.AppOuter{
+    width: 100vw;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    /* background-color: red; */
+}
