@@ -105,24 +105,24 @@ const Sidebar = () => {
     },
     {
       name: "Attendance",
-      path: "/attendance",
+      path: "/MYattendance",
       icon: <FaRegCalendarCheck />
     },
     {
       name: "Task",
-      path: "/task",
+      path: "/MYtask",
       icon: <MdOutlineTaskAlt />
     },
     {
       name: "Leave",
-      path: "/leave",
+      path: "/MYleave",
       icon: <TbCalendarTime />
     },
-    {
-      name: "Department",
-      path: "/department",
-      icon: <MdOutlineApartment />
-    },
+    // {
+    //   name: "Department",
+    //   path: "/department",
+    //   icon: <MdOutlineApartment />
+    // },
     {
       name: "Feedback",
       path: "/feedback",

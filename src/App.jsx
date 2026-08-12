@@ -16,6 +16,8 @@ import './App.css';
 import AddEmployee from './Pages/Manager/AddEmployee'
 import Task from './Pages/Manager/Task'
 import ManagerLeave from './Pages/Manager/ManagerLeave'
+import Review from './Pages/Manager/Review'
+import Department from './Pages/Manager/Department'
 const App = () => {
 
     const { pathname } = useLocation();
@@ -65,6 +67,8 @@ const App = () => {
                 <Route path='/addEmployee' element={<AddEmployee />} />
                 <Route path='/task' element={<Task />} />
                 <Route path='/leave' element={<ManagerLeave />} />
+                <Route path='/review' element={ <Review /> }/>
+                <Route path='/department' element ={<Department />}/>
 
             </Routes>
 

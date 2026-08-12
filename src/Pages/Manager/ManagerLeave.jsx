@@ -831,11 +831,13 @@ const ManagerLeave = () => {
                                         Current Status
                                     </span>
 
-                                    <span className="statusBadge pending">
+                                    <span className={`statusBadge ${selectedLeave.status}`}>
 
                                         <span className="statusDot"></span>
 
-                                        PENDING
+                                        {
+                                           selectedLeave.status
+                                        }
 
                                     </span>
 

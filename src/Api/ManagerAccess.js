@@ -56,16 +56,54 @@ export const Assigntask = (Jwt, Duedate, empCode, taskId) => {
     })
 }
 
-export const updateLeaveStatus = (Jwt , id , status) => {
-    return api.post(`/leave?id=${id}&leaveStatus=${status}` , null , {
-        headers : {
-            Authorization : `Bearer ${Jwt}`
+export const updateLeaveStatus = (Jwt, id, status) => {
+    return api.post(`/leave?id=${id}&leaveStatus=${status}`, null, {
+        headers: {
+            Authorization: `Bearer ${Jwt}`
         }
     })
 }
 
-export const getAllEmpLeave = (jwt , p=0 , s=10 ) =>{
-    return api.get(`/getEmpLeaves?page=${p}&size=${s}` , {
+export const getAllEmpLeave = (jwt, p = 0, s = 10) => {
+    return api.get(`/getEmpLeaves?page=${p}&size=${s}`, {
+        headers: {
+            Authorization: `Bearer ${jwt}`
+        }
+    })
+}
+
+export const createReview = (
+    jwt,
+    empId,
+    Quality,
+    remarks
+) => {
+    return api.post(
+        `/performanceReview/`,
+        null,
+        {
+            params: {
+                empId: empId,
+                qualityScore: Quality,
+                remarks: remarks
+            },
+            headers: {
+                Authorization: `Bearer ${jwt}`
+            }
+        }
+    );
+};
+
+export const getReviewById = (jwt, id) => {
+    return api.get(`/getReviewById/${id}`, {
+        headers: {
+            Authorization: `Bearer ${jwt}`
+        }
+    })
+}
+
+export const addFeedback = (jwt , empId , feedback)=>{
+    return api.post(`/feedback?givenTo=${empId}` , feedback , {
         headers : {
             Authorization : `Bearer ${jwt}`
         }
