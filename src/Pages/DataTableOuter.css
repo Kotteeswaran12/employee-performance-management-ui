@@ -2,8 +2,8 @@
 
 .DataTableOuter {
     width: 100px;
-  
-  padding: 20px;
+
+    padding: 20px;
 }
 
 .DataTableOuter>.LeavReqOuter {
@@ -14,19 +14,7 @@
 
 }
 
-@media (max-width:900px) {
-    .DataTableOuter {
-        width: 100vw;
-        padding: 0%;
-        margin-top: 10%;
-    }
 
-    .DataTableOuter>.LeavReqOuter {
-        margin-top: 14%;
-        width: 100%;
-        /* overflow: hidden; */
-    }
-}
 
 
 /* =========================================================
@@ -34,8 +22,8 @@
 ========================================================= */
 
 .DataTableOuter {
-    width: 100%;
-    max-width: calc(100% - 400px);
+    width: calc(100% - 400px);
+   
     box-sizing: border-box;
 }
 
@@ -907,6 +895,20 @@
         font-size: 12px;
     }
 
+}
+
+@media (max-width:900px) {
+    .DataTableOuter {
+        width: 100%;
+        padding: 0%;
+        margin-top: 10%;
+    }
+
+    .DataTableOuter>.LeavReqOuter {
+        margin-top: 14%;
+        width: 100%;
+        /* overflow: hidden; */
+    }
 }
 
 

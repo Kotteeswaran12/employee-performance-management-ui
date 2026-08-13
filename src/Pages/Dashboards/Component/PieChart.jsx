@@ -11,16 +11,18 @@ const COLORS = [
 
 
 
-export default function EmployeeChart({ datas }) {
+export default function EmployeeChart({ datas  ,Tittle}) {
 
   // console.log(datas);
-  const finalData = datas.map((datam) =>
+  const finalData = datas.map((datam) =>(
+    
     datam.map((d) => ({
       name: d[0],
       value: d[1]
     
       
     }))
+  )
   );
 
   const totalEMP = finalData

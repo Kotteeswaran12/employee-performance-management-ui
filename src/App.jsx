@@ -17,7 +17,11 @@ import AddEmployee from './Pages/Manager/AddEmployee'
 import Task from './Pages/Manager/Task'
 import ManagerLeave from './Pages/Manager/ManagerLeave'
 import Review from './Pages/Manager/Review'
+import Attendance from './Pages/Employee/Attendance'
 import Department from './Pages/Manager/Department'
+import MyTask from './Pages/Employee/MyTask';
+import MyFeedback from './Pages/Employee/MyFeedback'
+import MyLeave from './Pages/Employee/MyLeave'
 const App = () => {
 
     const { pathname } = useLocation();
@@ -67,8 +71,33 @@ const App = () => {
                 <Route path='/addEmployee' element={<AddEmployee />} />
                 <Route path='/task' element={<Task />} />
                 <Route path='/leave' element={<ManagerLeave />} />
-                <Route path='/review' element={ <Review /> }/>
-                <Route path='/department' element ={<Department />}/>
+                <Route path='/review' element={<Review />} />
+                <Route path='/department' element={<Department />} />
+
+
+
+                {/* Employee Routes */}
+                <Route path='/MYattendance' element={
+                    <ProtectedRoute allowedRole={"EMPLOYEE"}>
+                        <Attendance></Attendance>
+                    </ProtectedRoute>
+                } />
+                <Route path='/MYtask' element={
+                    <ProtectedRoute allowedRole={"EMPLOYEE"}>
+                        <MyTask></MyTask>
+                    </ProtectedRoute>
+                } />
+                <Route path='/feedback' element={
+                    <ProtectedRoute allowedRole={"EMPLOYEE"}>
+                        <MyFeedback></MyFeedback>
+                    </ProtectedRoute>
+                } />
+                <Route path='/MYleave' element={
+                    <ProtectedRoute allowedRole={"EMPLOYEE"}>
+                        <MyLeave></MyLeave>
+                    </ProtectedRoute>
+                } />
+
 
             </Routes>
 

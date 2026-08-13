@@ -140,10 +140,7 @@ const Login = () => {
             setErrorMessage(false);
 
 
-            console.log("Login Request:", {
-                username,
-                password
-            });
+            
 
 
             // ====================================
@@ -156,7 +153,6 @@ const Login = () => {
             );
 
 
-            console.log("Login Response:", response.data);
 
 
             // ====================================

@@ -1,344 +1,739 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 
-/* {
-
-    display: flex;
-    background-color: #F8FAFC;
-} */
+/* =========================================================
+   DASHBOARD ROOT
+========================================================= */
 
 .adminDashInner {
+
     width: calc(100% - 400px);
+
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding-bottom: 30px;
+
+    background: #f8fafc;
+
+    color: #172033;
+
+    font-family: "Poppins", sans-serif;
+
 }
 
-.adminDashInner>.overAll {
-    padding: 20px 20px;
+
+/* =========================================================
+   OVERALL CARDS
+========================================================= */
+
+.adminDashInner > .overAll {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 20px;
+
     display: flex;
-    /* flex-wrap: wrap; */
-    align-items: center;
+
+    align-items: stretch;
+
     justify-content: space-evenly;
-    gap: 20px;
-    width: 100%;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
 
 }
-.adminDashInner>.overAll {
-    .Parts {
-        display: flex;
-
-        align-items: center;
-        justify-content: space-evenly;
-        width: 300px;
-        height: 200px;
-        /* color: #2563EB; */
-
-        box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
-        border-radius: 10px;
-
-        .iconpendingLeave , iconpendingLeaves  , .icontaskScore{
-            border-radius: 50%;
-            width: 80px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #F97316;
-            background: #ff7c0157;
-        }
-
-        .icontotalDepartments  , .iconpendingReviews ,
-        .iconattendaceScore{
-            border-radius: 50%;
-            width: 80px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #22C55E;
-            background: #DCFCE7;
-        }
-
-        .icontotalManagers  , .icontaskAssigned , .iconfeedbackScore{
-            border-radius: 50%;
-            width: 80px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #8B5CF6;
-            background: #F3E8FF;
-        }
-
-        .icontotalEmployees ,  .iconteamSize , .iconoverAllScore{
-            border-radius: 50%;
-            width: 80px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #2563EB;
-            background: #DBEAFE;
-        }
-
-        .iconcompletedTask , .iconpendingTask {
-            border-radius: 50%;
-            width: 80px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-color: rgba(255, 0, 0, 0.205);
-            color: rgba(255, 0, 0, 0.658);
-        }
-    }
 
 
-    .dashboarIcons {
-        font-size: 45px;
+/* =========================================================
+   INDIVIDUAL CARD
+========================================================= */
 
-    }
+.adminDashInner > .overAll .Parts {
 
-    .results {
-        text-transform: capitalize;
-        height: 100%;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-    }
-}
+    width: 300px;
 
-.adminDashInner>.additionDetails {
-    width: 100%;
+    min-height: 170px;
+
+    flex: 1 1 250px;
+
+    max-width: 340px;
+
+    box-sizing: border-box;
+
     display: flex;
-    justify-content: space-between;
-    height: fit-content;
-    /* background-color: red; */
-    padding: 10px 20px;
 
+    align-items: center;
 
+    justify-content: center;
 
-    .leaveRequest {
-        width: 850px;
-        height: 100%;
-        /* background-color: yellowgreen; */
-        /* box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151); */
-        border-radius: 10px;
-    }
+    gap: 25px;
+
+    padding: 22px;
+
+    border: 1px solid #e9edf3;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 4px 18px rgba(23, 32, 51, 0.055);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+
 }
 
-.adminDashInner>.Task {
-    height: 240px;
-    width: 100%;
-    /* background-color: #8B5CF6; */
+
+.adminDashInner > .overAll .Parts:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #dce3ed;
+
+    box-shadow:
+        0 10px 28px rgba(23, 32, 51, 0.09);
+
+}
+
+
+/* =========================================================
+   ICON BASE
+========================================================= */
+
+.adminDashInner > .overAll .Parts > div[class^="icon"] {
+
+    width: 72px;
+
+    height: 72px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+}
+
+
+/* =========================================================
+   ICON COLORS
+   Existing palette preserved
+========================================================= */
+
+.adminDashInner > .overAll
+.iconpendingLeave,
+.adminDashInner > .overAll
+.iconpendingLeaves,
+.adminDashInner > .overAll
+.icontaskScore {
+
+    color: #F97316;
+
+    background: #ff7c0157;
+
+}
+
+
+.adminDashInner > .overAll
+.icontotalDepartments,
+.adminDashInner > .overAll
+.iconpendingReviews,
+.adminDashInner > .overAll
+.iconattendaceScore {
+
+    color: #22C55E;
+
+    background: #DCFCE7;
+
+}
+
+
+.adminDashInner > .overAll
+.icontotalManagers,
+.adminDashInner > .overAll
+.icontaskAssigned,
+.adminDashInner > .overAll
+.iconfeedbackScore {
+
+    color: #8B5CF6;
+
+    background: #F3E8FF;
+
+}
+
+
+.adminDashInner > .overAll
+.icontotalEmployees,
+.adminDashInner > .overAll
+.iconteamSize,
+.adminDashInner > .overAll
+.iconoverAllScore {
+
+    color: #2563EB;
+
+    background: #DBEAFE;
+
+}
+
+
+.adminDashInner > .overAll
+.iconcompletedTask,
+.adminDashInner > .overAll
+.iconpendingTask {
+
+    background: rgba(255, 0, 0, 0.12);
+
+    color: rgba(255, 0, 0, 0.65);
+
+}
+
+
+/* =========================================================
+   DASHBOARD ICON
+========================================================= */
+
+.adminDashInner .dashboarIcons {
+
+    font-size: 38px;
+
+}
+
+
+/* =========================================================
+   CARD RESULTS
+========================================================= */
+
+.adminDashInner .results {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    text-align: left;
+
+}
+
+
+.adminDashInner .results h5 {
+
+    margin: 0;
+
+    color: #7b8494;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    text-transform: capitalize;
+
+    white-space: nowrap;
+
     overflow: hidden;
 
+    text-overflow: ellipsis;
+
 }
 
 
-@media (max-width :1491px) {
-    .adminDashInner>.overAll {
-        flex-wrap: wrap;
+.adminDashInner .results h2 {
+
+    margin: 0;
+
+    color: #202938;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+}
+
+
+/* =========================================================
+   MAIN CONTENT AREA
+========================================================= */
+
+.adminDashInner > .additionDetails {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: stretch;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 10px 20px;
+
+}
+
+
+/* =========================================================
+   LEAVE / TASK REQUEST PANEL
+========================================================= */
+
+.adminDashInner > .additionDetails .leaveRequest {
+
+    width: 850px;
+
+    min-width: 0;
+
+    min-height: 300px;
+
+    overflow: hidden;
+
+    border: 1px solid #e7ebf1;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 4px 18px rgba(23, 32, 51, 0.045);
+
+}
+
+
+/* =========================================================
+   BOTTOM TASK SECTION
+========================================================= */
+
+.adminDashInner > .Task {
+
+    width: 100%;
+
+    min-height: 240px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    padding: 10px 20px;
+
+}
+
+
+.adminDashInner > .Task > * {
+
+    border-radius: 14px;
+
+}
+
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (max-width: 1491px) {
+
+    .adminDashInner > .overAll {
+
+        justify-content: center;
+
     }
 
-    .adminDashInner>.additionDetails {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
+
+    .adminDashInner > .overAll .Parts {
+
+        flex: 0 1 300px;
+
+    }
+
+
+    .adminDashInner > .additionDetails {
+
         flex-direction: column;
-        justify-content: space-between;
-        gap: 30px;
-        height: auto;
-        /* background-color: red; */
-        padding: 10px 20px;
 
+        gap: 20px;
 
-
-        .leaveRequest {
-            width: 100%;
-            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
-            border-radius: 10px;
-        }
     }
-}
 
-@media (max-width:1462px) {
-    .adminDashInner>.additionDetails>.leaveRequest {
+
+    .adminDashInner > .additionDetails .leaveRequest {
+
         width: 100%;
-        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.151);
+
     }
+
 }
 
-@media (max-width:1058px) {
-    .adminDashInner>.overAll {
-        flex-wrap: wrap;
 
-        .Parts {
-            display: flex;
+/* =========================================================
+   TABLET
+========================================================= */
 
-            align-items: center;
-            justify-content: space-evenly;
-            width: 300px;
-            height: 150px;
-            /* color: #2563EB; */
+@media (max-width: 1058px) {
 
-            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
-            border-radius: 10px;
-        }
+    .adminDashInner > .overAll {
+
+        padding: 16px;
+
+        gap: 14px;
+
     }
+
+
+    .adminDashInner > .overAll .Parts {
+
+        width: 280px;
+
+        min-height: 145px;
+
+        flex: 1 1 260px;
+
+    }
+
+
+    .adminDashInner > .additionDetails {
+
+        padding: 8px 16px;
+
+    }
+
+
+    .adminDashInner > .Task {
+
+        padding: 8px 16px;
+
+    }
+
 }
 
-@media (max-width:1046px) {
-    .adminDashInner>.overAll {
-        flex-wrap: wrap;
 
-        .Parts {
-            display: flex;
+/* =========================================================
+   SMALL TABLET
+========================================================= */
 
-            align-items: center;
-            justify-content: space-evenly;
-            width: 250px;
-            height: 150px;
-            /* color: #2563EB; */
-
-            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
-            border-radius: 10px;
-        }
-    }
-}
-
-@media (max-width : 900px) {
-    
+@media (max-width: 900px) {
 
     .adminDashInner {
-        width: 100vw;
-        position: relative;
+
+        width: 100%;
+
+        min-height: 100vh;
 
     }
+
+
+    .adminDashInner > .overAll {
+
+        padding: 18px;
+
+    }
+
+
+    .adminDashInner > .overAll .Parts {
+
+        max-width: none;
+
+        flex: 1 1 250px;
+
+    }
+
 }
 
-@media (max-width:659px) {
 
-    .adminDashInner>.additionDetails {
-        padding: 10px 10px;
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 659px) {
+
+    .adminDashInner > .overAll {
+
+        padding: 14px 12px;
+
+        gap: 12px;
+
     }
 
-    .adminDashInner>.overAll {
 
-        .Parts {
-            width: 250px;
-            height: 150px;
-            /* color: #2563EB; */
+    .adminDashInner > .overAll .Parts {
 
-            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
-            border-radius: 10px;
+        width: calc(50% - 6px);
 
-            .iconcompletedTask,
-            .icontotalEmployees,
-            .icontotalManagers,
-            .icontotalDepartments,
-            .iconpendingLeaves {
-                width: 70px;
-                height: 60px;
-            }
-        }
+        min-height: 125px;
+
+        flex: 1 1 calc(50% - 6px);
+
+        gap: 12px;
+
+        padding: 15px;
+
+        border-radius: 12px;
+
     }
+
+
+    .adminDashInner > .overAll .Parts > div[class^="icon"] {
+
+        width: 52px;
+
+        height: 52px;
+
+    }
+
+
+    .adminDashInner .dashboarIcons {
+
+        font-size: 28px;
+
+    }
+
+
+    .adminDashInner .results {
+
+        gap: 3px;
+
+    }
+
+
+    .adminDashInner .results h5 {
+
+        font-size: 10px;
+
+    }
+
+
+    .adminDashInner .results h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .adminDashInner > .additionDetails {
+
+        padding: 8px 12px;
+
+        gap: 14px;
+
+    }
+
+
+    .adminDashInner > .Task {
+
+        padding: 8px 12px;
+
+        min-height: 220px;
+
+    }
+
+
+    .adminDashInner > .additionDetails .leaveRequest {
+
+        min-height: 250px;
+
+    }
+
 }
 
-@media (max-width:555px) {
-    .adminDashInner>.overAll {
 
-        .Parts {
-            width: 200px;
-            height: 100px;
-            /* color: #2563EB; */
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-            box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.151);
-            border-radius: 10px;
+@media (max-width: 555px) {
 
+    .adminDashInner > .overAll {
 
-            .iconcompletedTask,
-            .icontotalEmployees,
-            .icontotalManagers,
-            .icontotalDepartments,
-            .iconpendingLeaves {
-                /* font-size: rem; */
-                size: 2rem;
-                width: 40px;
-                height: 40px;
+        gap: 10px;
 
-                .dashboarIcons {
-                    font-size: 1.1em;
-                }
-            }
-
-            .results {
-
-                h5 {
-                    font-size: 0.8rem;
-                }
-
-                h2 {
-                    font-size: 1rem;
-                }
-            }
-        }
     }
+
+
+    .adminDashInner > .overAll .Parts {
+
+        min-height: 105px;
+
+        padding: 12px;
+
+        gap: 9px;
+
+    }
+
+
+    .adminDashInner > .overAll .Parts > div[class^="icon"] {
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+
+    .adminDashInner .dashboarIcons {
+
+        font-size: 22px;
+
+    }
+
+
+    .adminDashInner .results h5 {
+
+        font-size: 9px;
+
+    }
+
+
+    .adminDashInner .results h2 {
+
+        font-size: 18px;
+
+    }
+
 }
 
-@media (max-width:459px) {
 
-    .adminDashInner>.overAll {
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
 
-        /* flex-wrap: nowrap; */
-        .Parts {
-            width: 150px;
-            height: 100px;
+@media (max-width: 459px) {
 
-            .results {
+    .adminDashInner > .overAll {
 
-                h5 {
-                    font-size: 0.6rem;
-                }
+        padding: 10px;
 
-                h2 {
-                    font-size: 0.8rem;
-                }
-            }
-        }
+        gap: 9px;
 
     }
+
+
+    .adminDashInner > .overAll .Parts {
+
+        width: calc(50% - 5px);
+
+        min-height: 95px;
+
+        flex: 1 1 calc(50% - 5px);
+
+        padding: 9px;
+
+        gap: 7px;
+
+    }
+
+
+    .adminDashInner > .overAll .Parts > div[class^="icon"] {
+
+        width: 38px;
+
+        height: 38px;
+
+    }
+
+
+    .adminDashInner .dashboarIcons {
+
+        font-size: 19px;
+
+    }
+
+
+    .adminDashInner .results h5 {
+
+        font-size: 8px;
+
+    }
+
+
+    .adminDashInner .results h2 {
+
+        font-size: 16px;
+
+    }
+
+
+    .adminDashInner > .additionDetails {
+
+        padding: 7px 10px;
+
+    }
+
+
+    .adminDashInner > .Task {
+
+        padding: 7px 10px;
+
+    }
+
 }
 
-@media (max-width:359px) {
 
+/* =========================================================
+   EXTRA SMALL
+========================================================= */
 
-    .adminDashInner>.overAll {
+@media (max-width: 359px) {
 
-        padding: 10px 30px;
+    .adminDashInner > .overAll {
 
-        .Parts {
-            width: 100%;
-            height: 100px;
-            /* padding: 10px 30px; */
-
-            .results {
-
-                h5 {
-                    font-size: 0.8rem;
-                    text-transform: capitalizenpm run dev;
-                }
-
-                h2 {
-                    font-size: 0.8rem;
-                }
-            }
-        }
+        padding: 10px;
 
     }
+
+
+    .adminDashInner > .overAll .Parts {
+
+        width: 100%;
+
+        flex: 1 1 100%;
+
+        min-height: 90px;
+
+        justify-content: flex-start;
+
+        padding-left: 20px;
+
+    }
+
+
+    .adminDashInner > .overAll .Parts > div[class^="icon"] {
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+
+    .adminDashInner .results h5 {
+
+        font-size: 10px;
+
+    }
+
+
+    .adminDashInner .results h2 {
+
+        font-size: 18px;
+
+    }
+
 }

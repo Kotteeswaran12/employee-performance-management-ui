@@ -343,10 +343,7 @@ const Datatable = () => {
             );
 
 
-            console.log(
-                "API RESPONSE:",
-                response.data
-            );
+
 
 
             /*

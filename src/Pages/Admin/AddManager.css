@@ -2,188 +2,936 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Segoe UI, sans-serif;
+    font-family: "Segoe UI", sans-serif;
 }
 
+
+/* ==================================================
+   MAIN CONTAINER
+================================================== */
+
 .AddManagerOuter {
+
     width: calc(100% - 400px);
+
     min-height: 100vh;
+
     background: #f4f7fb;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
-    padding: 0px;
+
+    padding: 30px;
+
 }
+
+
+/* ==================================================
+   CARD
+================================================== */
 
 .employeeCard {
 
     width: 100%;
-    max-width: 1000px;
+    max-width: 1050px;
 
-    background: white;
+    background: #ffffff;
+
+    border: 1px solid #e8edf4;
 
     border-radius: 18px;
 
-    padding: 40px;
+    padding: 36px 40px;
 
-    box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .06);
+
 }
 
-.employeeCard h1 {
 
-    text-align: center;
+/* ==================================================
+   HEADER
+================================================== */
 
-    margin-bottom: 35px;
+.managerHeader {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 30px;
+
+    padding-bottom: 24px;
+
+    border-bottom: 1px solid #edf0f4;
+
+}
+
+
+.managerHeaderIcon {
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #e8f1ff;
+
+    color: #0d6efd;
+
+    font-size: 27px;
+    font-weight: 400;
+
+}
+
+
+.managerEyebrow {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #87909e;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.managerHeader h1 {
 
     color: #222;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
 }
+
+
+.managerHeader p {
+
+    margin-top: 5px;
+
+    color: #7b8492;
+
+    font-size: 12px;
+
+}
+
+
+/* ==================================================
+   ALERTS
+================================================== */
+
+.managerAlert {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 13px;
+
+    margin-bottom: 20px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+}
+
+
+.managerAlert span {
+
+    width: 21px;
+    height: 21px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+.managerAlert p {
+    margin: 0;
+}
+
+
+.managerError {
+
+    border: 1px solid #f2ceca;
+
+    background: #fff7f6;
+
+    color: #bd443a;
+
+}
+
+
+.managerError span {
+
+    background: #c94d45;
+
+}
+
+
+.managerSuccess {
+
+    border: 1px solid #ccebd7;
+
+    background: #f2fbf5;
+
+    color: #27834c;
+
+}
+
+
+.managerSuccess span {
+
+    background: #27834c;
+
+}
+
+
+/* ==================================================
+   FORM SECTION
+================================================== */
+
+.formSection {
+
+    width: 100%;
+
+}
+
+
+.sectionHeading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 15px;
+
+    margin-bottom: 21px;
+
+}
+
+
+.sectionHeading span {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #87909e;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: .9px;
+
+}
+
+
+.sectionHeading h2 {
+
+    color: #2b3442;
+
+    font-size: 17px;
+
+    font-weight: 650;
+
+}
+
+
+.sectionHeading small {
+
+    color: #929aa8;
+
+    font-size: 10px;
+
+}
+
+
+/* ==================================================
+   FORM GRID
+================================================== */
 
 .grid {
 
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
-    gap: 20px;
+    gap: 19px 20px;
+
 }
+
+
+/* ==================================================
+   FORM GROUP
+================================================== */
 
 .formGroup {
 
     display: flex;
 
     flex-direction: column;
+
+    min-width: 0;
+
 }
 
-.formGroup label {
 
-    margin-bottom: 8px;
+.formGroup > label {
 
-    font-weight: 600;
+    margin-bottom: 7px;
 
-    color: #444;
+    color: #424b59;
+
+    font-size: 11px;
+
+    font-weight: 650;
+
 }
+
 
 .formGroup input,
-.formGroup textarea {
+.formGroup textarea,
+.formGroup select {
 
-    border: 1px solid #d7d7d7;
+    width: 100%;
 
-    padding: 12px 15px;
+    border: 1px solid #d9dee6;
 
-    border-radius: 10px;
+    padding: 11px 13px;
+
+    border-radius: 9px;
 
     outline: none;
 
-    transition: .3s;
+    background: #ffffff;
+
+    color: #252d3a;
+
+    font-size: 13px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+
 }
 
-.formGroup textarea {
 
-    resize: none;
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
 
-    height: 110px;
+    color: #a7aeba;
+
 }
+
+
+.formGroup input:hover,
+.formGroup textarea:hover,
+.formGroup select:hover {
+
+    border-color: #c5ccd6;
+
+}
+
 
 .formGroup input:focus,
-.formGroup textarea:focus {
+.formGroup textarea:focus,
+.formGroup select:focus {
 
     border-color: #0d6efd;
 
-    box-shadow: 0 0 0 3px rgba(13, 110, 253, .15);
+    box-shadow:
+        0 0 0 3px rgba(13, 110, 253, .10);
+
 }
+
+
+.formGroup input:disabled,
+.formGroup textarea:disabled,
+.formGroup select:disabled {
+
+    background: #f6f7f9;
+
+    color: #9aa2ae;
+
+    cursor: not-allowed;
+
+}
+
+
+/* ==================================================
+   TEXTAREA
+================================================== */
+
+.formGroup textarea {
+
+    resize: vertical;
+
+    min-height: 105px;
+
+    line-height: 1.5;
+
+}
+
+
+/* ==================================================
+   FULL WIDTH ADDRESS
+================================================== */
+
+.fullWidthField {
+
+    grid-column: 1 / -1;
+
+}
+
+
+/* ==================================================
+   SELECT
+================================================== */
+
+.formGroup select {
+
+    cursor: pointer;
+
+    appearance: auto;
+
+}
+
+
+/* ==================================================
+   GENDER
+================================================== */
+
+.genderGroup {
+
+    justify-content: flex-start;
+
+}
+
 
 .genderBox {
 
     display: flex;
 
-    gap: 25px;
+    align-items: center;
 
-    margin-top: 12px;
+    gap: 10px;
+
+    min-height: 40px;
+
 }
 
-.genderBox label {
+
+.genderOption {
 
     display: flex;
 
     align-items: center;
 
-    gap: 8px;
+    gap: 7px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #e0e4ea;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #596476;
+
+    font-size: 11px;
+
+    font-weight: 500;
 
     cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease;
+
 }
+
+
+.genderOption:hover {
+
+    border-color: #b9c5d6;
+
+    background: #f8fafc;
+
+}
+
+
+.genderOption input {
+
+    width: 13px;
+    height: 13px;
+
+    margin: 0;
+
+    padding: 0;
+
+    accent-color: #0d6efd;
+
+    cursor: pointer;
+
+    box-shadow: none;
+
+}
+
+
+.genderOption input:focus {
+
+    box-shadow: none;
+
+}
+
+
+/* ==================================================
+   FORM FOOTER
+================================================== */
+
+.managerFormFooter {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-top: 30px;
+
+    padding-top: 21px;
+
+    border-top: 1px solid #edf0f4;
+
+}
+
+
+.requiredHint {
+
+    color: #929aa8;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+}
+
+
+.requiredHint span {
+
+    color: #d34b43;
+
+    font-weight: 700;
+
+}
+
+
+/* ==================================================
+   SUBMIT BUTTON
+================================================== */
 
 .submitBtn {
 
-    width: 100%;
+    min-width: 180px;
 
-    margin-top: 35px;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
 
     border: none;
 
     background: #0d6efd;
 
-    color: white;
+    color: #ffffff;
 
-    padding: 15px;
+    padding: 12px 20px;
 
-    border-radius: 10px;
+    border-radius: 9px;
 
-    font-size: 17px;
+    font-size: 13px;
+
+    font-weight: 650;
 
     cursor: pointer;
 
-    transition: .3s;
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+
 }
 
-.submitBtn:hover {
+
+.submitBtn:hover:not(:disabled) {
 
     background: #0b5ed7;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 15px rgba(13, 110, 253, .20);
+
 }
 
-.formGroup select {
 
-    width: 100%;
+.submitBtn:active:not(:disabled) {
 
-    padding: 12px 15px;
+    transform: translateY(0);
 
-    border: 1px solid #d7d7d7;
-
-    border-radius: 10px;
-
-    outline: none;
-
-    background: #fff;
-
-    transition: .3s;
-
-    cursor: pointer;
 }
 
-.formGroup select:focus {
 
-    border-color: #0d6efd;
+.submitBtn:disabled {
 
-    box-shadow: 0 0 0 3px rgba(13, 110, 253, .15);
+    opacity: .7;
+
+    cursor: not-allowed;
+
 }
 
-@media (max-width : 900px) {
-    .AddManagerOuter {
-        margin-top: 1%;
-        width: 100vw;
+
+/* ==================================================
+   BUTTON ICON
+================================================== */
+
+.buttonPlus {
+
+    font-size: 19px;
+
+    line-height: 1;
+
+}
+
+
+/* ==================================================
+   BUTTON SPINNER
+================================================== */
+
+.buttonSpinner {
+
+    width: 14px;
+    height: 14px;
+
+    border: 2px solid rgba(255, 255, 255, .45);
+
+    border-top-color: #ffffff;
+
+    border-radius: 50%;
+
+    animation:
+        managerSpin .7s linear infinite;
+
+}
+
+
+@keyframes managerSpin {
+
+    to {
+        transform: rotate(360deg);
     }
 
 }
 
-@media (max-width:620px) {
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 1100px) {
+
     .AddManagerOuter {
-        margin-top: 10%;
-        width: 100vw;
+
+        width: calc(100% - 300px);
+
+        padding: 25px;
+
     }
+
+
+    .employeeCard {
+
+        padding: 30px;
+
+    }
+
 }
 
-@media (max-width:425px) {
+
+/* ==================================================
+   MOBILE NAV WIDTH
+================================================== */
+
+@media (max-width: 900px) {
+
     .AddManagerOuter {
-        margin-top: 20%;
+
         width: 100vw;
+
+        min-height: calc(100vh - 100px);
+
+        padding: 25px;
+
+        margin-top: 0;
+
+        align-items: flex-start;
+
     }
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 650px) {
+
+    .AddManagerOuter {
+
+        width: 100%;
+
+        padding: 15px;
+
+        min-height: calc(100vh - 82px);
+
+    }
+
+
+    .employeeCard {
+
+        padding: 22px 18px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .managerHeader {
+
+        align-items: flex-start;
+
+        gap: 12px;
+
+        margin-bottom: 23px;
+
+        padding-bottom: 19px;
+
+    }
+
+
+    .managerHeaderIcon {
+
+        width: 42px;
+        height: 42px;
+
+        border-radius: 10px;
+
+        font-size: 23px;
+
+    }
+
+
+    .managerHeader h1 {
+
+        font-size: 21px;
+
+    }
+
+
+    .managerHeader p {
+
+        font-size: 11px;
+
+        line-height: 1.5;
+
+    }
+
+
+    .grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+
+    }
+
+
+    .fullWidthField {
+
+        grid-column: auto;
+
+    }
+
+
+    .sectionHeading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 4px;
+
+    }
+
+
+    .genderBox {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .managerFormFooter {
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 14px;
+
+    }
+
+
+    .requiredHint {
+
+        text-align: center;
+
+        order: 2;
+
+    }
+
+
+    .submitBtn {
+
+        width: 100%;
+
+        order: 1;
+
+    }
+
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+================================================== */
+
+@media (max-width: 425px) {
+
+    .AddManagerOuter {
+
+        padding: 10px;
+
+    }
+
+
+    .employeeCard {
+
+        padding: 18px 14px;
+
+        border-radius: 12px;
+
+    }
+
+
+    .managerHeaderIcon {
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 20px;
+
+    }
+
+
+    .managerHeader h1 {
+
+        font-size: 19px;
+
+    }
+
+
+    .managerHeader p {
+
+        font-size: 10px;
+
+    }
+
+
+    .formGroup input,
+    .formGroup textarea,
+    .formGroup select {
+
+        padding: 10px 11px;
+
+        font-size: 12px;
+
+    }
+
+
+    .genderBox {
+
+        gap: 7px;
+
+    }
+
+
+    .genderOption {
+
+        padding: 8px 9px;
+
+        font-size: 10px;
+
+    }
+
 }

@@ -9,8 +9,8 @@ export const AdminDashBoard = (JWT) => {
 }
 
 
-export const getallLeaveRequest = (JWT) => {
-    return api.get("/leaves", {
+export const getallLeaveRequest = (JWT , p=0 , s=3) => {
+    return api.get(`/leaves?page=${p}&size=${s}`, {
         headers: {
             Authorization: `Bearer ${JWT}`
         }

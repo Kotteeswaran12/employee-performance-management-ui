@@ -495,13 +495,13 @@
     background: #3b82f6;
 }
 
-.taskStatus.completed {
+.taskStatus.complited {
     background: #ecfdf5;
 
     color: #047857;
 }
 
-.taskStatus.completed>span {
+.taskStatus.complited>span {
     background: #10b981;
 }
 

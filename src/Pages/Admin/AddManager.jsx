@@ -1,8 +1,12 @@
-import { useState } from "react";
-import './AddManager.css'
-import { useEffect } from "react";
-import { getAlltheDepartments } from "../../Api/AdminAccess";
-import { addManager } from "../../Api/AdminAccess";
+import { useEffect, useState } from "react";
+import "./AddManager.css";
+
+import {
+    getAlltheDepartments,
+    addManager
+} from "../../Api/AdminAccess";
+
+
 const fields = [
     {
         name: "empcode",
@@ -53,9 +57,23 @@ const fields = [
     }
 ];
 
+
 export default function AddManager() {
-    const [departments, setDepartments] = useState([]);
+
     const token = localStorage.getItem("token");
+
+    const [departments, setDepartments] = useState([]);
+
+    const [department, setDepartment] = useState("");
+
+    const [loadingDepartments, setLoadingDepartments] = useState(true);
+
+    const [submitting, setSubmitting] = useState(false);
+
+    const [error, setError] = useState("");
+
+    const [success, setSuccess] = useState("");
+
 
     const [formData, setFormData] = useState({
         empcode: "",
@@ -66,168 +84,487 @@ export default function AddManager() {
         phone: "",
         gender: "",
         address: "",
-        sal: "",
-
+        sal: ""
     });
-    const [department, setDepartment] = useState(null);
+
+
+    // ---------------------------------------------
+    // Handle Input
+    // ---------------------------------------------
 
     const handleChange = (e) => {
+
+        const { name, value } = e.target;
+
         setFormData(prev => ({
             ...prev,
-            [e.target.name]: e.target.value
+            [name]: value
         }));
+
+        setError("");
+        setSuccess("");
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await addManager(token, formData, department)
-            alert('Manager Added Sucessfully')
 
-            console.log(response.data)
-        } catch (e) {
-            console.log(e)
-        }
-
-    };
-
+    // ---------------------------------------------
+    // Fetch Departments
+    // ---------------------------------------------
 
     const fetchDepartments = async () => {
-        try {
-            const response = await getAlltheDepartments(token, 0, 100);
 
-            setDepartments(response.data.content);
-            console.log(response.data.content)
+        try {
+
+            setLoadingDepartments(true);
+
+            const response =
+                await getAlltheDepartments(
+                    token,
+                    0,
+                    100
+                );
+
+            setDepartments(
+                response?.data?.content || []
+            );
 
         } catch (error) {
-            console.log(error);
+
+            console.error(
+                "Error fetching departments:",
+                error
+            );
+
+            setError(
+                error?.response?.data?.message ||
+                "Unable to load departments."
+            );
+
+        } finally {
+
+            setLoadingDepartments(false);
+
         }
     };
+
+
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
+
         fetchDepartments();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+
     }, []);
 
+
+    // ---------------------------------------------
+    // Submit
+    // ---------------------------------------------
+
+    const handleSubmit = async (e) => {
+
+        e.preventDefault();
+
+        setError("");
+        setSuccess("");
+
+
+        if (!department) {
+
+            setError(
+                "Please select a department."
+            );
+
+            return;
+        }
+
+
+        try {
+
+            setSubmitting(true);
+
+
+            const response =
+                await addManager(
+                    token,
+                    formData,
+                    department
+                );
+
+
+            console.log(response?.data);
+
+
+            setSuccess(
+                "Manager added successfully."
+            );
+
+
+            // Reset form
+
+            setFormData({
+                empcode: "",
+                firstname: "",
+                lastname: "",
+                designation: "",
+                dob: "",
+                phone: "",
+                gender: "",
+                address: "",
+                sal: ""
+            });
+
+            setDepartment("");
+
+
+        } catch (error) {
+
+            console.error(
+                "Error adding manager:",
+                error
+            );
+
+            setError(
+                error?.response?.data?.message ||
+                "Unable to add manager. Please try again."
+            );
+
+        } finally {
+
+            setSubmitting(false);
+
+        }
+
+    };
+
+
     return (
+
         <div className="AddManagerOuter">
 
             <div className="employeeCard">
 
-                <h1>Add Manager</h1>
+
+                {/* ---------------------------------
+                    HEADER
+                --------------------------------- */}
+
+                <div className="managerHeader">
+
+                    <div className="managerHeaderIcon">
+                        +
+                    </div>
+
+                    <div>
+
+                        <span className="managerEyebrow">
+                            ADMINISTRATION
+                        </span>
+
+                        <h1>
+                            Add Manager
+                        </h1>
+
+                        <p>
+                            Create a manager profile and
+                            assign them to a department.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                {/* ---------------------------------
+                    ALERTS
+                --------------------------------- */}
+
+                {error && (
+
+                    <div className="managerAlert managerError">
+
+                        <span>!</span>
+
+                        <p>
+                            {error}
+                        </p>
+
+                    </div>
+
+                )}
+
+
+                {success && (
+
+                    <div className="managerAlert managerSuccess">
+
+                        <span>✓</span>
+
+                        <p>
+                            {success}
+                        </p>
+
+                    </div>
+
+                )}
+
 
                 <form onSubmit={handleSubmit}>
 
-                    <div className="grid">
 
-                        {fields.map(field => (
+                    {/* ---------------------------------
+                        PERSONAL / PROFESSIONAL DETAILS
+                    --------------------------------- */}
 
-                            <div className="formGroup" key={field.name}>
+                    <div className="formSection">
 
-                                <label>{field.label}</label>
+                        <div className="sectionHeading">
 
-                                {
-                                    field.type === "textarea" ?
+                            <div>
+                                <span>
+                                    PROFILE DETAILS
+                                </span>
+
+                                <h2>
+                                    Manager Information
+                                </h2>
+                            </div>
+
+                            <small>
+                                Required information
+                            </small>
+
+                        </div>
+
+
+                        <div className="grid">
+
+                            {fields.map(field => (
+
+                                <div
+                                    className={`formGroup ${
+                                        field.type === "textarea"
+                                            ? "fullWidthField"
+                                            : ""
+                                    }`}
+                                    key={field.name}
+                                >
+
+                                    <label>
+                                        {field.label}
+                                    </label>
+
+
+                                    {field.type === "textarea" ? (
 
                                         <textarea
                                             name={field.name}
-                                            value={formData[field.name]}
+                                            value={
+                                                formData[field.name]
+                                            }
                                             onChange={handleChange}
-                                            placeholder={field.placeholder}
+                                            placeholder={
+                                                field.placeholder
+                                            }
+                                            disabled={submitting}
                                         />
 
-                                        :
+                                    ) : (
 
                                         <input
                                             type={field.type}
                                             name={field.name}
-                                            value={formData[field.name]}
+                                            value={
+                                                formData[field.name]
+                                            }
                                             onChange={handleChange}
-                                            placeholder={field.placeholder}
+                                            placeholder={
+                                                field.placeholder
+                                            }
+                                            disabled={submitting}
                                         />
-                                }
 
-                            </div>
+                                    )}
 
-                        ))}
+                                </div>
 
-                        <div className="formGroup">
+                            ))}
 
-                            <label>Department</label>
 
-                            <select
-                                name="department"
-                                value={formData.department}
-                                onChange={(e) => { console.log(e.target.value), setDepartment(e.target.value) }}
-                            >
+                            {/* Department */}
 
-                                <option value="">Select Department</option>
+                            <div className="formGroup">
 
-                                {departments.map((dept) => (
+                                <label>
+                                    Department
+                                </label>
 
-                                    <option
-                                        key={dept.id}
-                                        value={dept.id}
-                                    >
-                                        {dept.dept}
+                                <select
+                                    value={department}
+                                    onChange={(e) => {
+                                        setDepartment(
+                                            e.target.value
+                                        );
+                                        setError("");
+                                    }}
+                                    disabled={
+                                        loadingDepartments ||
+                                        submitting
+                                    }
+                                >
+
+                                    <option value="">
+                                        {loadingDepartments
+                                            ? "Loading departments..."
+                                            : "Select Department"
+                                        }
                                     </option>
 
-                                ))}
 
-                            </select>
+                                    {departments.map(dept => (
 
-                        </div>
+                                        <option
+                                            key={dept.id}
+                                            value={dept.id}
+                                        >
+                                            {dept.dept}
+                                        </option>
 
-                        <div className="formGroup">
+                                    ))}
 
-                            <label>Gender</label>
+                                </select>
 
-                            <div className="genderBox">
+                            </div>
 
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Male"
-                                        checked={formData.gender === "Male"}
-                                        onChange={handleChange}
-                                    />
-                                    Male
-                                </label>
+
+                            {/* Gender */}
+
+                            <div className="formGroup genderGroup">
 
                                 <label>
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Female"
-                                        checked={formData.gender === "Female"}
-                                        onChange={handleChange}
-                                    />
-                                    Female
+                                    Gender
                                 </label>
 
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Other"
-                                        checked={formData.gender === "Other"}
-                                        onChange={handleChange}
-                                    />
-                                    Other
-                                </label>
+                                <div className="genderBox">
+
+                                    <label className="genderOption">
+
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="Male"
+                                            checked={
+                                                formData.gender ===
+                                                "Male"
+                                            }
+                                            onChange={
+                                                handleChange
+                                            }
+                                            disabled={submitting}
+                                        />
+
+                                        <span>
+                                            Male
+                                        </span>
+
+                                    </label>
+
+
+                                    <label className="genderOption">
+
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="Female"
+                                            checked={
+                                                formData.gender ===
+                                                "Female"
+                                            }
+                                            onChange={
+                                                handleChange
+                                            }
+                                            disabled={submitting}
+                                        />
+
+                                        <span>
+                                            Female
+                                        </span>
+
+                                    </label>
+
+
+                                    <label className="genderOption">
+
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="Other"
+                                            checked={
+                                                formData.gender ===
+                                                "Other"
+                                            }
+                                            onChange={
+                                                handleChange
+                                            }
+                                            disabled={submitting}
+                                        />
+
+                                        <span>
+                                            Other
+                                        </span>
+
+                                    </label>
+
+                                </div>
 
                             </div>
 
                         </div>
-
-
 
                     </div>
 
-                    <button className="submitBtn" >
-                        Add Manager
-                    </button>
+
+                    {/* ---------------------------------
+                        FOOTER
+                    --------------------------------- */}
+
+                    <div className="managerFormFooter">
+
+                        <div className="requiredHint">
+
+                            <span>*</span>
+
+                            Please make sure all details
+                            are correct before submitting.
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            className="submitBtn"
+                            disabled={submitting}
+                        >
+
+                            {submitting ? (
+
+                                <>
+                                    <span className="buttonSpinner"></span>
+                                    Adding Manager...
+                                </>
+
+                            ) : (
+
+                                <>
+                                    <span className="buttonPlus">
+                                        +
+                                    </span>
+
+                                    Add Manager
+                                </>
+
+                            )}
+
+                        </button>
+
+                    </div>
 
                 </form>
 

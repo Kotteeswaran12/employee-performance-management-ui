@@ -619,7 +619,7 @@ const Task = () => {
     const completedTasks =
         existingTask.filter(
             task =>
-                task.status === 'COMPLETED'
+                task.status === 'COMPLITED'
         ).length;
 
 
@@ -897,7 +897,7 @@ const Task = () => {
                             In Progress
                         </option>
 
-                        <option value="COMPLETED">
+                        <option value="COMPLITED">
                             Completed
                         </option>
 

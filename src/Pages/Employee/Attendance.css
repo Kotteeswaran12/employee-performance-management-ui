@@ -1,0 +1,716 @@
+.AttendanceOuter {
+  width: calc(100% - 400px);
+  max-width: 1500px;
+  /* margin: 0 auto; */
+  padding: 28px;
+  box-sizing: border-box;
+  color: #172033;
+}
+
+/* -----------------------------------------
+   HEADER
+----------------------------------------- */
+
+.attendanceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 26px;
+}
+
+.attendanceEyebrow,
+.sectionLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #7b8497;
+  margin-bottom: 7px;
+}
+
+.attendanceHeader h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+}
+
+.attendanceHeader p {
+  margin: 7px 0 0;
+  color: #7b8497;
+  font-size: 14px;
+}
+
+
+/* -----------------------------------------
+   ERROR
+----------------------------------------- */
+
+.attendanceError {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #f0caca;
+  background: #fff7f7;
+  color: #c0392b;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.attendanceError span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #c0392b;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* -----------------------------------------
+   STATISTICS
+----------------------------------------- */
+
+.attendanceStats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.attendanceStatCard {
+  min-width: 0;
+  padding: 19px;
+  background: #ffffff;
+  border: 1px solid #e9edf3;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  box-sizing: border-box;
+  transition: 0.2s ease;
+}
+
+.attendanceStatCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 22px rgba(23, 32, 51, 0.07);
+}
+
+.statIcon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.presentIcon {
+  background: #eaf8ef;
+  color: #249653;
+}
+
+.absentIcon {
+  background: #fff0ef;
+  color: #dc5b52;
+}
+
+.workingIcon {
+  background: #eef3ff;
+  color: #496dd8;
+}
+
+.hoursIcon {
+  background: #fff7e8;
+  color: #d89225;
+}
+
+.attendanceStatCard span {
+  display: block;
+  font-size: 12px;
+  color: #81899a;
+  margin-bottom: 3px;
+}
+
+.attendanceStatCard strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #172033;
+}
+
+
+/* -----------------------------------------
+   TODAY
+----------------------------------------- */
+
+.todayAttendance {
+  background: #ffffff;
+  border: 1px solid #e7ebf1;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.todayTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.todayTop h2 {
+  display: inline;
+  margin: 0 8px 0 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.todayDay {
+  font-size: 13px;
+  color: #858e9f;
+}
+
+.todayDetails {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-top: 20px;
+}
+
+.todayDetail {
+  min-width: 125px;
+}
+
+.todayDetail span {
+  display: block;
+  color: #8a92a1;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  margin-bottom: 6px;
+}
+
+.todayDetail strong {
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.todayDivider {
+  width: 1px;
+  height: 35px;
+  background: #e8ebf0;
+}
+
+.todayActions {
+  margin-left: auto;
+}
+
+
+/* -----------------------------------------
+   BUTTONS
+----------------------------------------- */
+
+.punchButton {
+  border: none;
+  outline: none;
+  min-width: 120px;
+  padding: 11px 20px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.punchButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.punchInButton {
+  background:   #071A48;
+}
+
+.punchInButton:hover:not(:disabled) {
+  background: #0B2C66;
+}
+
+.punchOutButton {
+  background: #b84b42;
+}
+
+.punchOutButton:hover:not(:disabled) {
+  background: #a54038;
+}
+
+.completedMessage {
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: #eaf8ef;
+  color: #27834c;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+
+/* -----------------------------------------
+   STATUS
+----------------------------------------- */
+
+.statusBadge,
+.tableStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-present {
+  background: #eaf8ef;
+  color: #27834c;
+}
+
+.status-present .statusDot {
+  background: #27834c;
+}
+
+.status-working {
+  background: #eef3ff;
+  color: #496dd8;
+}
+
+.status-working .statusDot {
+  background: #496dd8;
+}
+
+.status-absent {
+  background: #fff0ef;
+  color: #c94d45;
+}
+
+.status-absent .statusDot {
+  background: #c94d45;
+}
+
+.status-weekend {
+  background: #f1f2f5;
+  color: #737b8a;
+}
+
+.status-weekend .statusDot {
+  background: #737b8a;
+}
+
+.status-upcoming {
+  background: #f4f5f7;
+  color: #89919f;
+}
+
+.status-upcoming .statusDot {
+  background: #aab0ba;
+}
+
+.status-not-checked-in {
+  background: #fff7e8;
+  color: #b47718;
+}
+
+.status-not-checked-in .statusDot {
+  background: #d89225;
+}
+
+
+/* -----------------------------------------
+   HISTORY
+----------------------------------------- */
+
+.attendanceHistory {
+  background: #ffffff;
+  border: 1px solid #e7ebf1;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.historyHeader {
+  padding: 21px 22px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.historyHeader h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.historyHeader p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #8a92a1;
+}
+
+
+/* -----------------------------------------
+   TABLE
+----------------------------------------- */
+
+.attendanceTableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.attendanceTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.attendanceTable thead {
+  background: #fafbfc;
+}
+
+.attendanceTable th {
+  padding: 13px 22px;
+  text-align: left;
+  font-size: 10px;
+  letter-spacing: 0.7px;
+  color: #858e9e;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.attendanceTable td {
+  padding: 16px 22px;
+  border-top: 1px solid #f0f2f5;
+  font-size: 13px;
+  color: #4d5668;
+  white-space: nowrap;
+}
+
+.attendanceTable tbody tr {
+  transition: background 0.15s ease;
+}
+
+.attendanceTable tbody tr:hover {
+  background: #fafbfd;
+}
+
+.dateCell {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.dateCell strong {
+  color: #252d3d;
+  font-weight: 650;
+}
+
+.dateCell span {
+  color: #929aa8;
+  font-size: 11px;
+}
+
+.hoursValue {
+  color: #333c4e;
+  font-weight: 650;
+}
+
+
+/* -----------------------------------------
+   MOBILE CARDS
+----------------------------------------- */
+
+.attendanceMobileList {
+  display: none;
+}
+
+.attendanceMobileCard {
+  padding: 16px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.attendanceMobileCard:last-child {
+  border-bottom: none;
+}
+
+.mobileCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 17px;
+}
+
+.mobileDate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobileDate strong {
+  font-size: 14px;
+  color: #252d3d;
+}
+
+.mobileDate span {
+  font-size: 11px;
+  color: #929aa8;
+}
+
+.mobileCardDetails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.mobileCardDetails div {
+  min-width: 0;
+}
+
+.mobileCardDetails span {
+  display: block;
+  margin-bottom: 5px;
+  color: #9098a6;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.mobileCardDetails strong {
+  font-size: 13px;
+  color: #343d4e;
+}
+
+
+/* -----------------------------------------
+   LOADING
+----------------------------------------- */
+
+.attendanceLoading {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #89919f;
+  font-size: 13px;
+}
+
+.loadingSpinner {
+  width: 25px;
+  height: 25px;
+  border: 3px solid #e6e9ee;
+  border-top-color: #536d9d;
+  border-radius: 50%;
+  animation: attendanceSpin 0.7s linear infinite;
+}
+
+@keyframes attendanceSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* -----------------------------------------
+   TABLET
+----------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .AttendanceOuter {
+    width: 100%;
+    margin: 10% auto;
+    padding: 22px;
+  }
+
+  .attendanceStats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .todayDetails {
+    flex-wrap: wrap;
+  }
+
+  .todayActions {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .punchButton {
+    width: 100%;
+  }
+
+}
+
+
+/* -----------------------------------------
+   MOBILE
+----------------------------------------- */
+
+@media (max-width: 650px) {
+
+  .AttendanceOuter {
+    padding: 15px;
+  }
+
+  .attendanceHeader {
+    margin-bottom: 20px;
+  }
+
+  .attendanceHeader h1 {
+    font-size: 24px;
+  }
+
+  .attendanceHeader p {
+    font-size: 12px;
+  }
+
+
+  .attendanceStats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .attendanceStatCard {
+    padding: 13px;
+    gap: 9px;
+  }
+
+  .statIcon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .attendanceStatCard strong {
+    font-size: 17px;
+  }
+
+  .attendanceStatCard span {
+    font-size: 10px;
+  }
+
+
+  .todayAttendance {
+    padding: 16px;
+    border-radius: 11px;
+  }
+
+  .todayTop {
+    align-items: flex-start;
+  }
+
+  .todayTop h2 {
+    font-size: 19px;
+  }
+
+  .todayDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .todayDivider {
+    display: none;
+  }
+
+  .todayDetail {
+    min-width: 0;
+  }
+
+  .todayActions {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+
+  .historyHeader {
+    padding: 17px;
+  }
+
+
+  .attendanceTableWrapper {
+    display: none;
+  }
+
+  .attendanceMobileList {
+    display: block;
+  }
+
+  .attendanceMobileCard {
+    padding: 15px;
+  }
+
+
+  .statusBadge,
+  .tableStatus {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+}
+
+
+/* -----------------------------------------
+   VERY SMALL DEVICES
+----------------------------------------- */
+
+@media (max-width: 380px) {
+
+  .AttendanceOuter {
+    padding: 10px;
+  }
+
+  .attendanceStats {
+    gap: 7px;
+  }
+
+  .attendanceStatCard {
+    padding: 11px;
+  }
+
+  .statIcon {
+    display: none;
+  }
+
+  .todayAttendance {
+    padding: 13px;
+  }
+
+  .mobileCardDetails {
+    gap: 5px;
+  }
+
+  .mobileCardDetails strong {
+    font-size: 12px;
+  }
+
+}
