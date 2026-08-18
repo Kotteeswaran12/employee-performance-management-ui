@@ -112,6 +112,7 @@ const DashBorad = () => {
     const [tableContent02, SetTableContent02] = useState([]);
 
     const [PiChartdata, setPiChartData] = useState([]);
+    const [piChartTittle, setPichartTitte] = useState('')
 
 
     useEffect(() => {
@@ -182,6 +183,7 @@ const DashBorad = () => {
                     setDashBoardDatas(
                         response.data
                     );
+                    setPichartTitte("Employees by Department")
 
                 }
 
@@ -216,6 +218,7 @@ const DashBorad = () => {
                     setPiChartData(
                         countAllTheTaskAssignments.data
                     );
+                    setPichartTitte("Task Overview")
 
                     SetTableContent01(
                         taskData.data.content
@@ -261,10 +264,14 @@ const DashBorad = () => {
                     SetTableContent01(
                         TaskDetails.data.content
                     );
+                    console.log(EmployeeDashBoradData.data)
 
                     setDashBoardDatas(
                         EmployeeDashBoradData.data
                     );
+                    setPiChartData(EmployeeDashBoradData.data)
+                    setPichartTitte("Performance Overview")
+
 
                 }
 
@@ -309,6 +316,8 @@ const DashBorad = () => {
 
                 <PieChart
                     datas={[PiChartdata]}
+                    Tittle={piChartTittle}
+                    role = {localStorage.getItem('role')}
                 />
 
 
