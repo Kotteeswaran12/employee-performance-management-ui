@@ -1,0 +1,1021 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.signPage {
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    background: #f8fafc;
+
+    overflow: hidden;
+
+}
+
+
+/* ===================================
+   LEFT SIDE
+=================================== */
+
+.signVisualSection {
+
+    position: relative;
+
+    width: 48%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: clamp(40px, 8vw, 120px);
+
+    color: white;
+
+    background:
+        linear-gradient(135deg,
+            #0f172a,
+            #1e3a8a,
+            #2563eb);
+
+    overflow: hidden;
+
+}
+
+
+.signOverlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(135deg,
+            rgba(15, 23, 42, 0.25),
+            rgba(37, 99, 235, 0.15));
+
+}
+
+
+.signBrand {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 560px;
+
+}
+
+
+.signLogo {
+
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 18px;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.2);
+
+    backdrop-filter:
+        blur(12px);
+
+    margin-bottom: 32px;
+
+}
+
+
+.signBrand h1 {
+
+    margin: 0 0 18px;
+
+    font-size:
+        clamp(2.2rem, 4vw, 4.2rem);
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+
+}
+
+
+.signBrand p {
+
+    max-width: 480px;
+
+    margin: 0;
+
+    font-size:
+        clamp(1rem, 1.5vw, 1.25rem);
+
+    line-height: 1.7;
+
+    color:
+        rgba(255, 255, 255, 0.8);
+
+}
+
+
+.signFeatures {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-top: 45px;
+
+}
+
+
+.signFeatures div {
+
+    width: fit-content;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+.signBackgroundGlow {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter:
+        blur(20px);
+
+    opacity: 0.35;
+
+}
+
+
+.glowOne {
+
+    width: 400px;
+    height: 400px;
+
+    top: -150px;
+    right: -150px;
+
+    background: #60a5fa;
+
+}
+
+
+.glowTwo {
+
+    width: 300px;
+    height: 300px;
+
+    bottom: -100px;
+    left: -100px;
+
+    background: #7c3aed;
+
+}
+
+
+/* ===================================
+   RIGHT SIDE
+=================================== */
+
+.signFormSection {
+
+    width: 52%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 24px;
+
+    background: #ffffff;
+
+}
+
+
+.signFormContainer {
+
+    width: 100%;
+
+    max-width: 440px;
+
+}
+
+
+.signHeader {
+
+    margin-bottom: 32px;
+
+}
+
+
+.signWelcome {
+
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    margin-bottom: 14px;
+
+    border-radius: 50px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #2563eb;
+
+    background: #eff6ff;
+
+}
+
+
+.signHeader h2 {
+
+    margin: 0 0 10px;
+
+    font-size:
+        clamp(1.8rem, 3vw, 2.5rem);
+
+    color: #0f172a;
+
+    letter-spacing: -0.8px;
+
+}
+
+
+.signHeader p {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #64748b;
+
+}
+
+
+/* ===================================
+   ERROR
+=================================== */
+
+.signError {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    color: #b91c1c;
+
+    background: #fef2f2;
+
+    border:
+        1px solid #fecaca;
+
+}
+
+
+.signError span {
+
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 12px;
+
+    background: #ef4444;
+
+}
+
+
+.signError p {
+
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+/* ===================================
+   FORM
+=================================== */
+
+.signForm {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+}
+
+
+.signInputGroup {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+}
+
+
+.signInputGroup label {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #334155;
+
+}
+
+
+.signInputWrapper {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.signInputIcon {
+
+    position: absolute;
+
+    left: 16px;
+
+    z-index: 1;
+
+    font-size: 16px;
+
+    opacity: 0.6;
+
+}
+
+
+.signInputWrapper input {
+
+    width: 100%;
+
+    height: 52px;
+
+    padding:
+        0 85px 0 48px;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    border:
+        1px solid #e2e8f0;
+
+    background: #f8fafc;
+
+    color: #0f172a;
+
+    font-size: 14px;
+
+    transition:
+        0.2s ease;
+
+}
+
+
+.signInputWrapper input:focus {
+
+    border-color: #2563eb;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.1);
+
+}
+
+
+.signInputWrapper input:disabled {
+
+    cursor: not-allowed;
+
+    opacity: 0.7;
+
+}
+
+
+.signInputWrapper input::placeholder {
+
+    color: #94a3b8;
+
+}
+
+
+.signPasswordToggle {
+
+    position: absolute;
+
+    right: 14px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #2563eb;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.signPasswordToggle:disabled {
+
+    cursor: not-allowed;
+
+}
+
+
+/* ===================================
+   OPTIONS
+=================================== */
+
+.signOptions {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: -5px;
+
+}
+
+
+.signRemember {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    color: #64748b;
+
+}
+
+
+.signRemember input {
+
+    width: 15px;
+    height: 15px;
+
+    accent-color: #2563eb;
+
+}
+
+
+.signForgotPassword {
+
+    border: none;
+
+    background: transparent;
+
+    padding: 0;
+
+    color: #2563eb;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+/* ===================================
+   BUTTON
+=================================== */
+
+.signSubmitButton {
+
+    width: 100%;
+
+    min-height: 52px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    background:
+        linear-gradient(135deg,
+            #2563eb,
+            #1d4ed8);
+
+    box-shadow:
+        0 10px 25px rgba(37, 99, 235, 0.25);
+
+    transition:
+        0.2s ease;
+
+}
+
+
+.signSubmitButton:hover:not(:disabled) {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px rgba(37, 99, 235, 0.35);
+
+}
+
+
+.signSubmitButton:active {
+
+    transform:
+        scale(0.98);
+
+}
+
+
+.signSubmitButton:disabled {
+
+    cursor: not-allowed;
+
+    opacity: 0.75;
+
+}
+
+
+/* ===================================
+   BUTTON LOADER
+=================================== */
+
+.signButtonLoader {
+
+    width: 18px;
+    height: 18px;
+
+    border:
+        2px solid rgba(255, 255, 255, 0.4);
+
+    border-top-color: white;
+
+    border-radius: 50%;
+
+    animation:
+        signSpin 0.7s linear infinite;
+
+}
+
+
+@keyframes signSpin {
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* ===================================
+   FOOTER
+=================================== */
+
+.signFooter {
+
+    margin-top: 35px;
+
+    text-align: center;
+
+}
+
+
+.signFooter p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    color: #94a3b8;
+
+}
+
+
+/* ===================================
+   TABLET
+=================================== */
+
+@media (max-width: 900px) {
+
+    .signVisualSection {
+
+        width: 42%;
+
+        padding: 40px;
+
+    }
+
+
+    .signFormSection {
+
+        width: 58%;
+
+    }
+
+
+    .signBrand h1 {
+
+        font-size: 2.5rem;
+
+    }
+
+}
+
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media (max-width: 768px) {
+
+    .signPage {
+
+        display: block;
+
+    }
+
+
+    .signVisualSection {
+
+        width: 100%;
+
+        min-height: 240px;
+
+        padding: 35px 25px;
+
+    }
+
+
+    .signBrand {
+
+        max-width: 100%;
+
+    }
+
+
+    .signLogo {
+
+        width: 50px;
+        height: 50px;
+
+        margin-bottom: 20px;
+
+        border-radius: 14px;
+
+        font-size: 17px;
+
+    }
+
+
+    .signBrand h1 {
+
+        font-size: 2rem;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .signBrand p {
+
+        font-size: 14px;
+
+    }
+
+
+    .signFeatures {
+
+        display: none;
+
+    }
+
+
+    .signFormSection {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 50px 24px;
+
+    }
+
+}
+
+
+/* ===================================
+   SMALL MOBILE
+=================================== */
+
+@media (max-width: 480px) {
+
+    .signVisualSection {
+
+        min-height: 210px;
+
+        padding: 30px 20px;
+
+    }
+
+
+    .signFormSection {
+
+        padding:
+            35px 18px;
+
+    }
+
+
+    .signOptions {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .signHeader h2 {
+
+        font-size: 1.8rem;
+
+    }
+
+
+    .signInputWrapper input {
+
+        height: 50px;
+
+    }
+
+}
+
+
+/* ===================================
+   LARGE SCREENS
+=================================== */
+
+@media (min-width: 1600px) {
+
+    .signFormContainer {
+
+        max-width: 500px;
+
+    }
+
+
+    .signInputWrapper input {
+
+        height: 58px;
+
+        font-size: 16px;
+
+    }
+
+
+    .signSubmitButton {
+
+        min-height: 58px;
+
+    }
+
+}
+
+/* ===================================
+   SUCCESS MESSAGE
+=================================== */
+
+.signSuccess {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    color: #166534;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+}
+
+
+.signSuccess span {
+
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 13px;
+
+    background: #22c55e;
+
+}
+
+
+.signSuccess p {
+
+    margin: 0;
+
+    font-size: 13px;
+
+}
+
+
+/* ===================================
+   INVALID INPUT
+=================================== */
+
+.signInputInvalid input {
+
+    border-color: #ef4444 !important;
+
+    background: #fffafa !important;
+
+}
+
+
+.signInputInvalid input:focus {
+
+    box-shadow:
+        0 0 0 4px rgba(239, 68, 68, 0.1) !important;
+
+}
+
+
+.signFieldError {
+
+    margin-top: -2px;
+
+    color: #dc2626;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+}
+
+
+/* ===================================
+   RESET BUTTON
+=================================== */
+
+.signResetButton {
+
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.signResetButton:hover {
+
+    background: #f8fafc;
+
+    border-color: #cbd5e1;
+
+}

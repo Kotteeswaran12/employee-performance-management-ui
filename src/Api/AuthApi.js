@@ -7,6 +7,6 @@ export const login = (username , password)=>{
 } 
 
 
-export const signin = (data)=>{
-    return api.post('user/sign-in' , data);
+export const SignIn = (empid , data)=>{
+    return api.post(`/user/signUp/${empid}` , data);
 }

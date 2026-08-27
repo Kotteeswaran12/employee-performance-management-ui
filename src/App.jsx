@@ -22,6 +22,7 @@ import Department from './Pages/Manager/Department'
 import MyTask from './Pages/Employee/MyTask';
 import MyFeedback from './Pages/Employee/MyFeedback'
 import MyLeave from './Pages/Employee/MyLeave'
+import SignUp from './Pages/Login/SignUp'
 const App = () => {
 
     const { pathname } = useLocation();
@@ -32,7 +33,7 @@ const App = () => {
         <div className='AppOuter'>
 
             {
-                pathname != '/' && (
+                pathname != '/' && pathname !== '/signIn' && (
                     <Sidebar></Sidebar>
                 )
             }
@@ -99,6 +100,12 @@ const App = () => {
                 } />
 
 
+
+
+            </Routes>
+
+            <Routes>
+                <Route path='/signIn' element={<SignUp />}></Route>
             </Routes>
 
         </div>

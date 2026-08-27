@@ -225,6 +225,7 @@ const AddEmployee = () => {
                 sal: Number(formData.sal)
             }
 
+            console.log(playLoad)
             const response = await addEmployee(Token, playLoad)
 
             console.log('Employee Data:', response.data);
