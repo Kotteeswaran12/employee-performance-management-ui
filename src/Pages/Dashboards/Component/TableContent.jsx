@@ -4,11 +4,22 @@ import { FiArrowRight } from 'react-icons/fi';
 
 const TableContent = ({ Heading, data, Title, Type }) => {
 
+
+
     const navigate = useNavigate();
 
     const records = data || [];
 
     const handleViewAll = () => {
+        const role = localStorage.getItem('role');
+
+        if (role === "EMPLOYEE" && Heading === "My Task") {
+            navigate("/MYtask")
+            return;
+        } else if (role === "EMPLOYEE" && Heading === "Attendance Details") {
+            navigate("/MYattendance")
+            return;
+        }
         navigate("/all", {
             state: {
                 Type: Type,

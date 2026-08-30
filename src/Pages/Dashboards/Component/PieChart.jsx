@@ -64,9 +64,7 @@ export default function EmployeeChart({ datas, Tittle, role }) {
     response = response || {};
 
 
-    console.log("========== EMPLOYEE CHART ==========");
-    console.log("Original datas:", datas);
-    console.log("Final response:", response);
+
 
 
     const getScore = (value) => {
@@ -122,10 +120,7 @@ export default function EmployeeChart({ datas, Tittle, role }) {
     ];
 
 
-    console.log(
-      "Chart Data:",
-      employeeData
-    );
+
 
 
     return (

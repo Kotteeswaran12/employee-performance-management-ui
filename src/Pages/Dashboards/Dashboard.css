@@ -293,14 +293,14 @@
 
     overflow: hidden;
 
-    border: 1px solid #e7ebf1;
+    /* border: 1px solid #e7ebf1; */
 
     border-radius: 14px;
 
-    background: #ffffff;
+    /* background: #ffffff; */
 
-    box-shadow:
-        0 4px 18px rgba(23, 32, 51, 0.045);
+    /* box-shadow:
+        0 4px 18px rgba(23, 32, 51, 0.045); */
 
 }
 

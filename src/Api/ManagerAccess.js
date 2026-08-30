@@ -109,3 +109,11 @@ export const addFeedback = (jwt , empId , feedback)=>{
         }
     })
 }
+
+export const getEmployeedetailsByEmpCode = (jwt ,empCode)=>{
+    return api.get(`/getByEmpCode/${empCode}` , {
+        headers : {
+            Authorization : `Bearer ${jwt}`
+        }
+    })
+}

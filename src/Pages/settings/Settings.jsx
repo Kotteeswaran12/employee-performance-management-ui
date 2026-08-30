@@ -4,6 +4,7 @@ import "./Setting.css";
 import { getUserInfo } from "../../Api/AdminAccess";
 
 import { useEffect, useState } from "react";
+import { UpdateUesrInfo } from "../../Api/AuthApi";
 
 import {
     FiUser,

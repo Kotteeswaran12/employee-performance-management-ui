@@ -2,7 +2,7 @@ import './AddEmp.css';
 import { GetAllEmployees } from '../../Api/ManagerAccess';
 import { useEffect, useMemo, useState } from 'react';
 import { addEmployee } from '../../Api/ManagerAccess';
-
+import { getEmployeedetailsByEmpCode } from '../../Api/ManagerAccess';
 const AddEmployee = () => {
 
     // ==============================
@@ -18,6 +18,11 @@ const AddEmployee = () => {
     const [departmentFilter, setDepartmentFilter] = useState('ALL');
 
     const [showModal, setShowModal] = useState(false);
+
+    const [showEmployeeDetails, setShowEmployeeDetails] = useState(false);
+    const [selectedEmployee, setSelectedEmployee] = useState(null);
+    const [employeeDetailsLoading, setEmployeeDetailsLoading] = useState(false);
+    const [employeeDetailsError, setEmployeeDetailsError] = useState('');
 
     const [message, setMessage] = useState({
         type: '',
@@ -71,6 +76,42 @@ const AddEmployee = () => {
             });
 
         }, 4000);
+    };
+
+    const handleViewEmployee = async (employee) => {
+        const empCode = employee.empcode || employee.empCode;
+
+        if (!empCode) {
+            showMessage('error', 'Employee code is not available.');
+            return;
+        }
+
+        try {
+            setShowEmployeeDetails(true);
+            setEmployeeDetailsLoading(true);
+            setEmployeeDetailsError('');
+            setSelectedEmployee(null);
+
+            const Token = localStorage.getItem('token');
+
+            const response = await getEmployeedetailsByEmpCode(
+                Token,
+                empCode
+            );
+
+            console.log('Employee Details:', response.data);
+
+            setSelectedEmployee(response.data);
+
+        } catch (error) {
+            console.error('Employee Details Error:', error);
+
+            setEmployeeDetailsError(
+                'Unable to load employee details. Please try again.'
+            );
+        } finally {
+            setEmployeeDetailsLoading(false);
+        }
     };
 
 
@@ -644,9 +685,7 @@ const AddEmployee = () => {
 
 
 
-                                    <th>
-                                        Status
-                                    </th>
+
 
                                     <th>
                                         Action
@@ -759,31 +798,11 @@ const AddEmployee = () => {
 
                                             <td>
 
-                                                <span
-                                                    className={`statusBadge ${employee.status ===
-                                                        'ACTIVE'
-                                                        ? 'active'
-                                                        : 'inactive'
-                                                        }`}
-                                                >
-
-                                                    <span></span>
-
-                                                    {
-                                                        employee.status
-                                                        || 'ACTIVE'
-                                                    }
-
-                                                </span>
-
-                                            </td>
-
-
-                                            <td>
-
                                                 <button
                                                     className="actionBtn"
                                                     title="View Employee"
+                                                    onClick={() => handleViewEmployee(employee)}
+                                                    aria-label={`View ${employee.firstname || 'employee'} details`}
                                                 >
                                                     ⋮
                                                 </button>
@@ -890,7 +909,408 @@ const AddEmployee = () => {
                 )}
 
             </div>
+            {/* =====================================
+    EMPLOYEE OVERVIEW MODAL
+====================================== */}
 
+            {showEmployeeDetails && (
+                <div
+                    className="employeeDetailsOverlay"
+                    onMouseDown={(e) => {
+                        if (e.target === e.currentTarget) {
+                            setShowEmployeeDetails(false);
+                            setSelectedEmployee(null);
+                            setEmployeeDetailsError('');
+                        }
+                    }}
+                >
+
+                    <div className="employeeDetailsModal">
+
+                        {/* ==============================
+                HEADER
+            =============================== */}
+
+                        <div className="employeeDetailsHeader">
+
+                            <div className="employeeDetailsHeaderContent">
+
+                                <span className="employeeDetailsLabel">
+                                    EMPLOYEE OVERVIEW
+                                </span>
+
+                                <h2>
+                                    Employee Details
+                                </h2>
+
+                                <p>
+                                    View employee information and employment details
+                                </p>
+
+                            </div>
+
+                            <button
+                                className="employeeDetailsClose"
+                                onClick={() => {
+                                    setShowEmployeeDetails(false);
+                                    setSelectedEmployee(null);
+                                    setEmployeeDetailsError('');
+                                }}
+                                aria-label="Close employee details"
+                            >
+                                ×
+                            </button>
+
+                        </div>
+
+
+                        {/* ==============================
+                LOADING
+            =============================== */}
+
+                        {employeeDetailsLoading && (
+
+                            <div className="employeeDetailsLoading">
+
+                                <div className="employeeDetailsSpinner"></div>
+
+                                <h3>
+                                    Loading employee details...
+                                </h3>
+
+                                <p>
+                                    Please wait while we fetch the employee information.
+                                </p>
+
+                            </div>
+
+                        )}
+
+
+                        {/* ==============================
+                ERROR
+            =============================== */}
+
+                        {!employeeDetailsLoading &&
+                            employeeDetailsError && (
+
+                                <div className="employeeDetailsError">
+
+                                    <div className="employeeDetailsErrorIcon">
+                                        !
+                                    </div>
+
+                                    <h3>
+                                        Something went wrong
+                                    </h3>
+
+                                    <p>
+                                        {employeeDetailsError}
+                                    </p>
+
+                                    <button
+                                        onClick={() => {
+                                            setShowEmployeeDetails(false);
+                                            setEmployeeDetailsError('');
+                                        }}
+                                    >
+                                        Close
+                                    </button>
+
+                                </div>
+                            )}
+
+
+                        {/* ==============================
+                EMPLOYEE CONTENT
+            =============================== */}
+
+                        {!employeeDetailsLoading &&
+                            !employeeDetailsError &&
+                            selectedEmployee && (
+
+                                <div className="employeeDetailsBody">
+
+                                    {/* ==========================
+                            PROFILE CARD
+                        =========================== */}
+
+                                    <div className="employeeProfileCard">
+
+                                        <div className="employeeLargeAvatar">
+
+                                            {(
+                                                selectedEmployee.firstname ||
+                                                'E'
+                                            )
+                                                .charAt(0)
+                                                .toUpperCase()}
+
+                                        </div>
+
+                                        <div className="employeeProfileInfo">
+
+                                            <h3>
+                                                {selectedEmployee.firstname || '-'}{' '}
+                                                {selectedEmployee.lastname || ''}
+                                            </h3>
+
+                                            <p>
+                                                {selectedEmployee.designation || 'Employee'}
+                                            </p>
+
+                                            <div className="employeeProfileMeta">
+
+                                                <span>
+                                                    ID: {selectedEmployee.empcode || '-'}
+                                                </span>
+
+                                                <span className="employeeActiveBadge">
+                                                    ● Active
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* ==========================
+                            PERSONAL INFORMATION
+                        =========================== */}
+
+                                    <div className="employeeDetailsSection">
+
+                                        <div className="employeeSectionTitle">
+
+                                            <div className="employeeSectionIcon">
+                                                👤
+                                            </div>
+
+                                            <div>
+                                                <h3>
+                                                    Personal Information
+                                                </h3>
+
+                                                <p>
+                                                    Basic employee information
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="employeeDetailsGrid">
+
+                                            <div className="employeeDetailItem">
+
+                                                <span>
+                                                    Employee Code
+                                                </span>
+
+                                                <strong>
+                                                    {selectedEmployee.empcode || '-'}
+                                                </strong>
+
+                                            </div>
+
+
+                                            <div className="employeeDetailItem">
+
+                                                <span>
+                                                    Full Name
+                                                </span>
+
+                                                <strong>
+                                                    {selectedEmployee.firstname || '-'}{' '}
+                                                    {selectedEmployee.lastname || ''}
+                                                </strong>
+
+                                            </div>
+
+
+                                            <div className="employeeDetailItem">
+
+                                                <span>
+                                                    Gender
+                                                </span>
+
+                                                <strong>
+                                                    {selectedEmployee.gender || '-'}
+                                                </strong>
+
+                                            </div>
+
+
+                                            <div className="employeeDetailItem">
+
+                                                <span>
+                                                    Phone Number
+                                                </span>
+
+                                                <strong>
+                                                    {selectedEmployee.phone || '-'}
+                                                </strong>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* ==========================
+                            JOB INFORMATION
+                        =========================== */}
+
+                                    <div className="employeeDetailsSection">
+
+                                        <div className="employeeSectionTitle">
+
+                                            <div className="employeeSectionIcon">
+                                                💼
+                                            </div>
+
+                                            <div>
+                                                <h3>
+                                                    Employment Information
+                                                </h3>
+
+                                                <p>
+                                                    Department and role details
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="employeeDetailsGrid">
+
+                                            <div className="employeeDetailItem">
+
+                                                <span>
+                                                    Department
+                                                </span>
+
+                                                <strong>
+                                                    {selectedEmployee.departmentname || '-'}
+                                                </strong>
+
+                                            </div>
+
+
+                                            <div className="employeeDetailItem">
+
+                                                <span>
+                                                    Designation
+                                                </span>
+
+                                                <strong>
+                                                    {selectedEmployee.designation || '-'}
+                                                </strong>
+
+                                            </div>
+
+
+                                            <div className="employeeDetailItem">
+
+                                                <span>
+                                                    Manager
+                                                </span>
+
+                                                <strong>
+                                                    {selectedEmployee.managername || '-'}
+                                                </strong>
+
+                                            </div>
+
+
+                                            <div className="employeeDetailItem">
+
+                                                <span>
+                                                    Salary
+                                                </span>
+
+                                                <strong className="employeeSalary">
+
+                                                    ₹{' '}
+                                                    {selectedEmployee.sal !== null &&
+                                                        selectedEmployee.sal !== undefined
+                                                        ? Number(
+                                                            selectedEmployee.sal
+                                                        ).toLocaleString('en-IN')
+                                                        : '-'}
+
+                                                </strong>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* ==========================
+                            ADDRESS
+                        =========================== */}
+
+                                    <div className="employeeDetailsSection">
+
+                                        <div className="employeeSectionTitle">
+
+                                            <div className="employeeSectionIcon">
+                                                📍
+                                            </div>
+
+                                            <div>
+                                                <h3>
+                                                    Address
+                                                </h3>
+
+                                                <p>
+                                                    Employee residential address
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="employeeAddress">
+
+                                            {selectedEmployee.address || 'No address available'}
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* ==========================
+                            FOOTER
+                        =========================== */}
+
+                                    <div className="employeeDetailsFooter">
+
+                                        <button
+                                            className="employeeDetailsCloseBtn"
+                                            onClick={() => {
+                                                setShowEmployeeDetails(false);
+                                                setSelectedEmployee(null);
+                                            }}
+                                        >
+                                            Close
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            )}
+
+                    </div>
+
+                </div>
+            )}
 
             {/* =====================================
                 ADD EMPLOYEE MODAL

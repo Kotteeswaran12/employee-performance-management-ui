@@ -1090,3 +1090,702 @@
     }
 
 }
+
+/* =========================================
+   EMPLOYEE DETAILS MODAL
+========================================= */
+
+.employeeDetailsOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.58);
+    backdrop-filter: blur(6px);
+
+    animation: employeeOverlayFade 0.2s ease;
+}
+
+
+.employeeDetailsModal {
+    width: min(760px, 100%);
+
+    max-height: min(900px, 92vh);
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.25),
+        0 8px 25px rgba(15, 23, 42, 0.12);
+
+    animation: employeeModalSlide 0.25s ease;
+
+    scrollbar-width: thin;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.employeeDetailsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding: 28px 30px 24px;
+
+    border-bottom: 1px solid #eef2f7;
+}
+
+
+.employeeDetailsHeaderContent {
+    min-width: 0;
+}
+
+
+.employeeDetailsLabel {
+    display: inline-block;
+
+    margin-bottom: 7px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+
+    color: #6366f1;
+}
+
+
+.employeeDetailsHeader h2 {
+    margin: 0;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    color: #111827;
+}
+
+
+.employeeDetailsHeader p {
+    margin: 6px 0 0;
+
+    font-size: 13px;
+
+    color: #6b7280;
+}
+
+
+.employeeDetailsClose {
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    margin-left: 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    font-size: 25px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.employeeDetailsClose:hover {
+    background: #f1f5f9;
+    color: #111827;
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+.employeeDetailsBody {
+    padding: 26px 30px 30px;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.employeeProfileCard {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #e8edf5;
+
+    border-radius: 16px;
+
+    background: linear-gradient(135deg,
+            #f8faff 0%,
+            #ffffff 100%);
+}
+
+
+.employeeLargeAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 68px;
+    height: 68px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(135deg,
+            #6366f1,
+            #8b5cf6);
+
+    color: #ffffff;
+
+    font-size: 27px;
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+
+.employeeProfileInfo {
+    min-width: 0;
+}
+
+
+.employeeProfileInfo h3 {
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #111827;
+}
+
+
+.employeeProfileInfo p {
+    margin: 4px 0 9px;
+
+    font-size: 13px;
+
+    color: #64748b;
+}
+
+
+.employeeProfileMeta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #64748b;
+}
+
+
+.employeeActiveBadge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 4px 9px;
+
+    border-radius: 20px;
+
+    background: #ecfdf5;
+
+    color: #059669;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.employeeDetailsSection {
+    margin-top: 24px;
+
+    padding: 20px;
+
+    border: 1px solid #edf1f6;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+}
+
+
+.employeeSectionTitle {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.employeeSectionIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: #f5f3ff;
+
+    font-size: 17px;
+}
+
+
+.employeeSectionTitle h3 {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #1e293b;
+}
+
+
+.employeeSectionTitle p {
+    margin: 3px 0 0;
+
+    font-size: 11px;
+
+    color: #94a3b8;
+}
+
+
+/* =========================================
+   DETAILS GRID
+========================================= */
+
+.employeeDetailsGrid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px 25px;
+}
+
+
+.employeeDetailItem {
+    min-width: 0;
+}
+
+
+.employeeDetailItem span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+
+    color: #94a3b8;
+}
+
+
+.employeeDetailItem strong {
+    display: block;
+
+    overflow-wrap: anywhere;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #334155;
+}
+
+
+.employeeSalary {
+    color: #059669 !important;
+}
+
+
+/* =========================================
+   ADDRESS
+========================================= */
+
+.employeeAddress {
+    padding: 14px 16px;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    color: #475569;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.employeeDetailsFooter {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 24px;
+    padding-top: 20px;
+
+    border-top: 1px solid #eef2f7;
+}
+
+
+.employeeDetailsCloseBtn {
+    min-width: 100px;
+
+    padding: 10px 18px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.employeeDetailsCloseBtn:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.employeeDetailsLoading {
+    min-height: 350px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+
+    text-align: center;
+}
+
+
+.employeeDetailsSpinner {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 18px;
+
+    border: 3px solid #e5e7eb;
+    border-top-color: #6366f1;
+
+    border-radius: 50%;
+
+    animation: employeeSpin 0.8s linear infinite;
+}
+
+
+.employeeDetailsLoading h3 {
+    margin: 0;
+
+    font-size: 15px;
+
+    color: #334155;
+}
+
+
+.employeeDetailsLoading p {
+    margin: 6px 0 0;
+
+    font-size: 12px;
+
+    color: #94a3b8;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.employeeDetailsError {
+    min-height: 350px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+
+    text-align: center;
+}
+
+
+.employeeDetailsErrorIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.employeeDetailsError h3 {
+    margin: 0;
+
+    font-size: 16px;
+
+    color: #1e293b;
+}
+
+
+.employeeDetailsError p {
+    margin: 7px 0 18px;
+
+    font-size: 13px;
+
+    color: #64748b;
+}
+
+
+.employeeDetailsError button {
+    padding: 9px 18px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #6366f1;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes employeeOverlayFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes employeeModalSlide {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes employeeSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 700px) {
+
+    .employeeDetailsOverlay {
+        padding: 12px;
+    }
+
+    .employeeDetailsModal {
+        max-height: 94vh;
+
+        border-radius: 18px;
+    }
+
+    .employeeDetailsHeader {
+        padding: 22px 20px 20px;
+    }
+
+    .employeeDetailsHeader h2 {
+        font-size: 21px;
+    }
+
+    .employeeDetailsBody {
+        padding: 20px;
+    }
+
+    .employeeDetailsGrid {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+    .employeeDetailsSection {
+        padding: 17px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .employeeDetailsOverlay {
+        align-items: flex-end;
+
+        padding: 0;
+    }
+
+    .employeeDetailsModal {
+        width: 100%;
+
+        max-height: 94vh;
+
+        border-radius: 20px 20px 0 0;
+    }
+
+    .employeeDetailsHeader {
+        padding: 19px 18px;
+    }
+
+    .employeeDetailsHeader h2 {
+        font-size: 19px;
+    }
+
+    .employeeDetailsHeader p {
+        max-width: 230px;
+
+        font-size: 11px;
+    }
+
+    .employeeDetailsBody {
+        padding: 17px;
+    }
+
+    .employeeProfileCard {
+        padding: 15px;
+
+        gap: 13px;
+    }
+
+    .employeeLargeAvatar {
+        width: 54px;
+        height: 54px;
+
+        border-radius: 14px;
+
+        font-size: 21px;
+    }
+
+    .employeeProfileInfo h3 {
+        font-size: 17px;
+    }
+
+    .employeeProfileInfo p {
+        font-size: 12px;
+    }
+
+    .employeeDetailsSection {
+        padding: 15px;
+
+        border-radius: 13px;
+    }
+
+    .employeeSectionTitle {
+        margin-bottom: 16px;
+    }
+
+    .employeeDetailsFooter {
+        margin-top: 18px;
+    }
+
+    .employeeDetailsCloseBtn {
+        width: 100%;
+    }
+}

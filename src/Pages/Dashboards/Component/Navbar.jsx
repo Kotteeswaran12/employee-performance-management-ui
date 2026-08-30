@@ -48,8 +48,8 @@ const Navbar = ({ User }) => {
     }, []);
 
     const handleLogout = () => {
-        localStorage.clear();
-        navigate("/");
+        
+        navigate("/UserInfo");
     };
 
     return (

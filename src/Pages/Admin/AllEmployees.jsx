@@ -1,6 +1,8 @@
-
 import { useEffect, useMemo, useState } from "react";
+
 import { getAllEmployees } from "../../Api/AdminAccess";
+import { getEmployeedetailsByEmpCode } from "../../Api/ManagerAccess";
+
 import {
     FiSearch,
     FiRefreshCw,
@@ -8,13 +10,22 @@ import {
     FiChevronDown,
     FiUsers,
     FiAlertCircle,
-    FiX
+    FiX,
+    FiMoreVertical,
+    FiUser,
+    FiBriefcase,
+    FiMapPin,
+    FiDollarSign
 } from "react-icons/fi";
 
 import "./AllEmployees.css";
 
 
 const AllEmployees = () => {
+
+    // =====================================================
+    // EMPLOYEE LIST
+    // =====================================================
 
     const [allEmpData, setAllEmpData] = useState([]);
 
@@ -33,30 +44,72 @@ const AllEmployees = () => {
 
     const [totalPages, setTotalPages] = useState(1);
 
+
+    // =====================================================
+    // EMPLOYEE DETAILS MODAL
+    // =====================================================
+
+    const [showEmployeeDetails, setShowEmployeeDetails] =
+        useState(false);
+
+    const [selectedEmployee, setSelectedEmployee] =
+        useState(null);
+
+    const [employeeDetailsLoading, setEmployeeDetailsLoading] =
+        useState(false);
+
+    const [employeeDetailsError, setEmployeeDetailsError] =
+        useState("");
+
+
+    // =====================================================
+    // PAGINATION
+    // =====================================================
+
     const pageSize = 20;
 
     const authToken = localStorage.getItem("token");
 
 
-    /*
-    =====================================================
-        TABLE COLUMNS
-    =====================================================
-    */
+    // =====================================================
+    // TABLE COLUMNS
+    // =====================================================
 
     const Title = [
         "empcode",
         "firstname",
         "managername",
-        "Department"
+        "Department",
+        "role",
+        "action"
     ];
 
 
-    /*
-    =====================================================
-        FETCH EMPLOYEES
-    =====================================================
-    */
+    const hasManager = (managerName) => {
+
+        if (
+            managerName === null ||
+            managerName === undefined
+        ) {
+            return false;
+        }
+
+        const value = managerName
+            .toString()
+            .trim()
+            .toLowerCase();
+
+        return (
+            value !== "" &&
+            value !== "null" &&
+            value !== "undefined"
+        );
+    };
+
+
+    // =====================================================
+    // FETCH EMPLOYEES
+    // =====================================================
 
     const fetchAllEmp = async (page = currentPage) => {
 
@@ -90,29 +143,68 @@ const AllEmployees = () => {
                 : response.data?.content || [];
 
 
-            const responseData = employees.map((d) => ({
+            // =================================================
+            // TRANSFORM EMPLOYEE DATA
+            // =================================================
 
-                Id: d.id,
+            const responseData = employees.map((d) => {
 
-                Department: d.departmentname || "-",
+                const employeeHasManager = hasManager(
+                    d.managername
+                );
 
-                empcode: d.empcode || "-",
+                return {
 
-                firstname: d.firstname || "-",
+                    Id: d.id,
 
-                managername: d.managername || "-"
+                    Department:
+                        d.departmentname || "-",
 
-            }));
+                    empcode:
+                        d.empcode || "-",
+
+                    firstname:
+                        d.firstname || "-",
+
+                    lastname:
+                        d.lastname || "",
+
+                    managername:
+                        hasManager(d.managername)
+                            ? d.managername
+                            : "",
+
+                    designation:
+                        d.designation || "",
+
+                    gender:
+                        d.gender || "",
+
+                    phone:
+                        d.phone || null,
+
+                    salary:
+                        d.sal ?? 0,
+
+                    address:
+                        d.address || "",
+
+                    role:
+                        employeeHasManager
+                            ? "EMPLOYEE"
+                            : "MANAGER"
+
+                };
+
+            });
 
 
             setAllEmpData(responseData);
 
 
-            /*
-            -------------------------------------------------
-            Pagination information
-            -------------------------------------------------
-            */
+            // =================================================
+            // PAGINATION INFORMATION
+            // =================================================
 
             if (!Array.isArray(response.data)) {
 
@@ -141,7 +233,9 @@ const AllEmployees = () => {
                     : "Unable to load employees. Please try again."
             );
 
+
             setAllEmpData([]);
+
 
         } finally {
 
@@ -152,11 +246,9 @@ const AllEmployees = () => {
     };
 
 
-    /*
-    =====================================================
-        INITIAL LOAD
-    =====================================================
-    */
+    // =====================================================
+    // INITIAL LOAD
+    // =====================================================
 
     useEffect(() => {
 
@@ -167,11 +259,9 @@ const AllEmployees = () => {
     }, []);
 
 
-    /*
-    =====================================================
-        SEARCH
-    =====================================================
-    */
+    // =====================================================
+    // SEARCH
+    // =====================================================
 
     const filteredEmployees = useMemo(() => {
 
@@ -216,6 +306,13 @@ const AllEmployees = () => {
                     .toLowerCase()
                     .includes(searchValue)
 
+                ||
+
+                employee.role
+                    ?.toString()
+                    .toLowerCase()
+                    .includes(searchValue)
+
             );
 
         });
@@ -223,11 +320,9 @@ const AllEmployees = () => {
     }, [allEmpData, search]);
 
 
-    /*
-    =====================================================
-        SORT
-    =====================================================
-    */
+    // =====================================================
+    // SORT
+    // =====================================================
 
     const sortedEmployees = useMemo(() => {
 
@@ -285,13 +380,17 @@ const AllEmployees = () => {
     ]);
 
 
-    /*
-    =====================================================
-        SORT HANDLER
-    =====================================================
-    */
+    // =====================================================
+    // SORT HANDLER
+    // =====================================================
 
     const handleSort = (column) => {
+
+        // Action column should never be sorted
+        if (column === "action") {
+            return;
+        }
+
 
         setSortConfig((previous) => {
 
@@ -324,11 +423,9 @@ const AllEmployees = () => {
     };
 
 
-    /*
-    =====================================================
-        CLEAR SEARCH
-    =====================================================
-    */
+    // =====================================================
+    // CLEAR SEARCH
+    // =====================================================
 
     const clearSearch = () => {
 
@@ -337,11 +434,9 @@ const AllEmployees = () => {
     };
 
 
-    /*
-    =====================================================
-        REFRESH
-    =====================================================
-    */
+    // =====================================================
+    // REFRESH
+    // =====================================================
 
     const handleRefresh = () => {
 
@@ -350,11 +445,9 @@ const AllEmployees = () => {
     };
 
 
-    /*
-    =====================================================
-        PAGINATION
-    =====================================================
-    */
+    // =====================================================
+    // PAGINATION
+    // =====================================================
 
     const handlePrevious = () => {
 
@@ -367,6 +460,7 @@ const AllEmployees = () => {
 
         const newPage =
             currentPage - 1;
+
 
         setCurrentPage(newPage);
 
@@ -387,6 +481,7 @@ const AllEmployees = () => {
         const newPage =
             currentPage + 1;
 
+
         setCurrentPage(newPage);
 
         fetchAllEmp(newPage);
@@ -394,11 +489,9 @@ const AllEmployees = () => {
     };
 
 
-    /*
-    =====================================================
-        COLUMN LABEL
-    =====================================================
-    */
+    // =====================================================
+    // COLUMN LABEL
+    // =====================================================
 
     const getColumnLabel = (column) => {
 
@@ -418,16 +511,22 @@ const AllEmployees = () => {
             return "Department";
         }
 
+        if (column === "role") {
+            return "Role";
+        }
+
+        if (column === "action") {
+            return "Action";
+        }
+
         return column;
 
     };
 
 
-    /*
-    =====================================================
-        INITIALS
-    =====================================================
-    */
+    // =====================================================
+    // INITIALS
+    // =====================================================
 
     const getInitial = (name) => {
 
@@ -437,6 +536,7 @@ const AllEmployees = () => {
 
         }
 
+
         return name
             .charAt(0)
             .toUpperCase();
@@ -444,11 +544,135 @@ const AllEmployees = () => {
     };
 
 
-    /*
-    =====================================================
-        UI
-    =====================================================
-    */
+    // =====================================================
+    // VIEW EMPLOYEE DETAILS
+    // =====================================================
+
+    const handleViewEmployee = async (employee) => {
+
+        const empCode = employee.empcode;
+
+
+        if (!empCode || empCode === "-") {
+
+            setEmployeeDetailsError(
+                "Employee code is not available."
+            );
+
+            setShowEmployeeDetails(true);
+
+            return;
+
+        }
+
+
+        try {
+
+            setShowEmployeeDetails(true);
+
+            setEmployeeDetailsLoading(true);
+
+            setEmployeeDetailsError("");
+
+            setSelectedEmployee(null);
+
+
+            const Token =
+                localStorage.getItem("token");
+
+
+            const response =
+                await getEmployeedetailsByEmpCode(
+                    Token,
+                    empCode
+                );
+
+
+            console.log(
+                "Admin Employee Details:",
+                response.data
+            );
+
+
+            const employeeData =
+                response.data;
+
+
+            /*
+            -------------------------------------------------
+            ROLE LOGIC FOR DETAILS API
+
+            managername empty/null
+            = MANAGER
+
+            managername present
+            = EMPLOYEE
+            -------------------------------------------------
+            */
+
+            const employeeHasManager = hasManager(employeeData.managername);
+
+
+            setSelectedEmployee({
+
+                ...employeeData,
+
+                role:
+                    employeeHasManager
+                        ? "EMPLOYEE"
+                        : "MANAGER"
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Employee Details Error:",
+                error
+            );
+
+
+            setEmployeeDetailsError(
+
+                error.response?.status === 403
+
+                    ? "You don't have permission to view this employee."
+
+                    : "Unable to load employee details. Please try again."
+
+            );
+
+
+        } finally {
+
+            setEmployeeDetailsLoading(false);
+
+        }
+
+    };
+
+
+    // =====================================================
+    // CLOSE EMPLOYEE DETAILS
+    // =====================================================
+
+    const closeEmployeeDetails = () => {
+
+        setShowEmployeeDetails(false);
+
+        setSelectedEmployee(null);
+
+        setEmployeeDetailsError("");
+
+        setEmployeeDetailsLoading(false);
+
+    };
+
+
+    // =====================================================
+    // UI
+    // =====================================================
 
     return (
 
@@ -616,9 +840,8 @@ const AllEmployees = () => {
                                     <th
                                         key={column}
                                         onClick={() =>
-                                            handleSort(
-                                                column
-                                            )
+                                            column !== "action" &&
+                                            handleSort(column)
                                         }
                                     >
 
@@ -629,21 +852,30 @@ const AllEmployees = () => {
                                             )}
 
 
-                                            <span className="sortIcon">
+                                            {/* Don't show
+                                                sorting for Action */}
 
-                                                {sortConfig.key === column ? (
+                                            {column !== "action" && (
 
-                                                    sortConfig.direction === "asc"
-                                                        ? <FiChevronUp />
-                                                        : <FiChevronDown />
+                                                <span className="sortIcon">
 
-                                                ) : (
+                                                    {sortConfig.key === column ? (
 
-                                                    <FiChevronDown />
+                                                        sortConfig.direction === "asc"
 
-                                                )}
+                                                            ? <FiChevronUp />
 
-                                            </span>
+                                                            : <FiChevronDown />
+
+                                                    ) : (
+
+                                                        <FiChevronDown />
+
+                                                    )}
+
+                                                </span>
+
+                                            )}
 
                                         </div>
 
@@ -700,7 +932,9 @@ const AllEmployees = () => {
                                     >
 
 
-                                        {/* EMPLOYEE CODE */}
+                                        {/* =====================
+                                            EMPLOYEE CODE
+                                        ====================== */}
 
                                         <td>
 
@@ -713,7 +947,9 @@ const AllEmployees = () => {
                                         </td>
 
 
-                                        {/* FIRST NAME */}
+                                        {/* =====================
+                                            FIRST NAME
+                                        ====================== */}
 
                                         <td>
 
@@ -736,16 +972,22 @@ const AllEmployees = () => {
                                         </td>
 
 
-                                        {/* MANAGER */}
+                                        {/* =====================
+                                            MANAGER
+                                        ====================== */}
 
                                         <td>
 
-                                            {d.managername}
+                                            {d.managername?.trim()
+                                                ? d.managername
+                                                : "—"}
 
                                         </td>
 
 
-                                        {/* DEPARTMENT */}
+                                        {/* =====================
+                                            DEPARTMENT
+                                        ====================== */}
 
                                         <td>
 
@@ -754,6 +996,51 @@ const AllEmployees = () => {
                                                 {d.Department}
 
                                             </span>
+
+                                        </td>
+
+
+                                        {/* =====================
+                                            ROLE
+                                        ====================== */}
+
+                                        <td>
+
+                                            <span
+                                                className={`employeeRoleBadge ${d.role === "MANAGER"
+                                                    ? "managerRole"
+                                                    : "employeeRole"
+                                                    }`}
+                                            >
+
+                                                <span className="roleDot"></span>
+
+                                                {d.role}
+
+                                            </span>
+
+                                        </td>
+
+
+                                        {/* =====================
+                                            ACTION
+                                        ====================== */}
+
+                                        <td>
+
+                                            <button
+                                                type="button"
+                                                className="employeeActionBtn"
+                                                title="View Employee Details"
+                                                aria-label={`View ${d.firstname} details`}
+                                                onClick={() =>
+                                                    handleViewEmployee(d)
+                                                }
+                                            >
+
+                                                <FiMoreVertical />
+
+                                            </button>
 
                                         </td>
 
@@ -788,7 +1075,9 @@ const AllEmployees = () => {
                                     <p>
 
                                         {search
+
                                             ? "Try searching with another name, employee code or department."
+
                                             : "There are no employees available."
                                         }
 
@@ -816,10 +1105,13 @@ const AllEmployees = () => {
                 <span>
 
                     Page{" "}
+
                     <strong>
                         {currentPage + 1}
                     </strong>
+
                     {" "}of{" "}
+
                     <strong>
                         {totalPages}
                     </strong>
@@ -856,10 +1148,610 @@ const AllEmployees = () => {
             </div>
 
 
+            {/* =====================================================
+                ADMIN EMPLOYEE OVERVIEW MODAL
+            ===================================================== */}
+
+            {showEmployeeDetails && (
+
+                <div
+                    className="adminEmployeeModalOverlay"
+                    onMouseDown={(e) => {
+
+                        if (
+                            e.target === e.currentTarget
+                        ) {
+
+                            closeEmployeeDetails();
+
+                        }
+
+                    }}
+                >
+
+                    <div className="adminEmployeeModal">
+
+
+                        {/* =========================
+                            MODAL HEADER
+                        ========================== */}
+
+                        <div className="adminEmployeeModalHeader">
+
+                            <div>
+
+                                <span className="adminModalLabel">
+                                    ADMIN • EMPLOYEE OVERVIEW
+                                </span>
+
+                                <h2>
+                                    Employee Details
+                                </h2>
+
+                                <p>
+                                    Complete employee information
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                className="adminModalClose"
+                                onClick={
+                                    closeEmployeeDetails
+                                }
+                                aria-label="Close employee details"
+                            >
+
+                                <FiX />
+
+                            </button>
+
+                        </div>
+
+
+                        {/* =========================
+                            LOADING
+                        ========================== */}
+
+                        {employeeDetailsLoading && (
+
+                            <div className="adminEmployeeLoading">
+
+                                <div className="adminEmployeeSpinner"></div>
+
+                                <h3>
+                                    Loading employee details
+                                </h3>
+
+                                <p>
+                                    Fetching the latest employee information...
+                                </p>
+
+                            </div>
+
+                        )}
+
+
+                        {/* =========================
+                            ERROR
+                        ========================== */}
+
+                        {!employeeDetailsLoading &&
+                            employeeDetailsError && (
+
+                                <div className="adminEmployeeError">
+
+                                    <div className="adminErrorIcon">
+
+                                        <FiAlertCircle />
+
+                                    </div>
+
+                                    <h3>
+                                        Unable to load employee
+                                    </h3>
+
+                                    <p>
+                                        {employeeDetailsError}
+                                    </p>
+
+                                    <button
+                                        type="button"
+                                        onClick={
+                                            closeEmployeeDetails
+                                        }
+                                    >
+                                        Close
+                                    </button>
+
+                                </div>
+
+                            )}
+
+
+                        {/* =========================
+                            DETAILS
+                        ========================== */}
+
+                        {!employeeDetailsLoading &&
+                            !employeeDetailsError &&
+                            selectedEmployee && (
+
+                                <div className="adminEmployeeModalBody">
+
+
+                                    {/* =====================
+                                        PROFILE
+                                    ====================== */}
+
+                                    <div className="adminEmployeeProfile">
+
+                                        <div className="adminEmployeeAvatar">
+
+                                            {getInitial(
+                                                selectedEmployee.firstname
+                                            )}
+
+                                        </div>
+
+
+                                        <div className="adminEmployeeProfileInfo">
+
+                                            <div className="adminEmployeeNameRow">
+
+                                                <h3>
+
+                                                    {
+                                                        selectedEmployee.firstname ||
+                                                        "-"
+                                                    }{" "}
+
+                                                    {
+                                                        selectedEmployee.lastname ||
+                                                        ""
+                                                    }
+
+                                                </h3>
+
+
+                                                <span
+                                                    className={`adminRoleBadge ${selectedEmployee.role ===
+                                                        "MANAGER"
+
+                                                        ? "adminManagerRole"
+
+                                                        : "adminEmployeeRole"
+                                                        }`}
+                                                >
+
+                                                    {
+                                                        selectedEmployee.role
+                                                    }
+
+                                                </span>
+
+                                            </div>
+
+
+                                            <p>
+
+                                                {
+                                                    selectedEmployee.designation ||
+                                                    "Employee"
+                                                }
+
+                                            </p>
+
+
+                                            <span className="adminEmployeeCode">
+
+                                                {
+                                                    selectedEmployee.empcode ||
+                                                    "-"
+                                                }
+
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* =====================
+                                        PERSONAL INFORMATION
+                                    ====================== */}
+
+                                    <div className="adminDetailsSection">
+
+                                        <div className="adminDetailsSectionHeader">
+
+                                            <div className="adminDetailsIcon">
+
+                                                <FiUser />
+
+                                            </div>
+
+
+                                            <div>
+
+                                                <h3>
+                                                    Personal Information
+                                                </h3>
+
+                                                <p>
+                                                    Basic employee information
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="adminDetailsGrid">
+
+
+                                            {/* EMPLOYEE CODE */}
+
+                                            <div className="adminDetailItem">
+
+                                                <span>
+                                                    Employee Code
+                                                </span>
+
+                                                <strong>
+                                                    {
+                                                        selectedEmployee.empcode ||
+                                                        "-"
+                                                    }
+                                                </strong>
+
+                                            </div>
+
+
+                                            {/* FULL NAME */}
+
+                                            <div className="adminDetailItem">
+
+                                                <span>
+                                                    Full Name
+                                                </span>
+
+                                                <strong>
+
+                                                    {
+                                                        selectedEmployee.firstname ||
+                                                        "-"
+                                                    }{" "}
+
+                                                    {
+                                                        selectedEmployee.lastname ||
+                                                        ""
+                                                    }
+
+                                                </strong>
+
+                                            </div>
+
+
+                                            {/* GENDER */}
+
+                                            <div className="adminDetailItem">
+
+                                                <span>
+                                                    Gender
+                                                </span>
+
+                                                <strong>
+                                                    {
+                                                        selectedEmployee.gender ||
+                                                        "-"
+                                                    }
+                                                </strong>
+
+                                            </div>
+
+
+                                            {/* PHONE */}
+
+                                            <div className="adminDetailItem">
+
+                                                <span>
+                                                    Phone Number
+                                                </span>
+
+                                                <strong>
+
+                                                    {
+                                                        selectedEmployee.phone ??
+                                                        "-"
+                                                    }
+
+                                                </strong>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* =====================
+                                        EMPLOYMENT
+                                    ====================== */}
+
+                                    <div className="adminDetailsSection">
+
+                                        <div className="adminDetailsSectionHeader">
+
+                                            <div className="adminDetailsIcon">
+
+                                                <FiBriefcase />
+
+                                            </div>
+
+
+                                            <div>
+
+                                                <h3>
+                                                    Employment Information
+                                                </h3>
+
+                                                <p>
+                                                    Organizational details
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="adminDetailsGrid">
+
+
+                                            {/* ROLE */}
+
+                                            <div className="adminDetailItem">
+
+                                                <span>
+                                                    Role
+                                                </span>
+
+                                                <strong>
+
+                                                    <span
+                                                        className={`adminInlineRole ${selectedEmployee.role ===
+                                                            "MANAGER"
+
+                                                            ? "inlineManager"
+
+                                                            : "inlineEmployee"
+                                                            }`}
+                                                    >
+
+                                                        {
+                                                            selectedEmployee.role
+                                                        }
+
+                                                    </span>
+
+                                                </strong>
+
+                                            </div>
+
+
+                                            {/* DEPARTMENT */}
+
+                                            <div className="adminDetailItem">
+
+                                                <span>
+                                                    Department
+                                                </span>
+
+                                                <strong>
+                                                    {
+                                                        selectedEmployee.departmentname ||
+                                                        "-"
+                                                    }
+                                                </strong>
+
+                                            </div>
+
+
+                                            {/* DESIGNATION */}
+
+                                            <div className="adminDetailItem">
+
+                                                <span>
+                                                    Designation
+                                                </span>
+
+                                                <strong>
+                                                    {
+                                                        selectedEmployee.designation ||
+                                                        "-"
+                                                    }
+                                                </strong>
+
+                                            </div>
+
+
+                                            {/* MANAGER */}
+
+                                            <div className="adminDetailItem">
+
+                                                <span>
+                                                    Reporting Manager
+                                                </span>
+
+                                                <strong>
+
+                                                    {
+                                                        selectedEmployee.managername
+                                                            ?.trim()
+
+                                                            ? selectedEmployee.managername
+
+                                                            : "—"
+                                                    }
+
+                                                </strong>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* =====================
+                                        COMPENSATION
+                                    ====================== */}
+
+                                    <div className="adminDetailsSection">
+
+                                        <div className="adminDetailsSectionHeader">
+
+                                            <div className="adminDetailsIcon">
+
+                                                <FiDollarSign />
+
+                                            </div>
+
+
+                                            <div>
+
+                                                <h3>
+                                                    Compensation
+                                                </h3>
+
+                                                <p>
+                                                    Salary information
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="adminSalaryCard">
+
+                                            <div>
+
+                                                <span>
+                                                    Monthly Salary
+                                                </span>
+
+                                                <strong>
+
+                                                    ₹{" "}
+
+                                                    {
+                                                        selectedEmployee.sal !== null &&
+                                                            selectedEmployee.sal !== undefined
+
+                                                            ? Number(
+                                                                selectedEmployee.sal
+                                                            ).toLocaleString(
+                                                                "en-IN"
+                                                            )
+
+                                                            : "0"
+                                                    }
+
+                                                </strong>
+
+                                            </div>
+
+
+                                            <FiDollarSign />
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* =====================
+                                        ADDRESS
+                                    ====================== */}
+
+                                    <div className="adminDetailsSection">
+
+                                        <div className="adminDetailsSectionHeader">
+
+                                            <div className="adminDetailsIcon">
+
+                                                <FiMapPin />
+
+                                            </div>
+
+
+                                            <div>
+
+                                                <h3>
+                                                    Address
+                                                </h3>
+
+                                                <p>
+                                                    Employee address
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="adminAddress">
+
+                                            {
+                                                selectedEmployee.address
+                                                    ?.trim()
+
+                                                    ? selectedEmployee.address
+
+                                                    : "No address available"
+                                            }
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* =====================
+                                        FOOTER
+                                    ====================== */}
+
+                                    <div className="adminEmployeeModalFooter">
+
+                                        <button
+                                            type="button"
+                                            className="adminEmployeeCloseBtn"
+                                            onClick={
+                                                closeEmployeeDetails
+                                            }
+                                        >
+                                            Close
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            )}
+
+                    </div>
+
+                </div>
+
+            )}
+
+
         </div>
+
     );
+
 };
 
 
 export default AllEmployees;
-
