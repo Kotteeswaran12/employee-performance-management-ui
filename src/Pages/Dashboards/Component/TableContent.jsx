@@ -4,7 +4,7 @@ import { FiArrowRight } from 'react-icons/fi';
 
 const TableContent = ({ Heading, data, Title, Type }) => {
 
-
+    console.log(Heading)
 
     const navigate = useNavigate();
 
@@ -18,6 +18,12 @@ const TableContent = ({ Heading, data, Title, Type }) => {
             return;
         } else if (role === "EMPLOYEE" && Heading === "Attendance Details") {
             navigate("/MYattendance")
+            return;
+        }else if(role == "MANAGER" && Heading === "Tasks"){
+            navigate('/task')
+            return;
+        }else if(role === "MANAGER" && Heading === "My Team Members"){
+            navigate('/department');
             return;
         }
         navigate("/all", {

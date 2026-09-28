@@ -18,3 +18,11 @@ export const UpdateUesrInfo = (Jwt , data) => {
         }
     })
 }
+
+export const changePass = (jwt , pass) =>{
+    return api.post(`/user/ChangePass` , pass , {
+        headers : {
+            Authorization : `Bearer ${jwt}`
+        }
+    })
+}

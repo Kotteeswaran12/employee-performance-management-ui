@@ -510,14 +510,14 @@ const Login = () => {
                             <p className="admin">
                                 🔴 ADMIN :
                                 <span>
-                                    admin || admin123
+                                    admin2 || admin123
                                 </span>
                             </p>
 
                             <p className="manager">
                                 🟢 MANAGER :
                                 <span>
-                                    manager || manager123
+                                    kotteeswaran || Kottee@2005
                                 </span>
                             </p>
 

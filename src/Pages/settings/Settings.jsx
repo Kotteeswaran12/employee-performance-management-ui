@@ -1,10 +1,12 @@
-
 import "./Setting.css";
 
 import { getUserInfo } from "../../Api/AdminAccess";
+import {
+    UpdateUesrInfo,
+    changePass
+} from "../../Api/AuthApi";
 
 import { useEffect, useState } from "react";
-import { UpdateUesrInfo } from "../../Api/AuthApi";
 
 import {
     FiUser,
@@ -30,7 +32,6 @@ import { useNavigate } from "react-router-dom";
 
 
 const Settings = () => {
-
 
     const navigate = useNavigate();
 
@@ -64,12 +65,18 @@ const Settings = () => {
 
 
     /* =====================================================
-       UPDATE SECTION
+       EDIT PROFILE
+       
+       ONLY:
+       username
+       email
+       phone
+       
+       NO PASSWORD DATA
     ===================================================== */
 
     const [showUpdate, setShowUpdate] =
         useState(false);
-
 
     const [updateData, setUpdateData] =
         useState({
@@ -78,55 +85,51 @@ const Settings = () => {
             phone: ""
         });
 
-
     const [updateLoading, setUpdateLoading] =
         useState(false);
-
 
     const [updateMessage, setUpdateMessage] =
         useState("");
 
 
-
     /* =====================================================
-       PASSWORD SECTION
+       CHANGE PASSWORD
+       
+       COMPLETELY SEPARATE FROM EDIT PROFILE
     ===================================================== */
 
-    const [showPassword, setShowPassword] =
+    const [showChangePassword, setShowChangePassword] =
         useState(false);
 
+    const [passwordData, setPasswordData] =
+        useState({
+            currentPass: "",
+            newPass: "",
+            confirmPass: ""
+        });
+
+    const [passwordLoading, setPasswordLoading] =
+        useState(false);
+
+    const [passwordMessage, setPasswordMessage] =
+        useState("");
+
+    const [showCurrentPassword, setShowCurrentPassword] =
+        useState(false);
 
     const [showNewPassword, setShowNewPassword] =
         useState(false);
-
 
     const [showConfirmPassword, setShowConfirmPassword] =
         useState(false);
 
 
-    const [passwordData, setPasswordData] =
-        useState({
-            currentPassword: "",
-            newPassword: "",
-            confirmPassword: ""
-        });
-
-
-    const [passwordLoading, setPasswordLoading] =
-        useState(false);
-
-
-    const [passwordMessage, setPasswordMessage] =
-        useState("");
-
-
     /* =====================================================
-       LOGOUT CONFIRMATION
+       LOGOUT
     ===================================================== */
 
     const [showLogout, setShowLogout] =
         useState(false);
-
 
 
     /* =====================================================
@@ -141,25 +144,21 @@ const Settings = () => {
 
             setError("");
 
-
             const response =
                 await getUserInfo(
                     AuthToken,
                     userName
                 );
 
-
             console.log(
                 "User Information:",
                 response.data
             );
 
-
             const user =
                 Array.isArray(response.data)
                     ? response.data[0]
                     : response.data;
-
 
             if (!user) {
 
@@ -168,7 +167,6 @@ const Settings = () => {
                 );
 
             }
-
 
             const finalData = {
 
@@ -189,12 +187,11 @@ const Settings = () => {
 
             };
 
-
             setData(finalData);
 
 
             /*
-             * Fill update form with existing values.
+             * Fill Edit Profile form.
              */
 
             setUpdateData({
@@ -210,14 +207,12 @@ const Settings = () => {
 
             });
 
-
         } catch (e) {
 
             console.error(
                 "User Info Error:",
                 e
             );
-
 
             if (
                 e.response?.status === 401
@@ -264,9 +259,8 @@ const Settings = () => {
     }, []);
 
 
-
     /* =====================================================
-       COPY
+       COPY VALUE
     ===================================================== */
 
     const copyValue = async (
@@ -278,23 +272,19 @@ const Settings = () => {
             return;
         }
 
-
         try {
 
             await navigator.clipboard.writeText(
-                value
+                String(value)
             );
 
-
             setCopied(type);
-
 
             setTimeout(() => {
 
                 setCopied("");
 
             }, 1800);
-
 
         } catch (error) {
 
@@ -308,7 +298,6 @@ const Settings = () => {
     };
 
 
-
     /* =====================================================
        FORMAT DATE
     ===================================================== */
@@ -319,10 +308,8 @@ const Settings = () => {
             return "-";
         }
 
-
         const parsedDate =
             new Date(date);
-
 
         if (
             Number.isNaN(
@@ -333,7 +320,6 @@ const Settings = () => {
             return date;
 
         }
-
 
         return parsedDate.toLocaleDateString(
             "en-IN",
@@ -347,7 +333,6 @@ const Settings = () => {
     };
 
 
-
     /* =====================================================
        FORMAT ROLE
     ===================================================== */
@@ -357,7 +342,6 @@ const Settings = () => {
         if (!role) {
             return "User";
         }
-
 
         return role
             .toString()
@@ -371,9 +355,8 @@ const Settings = () => {
     };
 
 
-
     /* =====================================================
-       INITIAL
+       GET INITIAL
     ===================================================== */
 
     const getInitial = () => {
@@ -383,7 +366,6 @@ const Settings = () => {
             userName ||
             "U";
 
-
         return name
             .charAt(0)
             .toUpperCase();
@@ -391,9 +373,8 @@ const Settings = () => {
     };
 
 
-
     /* =====================================================
-       UPDATE INPUT
+       EDIT PROFILE INPUT CHANGE
     ===================================================== */
 
     const handleUpdateChange = (e) => {
@@ -402,7 +383,6 @@ const Settings = () => {
             name,
             value
         } = e.target;
-
 
         setUpdateData((previous) => ({
 
@@ -415,9 +395,8 @@ const Settings = () => {
     };
 
 
-
     /* =====================================================
-       PASSWORD INPUT
+       CHANGE PASSWORD INPUT CHANGE
     ===================================================== */
 
     const handlePasswordChange = (e) => {
@@ -426,7 +405,6 @@ const Settings = () => {
             name,
             value
         } = e.target;
-
 
         setPasswordData((previous) => ({
 
@@ -439,22 +417,119 @@ const Settings = () => {
     };
 
 
+    /* =====================================================
+       OPEN EDIT PROFILE
+       
+       ONLY PROFILE DATA
+    ===================================================== */
+
+    const openEditProfile = () => {
+
+        setUpdateData({
+
+            username:
+                data?.userName || "",
+
+            email:
+                data?.Email || "",
+
+            phone:
+                data?.Phone || ""
+
+        });
+
+        setUpdateMessage("");
+
+        setShowUpdate(true);
+
+    };
+
 
     /* =====================================================
-       UPDATE PROFILE
+       CLOSE EDIT PROFILE
+    ===================================================== */
+
+    const closeEditProfile = () => {
+
+        setShowUpdate(false);
+
+        setUpdateMessage("");
+
+    };
+
+
+    /* =====================================================
+       OPEN CHANGE PASSWORD
        
-       IMPORTANT:
-       Replace the API call below with your actual
-       update-user API.
+       COMPLETELY SEPARATE
+    ===================================================== */
+
+    const openChangePassword = () => {
+
+        setPasswordData({
+
+            currentPass: "",
+            newPass: "",
+            confirmPass: ""
+
+        });
+
+        setPasswordMessage("");
+
+        setShowCurrentPassword(false);
+
+        setShowNewPassword(false);
+
+        setShowConfirmPassword(false);
+
+        setShowChangePassword(true);
+
+    };
+
+
+    /* =====================================================
+       CLOSE CHANGE PASSWORD
+    ===================================================== */
+
+    const closeChangePassword = () => {
+
+        setShowChangePassword(false);
+
+        setPasswordMessage("");
+
+        setPasswordData({
+
+            currentPass: "",
+            newPass: "",
+            confirmPass: ""
+
+        });
+
+    };
+
+
+    /* =====================================================
+       UPDATE PROFILE API
+       
+       API:
+       UpdateProfile(
+           JWT,
+           {
+               username,
+               email,
+               phone
+           }
+       )
     ===================================================== */
 
     const handleUpdateProfile = async (e) => {
 
         e.preventDefault();
 
-
         setUpdateMessage("");
 
+
+        /* Required validation */
 
         if (
             !updateData.username.trim() ||
@@ -476,24 +551,44 @@ const Settings = () => {
         try {
 
             /*
-             * Replace this section with:
-             *
-             * await updateUserInfo(
-             *     AuthToken,
-             *     updateData
-             * );
+             * Profile object ONLY.
              */
+
+            const profilePayload = {
+
+                username:
+                    updateData.username.trim(),
+
+                email:
+                    updateData.email.trim(),
+
+                phone:
+                    updateData.phone
+                        ? Number(updateData.phone)
+                        : null
+
+            };
+
+
+            /*
+             * Update Profile API
+             */
+
+            const response =
+                await UpdateUesrInfo(
+                    AuthToken,
+                    profilePayload
+                );
 
 
             console.log(
-                "UPDATE USER:",
-                updateData
+                "Profile Updated:",
+                response?.data
             );
 
 
             /*
-             * Temporary success.
-             * Remove this when API is connected.
+             * Update UI after successful API call.
              */
 
             setData((previous) => ({
@@ -501,25 +596,24 @@ const Settings = () => {
                 ...previous,
 
                 userName:
-                    updateData.username,
+                    profilePayload.username,
 
                 Email:
-                    updateData.email,
+                    profilePayload.email,
 
                 Phone:
-                    updateData.phone
+                    profilePayload.phone
 
             }));
 
 
             /*
-             * Keep localStorage username
-             * synchronized.
+             * Keep username in localStorage synchronized.
              */
 
             localStorage.setItem(
                 "username",
-                updateData.username
+                profilePayload.username
             );
 
 
@@ -530,12 +624,36 @@ const Settings = () => {
 
         } catch (e) {
 
-            console.error(e);
-
-
-            setUpdateMessage(
-                "Unable to update profile. Please try again."
+            console.error(
+                "Update Profile Error:",
+                e
             );
+
+
+            if (
+                e.response?.status === 401
+            ) {
+
+                setUpdateMessage(
+                    "Your session has expired. Please login again."
+                );
+
+            } else if (
+                e.response?.status === 403
+            ) {
+
+                setUpdateMessage(
+                    "You don't have permission to update this profile."
+                );
+
+            } else {
+
+                setUpdateMessage(
+                    e.response?.data?.message ||
+                    "Unable to update profile. Please try again."
+                );
+
+            }
 
         } finally {
 
@@ -546,26 +664,36 @@ const Settings = () => {
     };
 
 
-
     /* =====================================================
-       CHANGE PASSWORD
+       CHANGE PASSWORD API
        
-       IMPORTANT:
-       Replace the API call with your backend endpoint.
+       API:
+       ChangePass(
+           JWT,
+           {
+               currentPass,
+               newPass
+           }
+       )
+       
+       confirmPass is NEVER sent to API.
     ===================================================== */
 
     const handleChangePassword = async (e) => {
 
         e.preventDefault();
 
-
         setPasswordMessage("");
 
 
+        /* ================================================
+           CHECK ALL FIELDS
+        ================================================ */
+
         if (
-            !passwordData.currentPassword ||
-            !passwordData.newPassword ||
-            !passwordData.confirmPassword
+            !passwordData.currentPass ||
+            !passwordData.newPass ||
+            !passwordData.confirmPass
         ) {
 
             setPasswordMessage(
@@ -577,8 +705,12 @@ const Settings = () => {
         }
 
 
+        /* ================================================
+           PASSWORD LENGTH
+        ================================================ */
+
         if (
-            passwordData.newPassword.length < 8
+            passwordData.newPass.length < 8
         ) {
 
             setPasswordMessage(
@@ -590,9 +722,16 @@ const Settings = () => {
         }
 
 
+        /* ================================================
+           CONFIRM PASSWORD
+           
+           API WILL NOT BE CALLED IF
+           PASSWORDS DON'T MATCH.
+        ================================================ */
+
         if (
-            passwordData.newPassword !==
-            passwordData.confirmPassword
+            passwordData.newPass !==
+            passwordData.confirmPass
         ) {
 
             setPasswordMessage(
@@ -604,9 +743,13 @@ const Settings = () => {
         }
 
 
+        /* ================================================
+           CURRENT AND NEW PASSWORD
+        ================================================ */
+
         if (
-            passwordData.currentPassword ===
-            passwordData.newPassword
+            passwordData.currentPass ===
+            passwordData.newPass
         ) {
 
             setPasswordMessage(
@@ -624,26 +767,50 @@ const Settings = () => {
         try {
 
             /*
-             * Replace with your actual API:
+             * EXACT API OBJECT.
              *
-             * await updatePassword(
-             *     AuthToken,
-             *     passwordData.currentPassword,
-             *     passwordData.newPassword
-             * );
+             * confirmPass is NOT included.
              */
+
+            const passwordPayload = {
+
+                currentPass:
+                    passwordData.currentPass,
+
+                newPass:
+                    passwordData.newPass
+
+            };
+
+
+            /*
+             * Change Password API
+             */
+            console.log("JWT:", AuthToken);
+            console.log("Password Payload:", passwordPayload);
+
+            const response =
+                await changePass(
+                    AuthToken,
+                    passwordPayload
+                );
 
 
             console.log(
-                "CHANGE PASSWORD"
+                "Password Changed:",
+                passwordPayload
             );
 
 
+            /*
+             * Clear password fields.
+             */
+
             setPasswordData({
 
-                currentPassword: "",
-                newPassword: "",
-                confirmPassword: ""
+                currentPass: "",
+                newPass: "",
+                confirmPass: ""
 
             });
 
@@ -655,12 +822,37 @@ const Settings = () => {
 
         } catch (e) {
 
-            console.error(e);
-
-
-            setPasswordMessage(
-                "Unable to change password."
+            console.error(
+                "Change Password Error:",
+                e
             );
+
+
+            if (
+                e.response?.status === 401
+            ) {
+
+                setPasswordMessage(
+                    e.response?.data?.message ||
+                    "Current password is incorrect or your session has expired."
+                );
+
+            } else if (
+                e.response?.status === 403
+            ) {
+
+                setPasswordMessage(
+                    "You don't have permission to change the password."
+                );
+
+            } else {
+
+                setPasswordMessage(
+                    e.response?.data?.message ||
+                    "Unable to change password. Please try again."
+                );
+
+            }
 
         } finally {
 
@@ -671,16 +863,11 @@ const Settings = () => {
     };
 
 
-
     /* =====================================================
        LOGOUT
     ===================================================== */
 
     const handleLogout = () => {
-
-        /*
-         * Clear authentication information.
-         */
 
         localStorage.removeItem("token");
 
@@ -688,22 +875,7 @@ const Settings = () => {
 
         localStorage.removeItem("username");
 
-
-        /*
-         * Optional:
-         * If your application stores other
-         * authentication information, clear
-         * them here too.
-         */
-
-
         setShowLogout(false);
-
-
-        /*
-         * Replace history so user cannot
-         * simply navigate back to dashboard.
-         */
 
         navigate(
             "/",
@@ -713,7 +885,6 @@ const Settings = () => {
         );
 
     };
-
 
 
     /* =====================================================
@@ -746,8 +917,11 @@ const Settings = () => {
                     <div className="skeletonCards">
 
                         <div></div>
+
                         <div></div>
+
                         <div></div>
+
                         <div></div>
 
                     </div>
@@ -759,7 +933,6 @@ const Settings = () => {
         );
 
     }
-
 
 
     /* =====================================================
@@ -810,7 +983,6 @@ const Settings = () => {
     }
 
 
-
     /* =====================================================
        MAIN UI
     ===================================================== */
@@ -853,7 +1025,6 @@ const Settings = () => {
             </div>
 
 
-
             {/* =================================================
                 PROFILE CARD
             ================================================= */}
@@ -862,7 +1033,6 @@ const Settings = () => {
 
 
                 <div className="profileMain">
-
 
                     <div className="profileAvatar">
 
@@ -913,28 +1083,18 @@ const Settings = () => {
                 </div>
 
 
+                {/* =================================================
+                    PROFILE ACTIONS
+                ================================================= */}
+
                 <div className="profileAction">
 
+
+                    {/* EDIT PROFILE */}
+
                     <button
-                        onClick={() => {
-
-                            setShowUpdate(true);
-
-                            setUpdateData({
-                                username: data?.userName || "",
-                                email: data?.Email || "",
-                                phone: data?.Phone || ""
-                            });
-
-                            setPasswordData({
-                                currentPassword: "",
-                                newPassword: "",
-                                confirmPassword: ""
-                            });
-
-                            setUpdateMessage("");
-                            setPasswordMessage("");
-                        }}
+                        className="editProfileButton"
+                        onClick={openEditProfile}
                     >
 
                         <FiEdit3 />
@@ -945,10 +1105,26 @@ const Settings = () => {
 
                     </button>
 
+
+                    {/* CHANGE PASSWORD */}
+
+                    <button
+                        className="changePasswordButton"
+                        onClick={openChangePassword}
+                    >
+
+                        <FiLock />
+
+                        <span>
+                            Change Password
+                        </span>
+
+                    </button>
+
+
                 </div>
 
             </div>
-
 
 
             {/* =================================================
@@ -1022,7 +1198,6 @@ const Settings = () => {
                     </div>
 
 
-
                     {/* EMAIL */}
 
                     <div className="infoCard">
@@ -1066,7 +1241,6 @@ const Settings = () => {
                         </button>
 
                     </div>
-
 
 
                     {/* PHONE */}
@@ -1118,7 +1292,6 @@ const Settings = () => {
                     </div>
 
 
-
                     {/* ROLE */}
 
                     <div className="infoCard">
@@ -1156,7 +1329,6 @@ const Settings = () => {
                     </div>
 
 
-
                     {/* JOINED */}
 
                     <div className="infoCard">
@@ -1184,22 +1356,26 @@ const Settings = () => {
 
                     </div>
 
+
                 </div>
 
             </div>
 
 
-
-
             {/* =================================================
-    EDIT PROFILE MODAL
-================================================= */}
+                EDIT PROFILE POPUP
+               
+                IMPORTANT:
+                ONLY USERNAME / EMAIL / PHONE
+               
+                NO PASSWORD SECTION
+            ================================================= */}
 
             {showUpdate && (
 
                 <div
                     className="editProfileOverlay"
-                    onClick={() => setShowUpdate(false)}
+                    onClick={closeEditProfile}
                 >
 
                     <div
@@ -1209,30 +1385,39 @@ const Settings = () => {
                         }
                     >
 
-                        {/* ===============================
-                MODAL HEADER
-            =============================== */}
+
+                        {/* MODAL HEADER */}
 
                         <div className="editProfileHeader">
 
                             <div>
 
-                                <h2>
-                                    Edit Profile
-                                </h2>
+                                <div className="modalTitleIcon">
 
-                                <p>
-                                    Update your account information
-                                </p>
+                                    <FiEdit3 />
+
+                                </div>
+
+
+                                <div>
+
+                                    <h2>
+                                        Edit Profile
+                                    </h2>
+
+                                    <p>
+                                        Update your account information
+                                    </p>
+
+                                </div>
 
                             </div>
 
 
                             <button
+                                type="button"
                                 className="editProfileClose"
-                                onClick={() =>
-                                    setShowUpdate(false)
-                                }
+                                onClick={closeEditProfile}
                             >
 
                                 <FiX />
@@ -1242,16 +1427,17 @@ const Settings = () => {
                         </div>
 
 
-                        {/* ===============================
-                PROFILE INFORMATION
-            =============================== */}
+                        {/* =================================================
+                            EDIT PROFILE FORM
+                           
+                            ONLY 3 FIELDS
+                        ================================================= */}
 
                         <form
                             className="editProfileForm"
-                            onSubmit={
-                                handleUpdateProfile
-                            }
+                            onSubmit={handleUpdateProfile}
                         >
+
 
                             <div className="editFormGrid">
 
@@ -1263,6 +1449,7 @@ const Settings = () => {
                                     <label>
                                         Username
                                     </label>
+
 
                                     <div className="settingsInput">
 
@@ -1278,6 +1465,7 @@ const Settings = () => {
                                                 handleUpdateChange
                                             }
                                             placeholder="Enter username"
+                                            autoComplete="username"
                                         />
 
                                     </div>
@@ -1293,6 +1481,7 @@ const Settings = () => {
                                         Email Address
                                     </label>
 
+
                                     <div className="settingsInput">
 
                                         <FiMail />
@@ -1307,6 +1496,7 @@ const Settings = () => {
                                                 handleUpdateChange
                                             }
                                             placeholder="Enter email"
+                                            autoComplete="email"
                                         />
 
                                     </div>
@@ -1316,11 +1506,12 @@ const Settings = () => {
 
                                 {/* PHONE */}
 
-                                <div className="updateInputGroup">
+                                <div className="updateInputGroup fullWidth">
 
                                     <label>
                                         Phone Number
                                     </label>
+
 
                                     <div className="settingsInput">
 
@@ -1336,18 +1527,19 @@ const Settings = () => {
                                                 handleUpdateChange
                                             }
                                             placeholder="Enter phone number"
+                                            inputMode="numeric"
+                                            autoComplete="tel"
                                         />
 
                                     </div>
 
                                 </div>
 
+
                             </div>
 
 
-                            {/* ===============================
-                    PROFILE MESSAGE
-                =============================== */}
+                            {/* PROFILE MESSAGE */}
 
                             {updateMessage && (
 
@@ -1368,223 +1560,341 @@ const Settings = () => {
                             )}
 
 
-                            {/* ===============================
-                    PASSWORD SECTION
-                =============================== */}
-
-                            <div className="editPasswordSection">
-
-                                <div className="editPasswordTitle">
-
-                                    <FiLock />
-
-                                    <div>
-
-                                        <h3>
-                                            Change Password
-                                        </h3>
-
-                                        <p>
-                                            Leave these fields empty
-                                            if you don't want to
-                                            change your password.
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div className="editPasswordGrid">
-
-
-                                    {/* CURRENT PASSWORD */}
-
-                                    <div className="passwordInputGroup">
-
-                                        <label>
-                                            Current Password
-                                        </label>
-
-                                        <div className="settingsInput">
-
-                                            <FiLock />
-
-                                            <input
-                                                type={
-                                                    showPassword
-                                                        ? "text"
-                                                        : "password"
-                                                }
-                                                name="currentPassword"
-                                                value={
-                                                    passwordData.currentPassword
-                                                }
-                                                onChange={
-                                                    handlePasswordChange
-                                                }
-                                                placeholder="Current password"
-                                            />
-
-                                            <button
-                                                type="button"
-                                                className="passwordEye"
-                                                onClick={() =>
-                                                    setShowPassword(
-                                                        previous =>
-                                                            !previous
-                                                    )
-                                                }
-                                            >
-
-                                                {showPassword
-                                                    ? <FiEyeOff />
-                                                    : <FiEye />
-                                                }
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-
-                                    {/* NEW PASSWORD */}
-
-                                    <div className="passwordInputGroup">
-
-                                        <label>
-                                            New Password
-                                        </label>
-
-                                        <div className="settingsInput">
-
-                                            <FiKey />
-
-                                            <input
-                                                type={
-                                                    showNewPassword
-                                                        ? "text"
-                                                        : "password"
-                                                }
-                                                name="newPassword"
-                                                value={
-                                                    passwordData.newPassword
-                                                }
-                                                onChange={
-                                                    handlePasswordChange
-                                                }
-                                                placeholder="New password"
-                                            />
-
-                                            <button
-                                                type="button"
-                                                className="passwordEye"
-                                                onClick={() =>
-                                                    setShowNewPassword(
-                                                        previous =>
-                                                            !previous
-                                                    )
-                                                }
-                                            >
-
-                                                {showNewPassword
-                                                    ? <FiEyeOff />
-                                                    : <FiEye />
-                                                }
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-
-                                    {/* CONFIRM PASSWORD */}
-
-                                    <div className="passwordInputGroup">
-
-                                        <label>
-                                            Confirm Password
-                                        </label>
-
-                                        <div className="settingsInput">
-
-                                            <FiKey />
-
-                                            <input
-                                                type={
-                                                    showConfirmPassword
-                                                        ? "text"
-                                                        : "password"
-                                                }
-                                                name="confirmPassword"
-                                                value={
-                                                    passwordData.confirmPassword
-                                                }
-                                                onChange={
-                                                    handlePasswordChange
-                                                }
-                                                placeholder="Confirm password"
-                                            />
-
-                                            <button
-                                                type="button"
-                                                className="passwordEye"
-                                                onClick={() =>
-                                                    setShowConfirmPassword(
-                                                        previous =>
-                                                            !previous
-                                                    )
-                                                }
-                                            >
-
-                                                {showConfirmPassword
-                                                    ? <FiEyeOff />
-                                                    : <FiEye />
-                                                }
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                {passwordMessage && (
-
-                                    <div
-                                        className={
-                                            passwordMessage.includes(
-                                                "successfully"
-                                            )
-                                                ? "formSuccess"
-                                                : "formError"
-                                        }
-                                    >
-
-                                        {passwordMessage}
-
-                                    </div>
-
-                                )}
-
-                            </div>
-
-
-                            {/* ===============================
-                    ACTIONS
-                =============================== */}
+                            {/* PROFILE ACTIONS */}
 
                             <div className="editProfileActions">
+
 
                                 <button
                                     type="button"
                                     className="editCancelButton"
-                                    onClick={() =>
-                                        setShowUpdate(false)
+                                    onClick={closeEditProfile}
+                                >
+
+                                    <FiX />
+
+                                    Cancel
+
+                                </button>
+
+
+                                <button
+                                    type="submit"
+                                    className="editSaveButton"
+                                    disabled={
+                                        updateLoading
+                                    }
+                                >
+
+                                    {updateLoading ? (
+
+                                        <>
+
+                                            <FiRefreshCw
+                                                className="buttonSpin"
+                                            />
+
+                                            Updating...
+
+                                        </>
+
+                                    ) : (
+
+                                        <>
+
+                                            <FiSave />
+
+                                            Save Changes
+
+                                        </>
+
+                                    )}
+
+                                </button>
+
+
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            )}
+
+
+            {/* =================================================
+                CHANGE PASSWORD POPUP
+               
+                THIS IS A COMPLETELY SEPARATE POPUP
+               
+                CURRENT PASSWORD
+                NEW PASSWORD
+                CONFIRM PASSWORD
+            ================================================= */}
+
+            {showChangePassword && (
+
+                <div
+                    className="changePasswordOverlay"
+                    onClick={closeChangePassword}
+                >
+
+                    <div
+                        className="changePasswordModal"
+                        onClick={(e) =>
+                            e.stopPropagation()
+                        }
+                    >
+
+
+                        {/* PASSWORD HEADER */}
+
+                        <div className="changePasswordHeader">
+
+                            <div className="passwordModalIcon">
+
+                                <FiLock />
+
+                            </div>
+
+
+                            <div className="passwordModalTitle">
+
+                                <h2>
+                                    Change Password
+                                </h2>
+
+                                <p>
+                                    Create a new password for your account
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                className="changePasswordClose"
+                                onClick={closeChangePassword}
+                            >
+
+                                <FiX />
+
+                            </button>
+
+                        </div>
+
+
+                        {/* =================================================
+                            PASSWORD FORM
+                        ================================================= */}
+
+                        <form
+                            className="changePasswordForm"
+                            onSubmit={
+                                handleChangePassword
+                            }
+                        >
+
+
+                            {/* CURRENT PASSWORD */}
+
+                            <div className="passwordInputGroup">
+
+                                <label>
+                                    Current Password
+                                </label>
+
+
+                                <div className="settingsInput">
+
+                                    <FiLock />
+
+
+                                    <input
+                                        type={
+                                            showCurrentPassword
+                                                ? "text"
+                                                : "password"
+                                        }
+                                        name="currentPass"
+                                        value={
+                                            passwordData.currentPass
+                                        }
+                                        onChange={
+                                            handlePasswordChange
+                                        }
+                                        placeholder="Enter current password"
+                                        autoComplete="current-password"
+                                    />
+
+
+                                    <button
+                                        type="button"
+                                        className="passwordEye"
+                                        onClick={() =>
+                                            setShowCurrentPassword(
+                                                previous =>
+                                                    !previous
+                                            )
+                                        }
+                                    >
+
+                                        {showCurrentPassword
+                                            ? <FiEyeOff />
+                                            : <FiEye />
+                                        }
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            {/* NEW PASSWORD */}
+
+                            <div className="passwordInputGroup">
+
+                                <label>
+                                    New Password
+                                </label>
+
+
+                                <div className="settingsInput">
+
+                                    <FiKey />
+
+
+                                    <input
+                                        type={
+                                            showNewPassword
+                                                ? "text"
+                                                : "password"
+                                        }
+                                        name="newPass"
+                                        value={
+                                            passwordData.newPass
+                                        }
+                                        onChange={
+                                            handlePasswordChange
+                                        }
+                                        placeholder="Enter new password"
+                                        autoComplete="new-password"
+                                    />
+
+
+                                    <button
+                                        type="button"
+                                        className="passwordEye"
+                                        onClick={() =>
+                                            setShowNewPassword(
+                                                previous =>
+                                                    !previous
+                                            )
+                                        }
+                                    >
+
+                                        {showNewPassword
+                                            ? <FiEyeOff />
+                                            : <FiEye />
+                                        }
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            {/* CONFIRM NEW PASSWORD */}
+
+                            <div className="passwordInputGroup">
+
+                                <label>
+                                    Confirm New Password
+                                </label>
+
+
+                                <div className="settingsInput">
+
+                                    <FiKey />
+
+
+                                    <input
+                                        type={
+                                            showConfirmPassword
+                                                ? "text"
+                                                : "password"
+                                        }
+                                        name="confirmPass"
+                                        value={
+                                            passwordData.confirmPass
+                                        }
+                                        onChange={
+                                            handlePasswordChange
+                                        }
+                                        placeholder="Confirm new password"
+                                        autoComplete="new-password"
+                                    />
+
+
+                                    <button
+                                        type="button"
+                                        className="passwordEye"
+                                        onClick={() =>
+                                            setShowConfirmPassword(
+                                                previous =>
+                                                    !previous
+                                            )
+                                        }
+                                    >
+
+                                        {showConfirmPassword
+                                            ? <FiEyeOff />
+                                            : <FiEye />
+                                        }
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            {/* PASSWORD MESSAGE */}
+
+                            {passwordMessage && (
+
+                                <div
+                                    className={
+                                        passwordMessage.includes(
+                                            "successfully"
+                                        )
+                                            ? "formSuccess"
+                                            : "formError"
+                                    }
+                                >
+
+                                    {passwordMessage}
+
+                                </div>
+
+                            )}
+
+
+                            {/* PASSWORD ACTIONS */}
+
+                            <div className="changePasswordActions">
+
+
+                                <button
+                                    type="button"
+                                    className="editCancelButton"
+                                    onClick={
+                                        closeChangePassword
                                     }
                                 >
 
@@ -1599,15 +1909,14 @@ const Settings = () => {
                                     type="submit"
                                     className="editSaveButton"
                                     disabled={
-                                        updateLoading ||
                                         passwordLoading
                                     }
                                 >
 
-                                    {updateLoading ||
-                                        passwordLoading ? (
+                                    {passwordLoading ? (
 
                                         <>
+
                                             <FiRefreshCw
                                                 className="buttonSpin"
                                             />
@@ -1619,9 +1928,10 @@ const Settings = () => {
                                     ) : (
 
                                         <>
+
                                             <FiSave />
 
-                                            Save Changes
+                                            Change Password
 
                                         </>
 
@@ -1629,7 +1939,9 @@ const Settings = () => {
 
                                 </button>
 
+
                             </div>
+
 
                         </form>
 
@@ -1638,15 +1950,6 @@ const Settings = () => {
                 </div>
 
             )}
-
-
-
-
-
-
-
-
-
 
 
             {/* =================================================
@@ -1711,7 +2014,6 @@ const Settings = () => {
             </div>
 
 
-
             {/* =================================================
                 LOGOUT
             ================================================= */}
@@ -1747,9 +2049,8 @@ const Settings = () => {
             </div>
 
 
-
             {/* =================================================
-                LOGOUT MODAL
+                LOGOUT CONFIRMATION
             ================================================= */}
 
             {showLogout && (
@@ -1788,15 +2089,16 @@ const Settings = () => {
 
                         <div className="logoutModalActions">
 
+
                             <button
                                 className="logoutCancel"
                                 onClick={() =>
-                                    setShowLogout(
-                                        false
-                                    )
+                                    setShowLogout(false)
                                 }
                             >
+
                                 Cancel
+
                             </button>
 
 
@@ -1813,6 +2115,7 @@ const Settings = () => {
 
                             </button>
 
+
                         </div>
 
                     </div>
@@ -1822,10 +2125,10 @@ const Settings = () => {
             )}
 
         </div>
+
     );
 
 };
 
 
 export default Settings;
-
