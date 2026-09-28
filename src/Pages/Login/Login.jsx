@@ -524,7 +524,7 @@ const Login = () => {
                             <p className="employee">
                                 🟣 EMPLOYEE :
                                 <span>
-                                    employee || employee123
+                                    employee | | employee123
                                 </span>
                             </p>
 
