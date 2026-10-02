@@ -1081,7 +1081,11 @@
 @media (max-width: 900px) {
 
     .DepartmentOuter {
+        width: 100%;
         padding: 20px;
+        padding-top: 100px;
+        /* background-color: red; */
+        
     }
 
     .department-header {
@@ -1104,6 +1108,7 @@
 
     .DepartmentOuter {
         padding: 14px;
+        padding-top: 20%;
     }
 
     .department-header {
@@ -1236,6 +1241,7 @@
 
     .DepartmentOuter {
         padding: 10px;
+        padding-top: 25%;
     }
 
     .department-title-section {

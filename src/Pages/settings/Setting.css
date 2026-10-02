@@ -7,7 +7,7 @@
     min-height: 100%;
     padding: 28px;
     box-sizing: border-box;
-    background: #f7f8fc;
+    background: #feffff;
     color: #1f2937;
 }
 
@@ -456,6 +456,9 @@
 }
 
 
+
+
+
 /* =========================================================
    EDIT PROFILE MODAL
 ========================================================= */
@@ -479,7 +482,7 @@
     border-bottom: 1px solid #eef0f4;
 }
 
-.editProfileHeader > div:first-child {
+.editProfileHeader>div:first-child {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -579,7 +582,7 @@
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
-.settingsInput > svg {
+.settingsInput>svg {
     flex: 0 0 auto;
     margin-left: 13px;
     color: #9ca3af;
@@ -1039,6 +1042,7 @@
 @media (max-width: 900px) {
 
     .SettingOuter {
+        width: 100%;
         padding: 22px;
     }
 
@@ -1062,6 +1066,7 @@
 @media (max-width: 700px) {
 
     .SettingOuter {
+
         padding: 18px;
     }
 
@@ -1092,6 +1097,7 @@
 @media (max-width: 550px) {
 
     .SettingOuter {
+
         padding: 14px;
     }
 
@@ -1239,4 +1245,497 @@
         grid-template-columns: 1fr;
     }
 
+}
+
+/* =========================================================
+   UNIVERSAL RESPONSIVE SETTINGS PAGE
+   Desktop | Laptop | Tablet | Mobile | iPhone
+========================================================= */
+
+/* Prevent unwanted horizontal overflow */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.SettingOuter {
+    width: calc(100% - 400px);
+    min-width: 0;
+    max-width: 100%;
+    padding: clamp(14px, 2.2vw, 32px);
+    overflow-x: clip;
+}
+
+/* Better text scaling */
+.settingsPageHeader h1 {
+    font-size: clamp(21px, 2vw, 28px);
+    line-height: 1.3;
+}
+
+.settingsPageHeader p {
+    line-height: 1.6;
+}
+
+/* Profile section */
+.profileCard {
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.profileMain,
+.profileIdentity,
+.profileAction {
+    min-width: 0;
+}
+
+.profileIdentity {
+    overflow-wrap: anywhere;
+}
+
+.profileIdentity p {
+    max-width: 100%;
+}
+
+/* Account information */
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+}
+
+.infoCard {
+    min-width: 0;
+}
+
+.infoContent {
+    overflow: hidden;
+}
+
+.infoContent strong {
+    overflow-wrap: anywhere;
+}
+
+/* Modals */
+.editProfileOverlay,
+.changePasswordOverlay,
+.logoutOverlay {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.editProfileModal,
+.changePasswordModal,
+.logoutModal {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.editProfileModal,
+.changePasswordModal {
+    max-height: calc(100dvh - 40px);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.settingsInput,
+.settingsInput input {
+    min-width: 0;
+    max-width: 100%;
+}
+
+button {
+    touch-action: manipulation;
+}
+
+/* =========================================================
+   LARGE DESKTOP — 1440px and above
+========================================================= */
+
+@media (min-width: 1440px) {
+
+    .SettingOuter {
+        padding: 32px 38px;
+    }
+
+    .infoGrid {
+        gap: 18px;
+    }
+
+    .profileCard {
+        padding: 30px;
+    }
+}
+
+/* =========================================================
+   LAPTOP — 1024px to 1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .SettingOuter {
+        padding: 22px;
+    }
+
+    .profileCard {
+        gap: 18px;
+    }
+
+    .profileAction {
+        flex-wrap: wrap;
+    }
+
+    .infoGrid {
+        gap: 12px;
+    }
+}
+
+/* =========================================================
+   TABLET LANDSCAPE / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .SettingOuter {
+        width: 100%;
+        padding: 20px;
+        padding-top: 10%;
+    }
+
+    .settingsPageHeader {
+        align-items: flex-start;
+    }
+
+    .profileCard {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .profileAction {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .accountStatusCard {
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================================
+   TABLET PORTRAIT — 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .SettingOuter {
+        padding: 18px;
+        padding-top: 10%;
+    }
+
+    .settingsPageHeader {
+        gap: 14px;
+    }
+
+    .settingsPageHeader h1 {
+        font-size: 23px;
+    }
+
+    .profileCard {
+        padding: 20px;
+    }
+
+    .infoGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .editFormGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .accountStatusCard {
+        gap: 14px;
+    }
+}
+
+/* =========================================================
+   SMALL TABLET / LARGE MOBILE — 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .SettingOuter {
+        /* background-color: red; */
+        padding: 15px;
+        padding-top: 20%;
+    }
+
+    .settingsPageHeader {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .settingsRefresh {
+        width: 100%;
+    }
+
+    .profileCard {
+        padding: 17px;
+        border-radius: 15px;
+    }
+
+    .profileMain {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .profileAction {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .profileAction button {
+        width: 100%;
+    }
+
+    .infoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .editFormGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .updateInputGroup.fullWidth {
+        grid-column: auto;
+    }
+
+    .accountStatusCard,
+    .logoutSection {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .logoutButton {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   MOBILE — iPhone / Android
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .SettingOuter {
+        
+        padding: 12px;
+        padding-top: 18%;
+    }
+
+    .settingsPageHeader h1 {
+        font-size: 21px;
+    }
+
+    .settingsPageHeader p {
+        font-size: 13px;
+    }
+
+    .profileCard {
+        padding: 15px;
+    }
+
+    .profileAvatar {
+        width: 52px;
+        height: 52px;
+        flex: 0 0 52px;
+        font-size: 20px;
+    }
+
+    .profileIdentity h2 {
+        font-size: 17px;
+        overflow-wrap: anywhere;
+    }
+
+    .profileIdentity p {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        font-size: 12px;
+    }
+
+    .profileTags {
+        gap: 6px;
+    }
+
+    .infoCard {
+        min-height: 72px;
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .infoIcon {
+        width: 37px;
+        height: 37px;
+        flex-basis: 37px;
+        font-size: 16px;
+    }
+
+    .infoContent strong {
+        font-size: 13px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .roleMiniBadge {
+        display: inline-flex;
+    }
+
+    /* Mobile bottom sheet */
+    .editProfileOverlay,
+    .changePasswordOverlay,
+    .logoutOverlay {
+        align-items: flex-end;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .editProfileModal,
+    .changePasswordModal {
+        width: 100%;
+        max-width: 100%;
+        max-height: 90vh;
+        max-height: 90dvh;
+        border-radius: 20px 20px 0 0;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .logoutModal {
+        width: calc(100% - 24px);
+        max-width: 400px;
+        margin: 12px;
+        border-radius: 18px;
+    }
+
+    .editProfileHeader,
+    .changePasswordHeader {
+        padding: 17px;
+    }
+
+    .editProfileForm,
+    .changePasswordForm {
+        padding: 17px;
+    }
+
+    .editProfileActions,
+    .changePasswordActions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+    .editCancelButton,
+    .editSaveButton {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   SMALL PHONES — 320px to 380px
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .SettingOuter {
+        padding: 10px;
+           padding-top: 20%;
+    }
+
+    .settingsPageHeader h1 {
+        font-size: 19px;
+    }
+
+    .profileCard {
+        padding: 13px;
+    }
+
+    .profileMain {
+        gap: 10px;
+    }
+
+    .profileAvatar {
+        width: 45px;
+        height: 45px;
+        flex-basis: 45px;
+        font-size: 17px;
+    }
+
+    .profileIdentity h2 {
+        font-size: 15px;
+    }
+
+    .infoCard {
+        padding: 10px;
+    }
+
+    .editProfileHeader h2,
+    .passwordModalTitle h2 {
+        font-size: 17px;
+    }
+
+    .editProfileActions,
+    .changePasswordActions,
+    .logoutModalActions {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+
+    .logoutCancel,
+    .logoutConfirm {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media (max-height: 500px) and (max-width: 900px) {
+
+    .editProfileOverlay,
+    .changePasswordOverlay,
+    .logoutOverlay {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .editProfileModal,
+    .changePasswordModal {
+        max-height: 95dvh;
+        border-radius: 14px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .editProfileModal,
+    .changePasswordModal,
+    .logoutModal,
+    .editProfileOverlay,
+    .changePasswordOverlay,
+    .logoutOverlay {
+        animation: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }
