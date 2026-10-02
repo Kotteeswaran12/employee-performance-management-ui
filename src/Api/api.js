@@ -3,7 +3,7 @@ import axios from "axios";
 const api = axios.create({
     // baseURL:"https://employee-performance-api-nxav.onrender.com/api",
     // baseURL: "http://localhost:8080/api",
-    baseURL : import.meta.env.API_URL,
+    baseURL : import.meta.env.VITE_API_URL,
     headers: {
         "Content-Type": "application/json"
     }
